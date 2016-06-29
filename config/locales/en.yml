@@ -1,0 +1,51 @@
+en:
+  app:
+    title: 'Tomsk State University of Control Systems and Radioelectronics'
+    cecutient: 'Version for cecutient'
+    cecutient_normal: 'Normal version'
+    address: '40 Lenina Prospect, Tomsk, Russia 634050'
+    phone: '(3822)&nbsp;51-05-30'
+    fax: '(3822)&nbsp;51-32-62, 52-63-65'
+    openteam: 'Development and design'
+    questions: 'Please ask any questions by phone +7 (3822) 510-804 or via e-mail'
+    private_office: 'private office'
+    social: 'Follow us'
+    vk: 'TUSUR in Vk'
+    fb: 'TUSUR in FB'
+    twitter: 'TUSUR Twitter'
+    instagram: 'TUSUR in Instagram'
+    youtube: 'TUSUR in YouTube'
+    ask_question: 'Ask Question'
+    sign_in: 'Sign In'
+    notifications: 'Notifications'
+    empty_search_results: 'Search no results'
+    sitemap_link: 'Sitemap'
+
+  views:
+    pagination:
+      first: '&laquo; First'
+      last: 'Last &raquo;'
+      previous: '&larr;'
+      next: '&rarr;'
+      truncate: '&hellip;'
+
+  top_header:
+    sections_for: 'Sections for'
+    sites_tusur: 'Sites TUSUR'
+    close: 'Close'
+
+  search_placeholder: 'Search'
+
+  old_site_version: 'Old site version'
+
+  not_found: 'Information is absent'
+
+  locale:
+    ru: 'РУС'
+    en: 'ENG'
+
+  mlt:
+    title: 'Related news'
+
+  recaptcha:
+    failure: 'Word verification response is incorrect, please try again.'

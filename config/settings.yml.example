@@ -1,0 +1,44 @@
+app:
+  domain:             .domain
+  secret:             SECRET
+  url:                http://domain.url/
+  host:               host
+  from:               mail@mail.ma
+
+  socials:
+    vk:               CODE
+    fb:               CODE
+
+cms:
+  url:                http://cms.url/
+  site_slug:          SLUG
+
+errors:
+  url:                http://errors.url/
+  key:                KEY
+
+profile:
+  url:                http://profile.url/
+  sign_in_url:        http://profile.url/users/sign_in
+  sign_out_url:       http://profile.url/users/sign_out
+  users_url:          http://profile.url/users/search
+  question_url:       http://profile.url/conversations/new?conversation%5Buser_groups%5D%5B%5D=UUID
+
+redis_user_connector:
+  url:                redis://redis.url/1/users
+
+session_store:
+  db:                 2
+  key_prefix:         'session:'
+  host:               redis.url
+  port:               6379
+
+storage:
+  url:                http://storage.url/
+
+youtube:
+  key:                KEY
+
+recaptcha:
+  public:             PUBLIC
+  private:            PRIVATE
