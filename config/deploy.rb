@@ -11,7 +11,7 @@ namespace :sitemap do
     end
   end
 
-  after 'deploy', 'sitemap:symlink'
+  #after 'deploy', 'sitemap:symlink'
 end
 
 namespace :cache do
