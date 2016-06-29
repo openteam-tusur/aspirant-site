@@ -6,7 +6,7 @@ class User
   acts_as_auth_client_user
 
   def app_name
-    'tusur'
+    'postgraduate'
   end
 
 end
