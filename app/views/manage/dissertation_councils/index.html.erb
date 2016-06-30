@@ -1,0 +1,17 @@
+<% content_for :page_header, 'Диссертационные советы' %>
+
+<div class='row'>
+  <div class='col-xs-12'>
+    <% if @dissertation_councils.any? %>
+      <ul>
+        <% @dissertation_councils.each do |dissertation_council| %>
+          <li>
+            <%= link_to dissertation_council.number, manage_dissertation_council_path(dissertation_council) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <p><%= link_to 'Добавить диссертационный совет', new_manage_dissertation_council_path, class: 'btn btn-default' %></p>
+  </div>
+</div>

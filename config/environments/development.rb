@@ -46,4 +46,14 @@ Rails.application.configure do
   # settings for LetterOpener
   #config.action_mailer.delivery_method = :letter_opener
 
+  # scaffold
+  config.generators do |g|
+    g.orm             :active_record
+    g.template_engine :erb
+    g.test_framework  false
+    g.stylesheets     false
+    g.javascripts     false
+    g.helper          false
+  end
+
 end
