@@ -387,6 +387,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sqlite3 (1.3.11)
     sshkit (1.10.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -489,6 +490,7 @@ DEPENDENCIES
   simple_form
   sinatra
   sitemap_generator
+  sqlite3
   stop_ie
   time_diff
   truncate_html

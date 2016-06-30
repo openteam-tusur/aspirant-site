@@ -32,6 +32,11 @@
     <div class='page_wrapper'>
       <div class='overlay js-overlay hidden-xs'></div>
       <%= render partial: 'public_navigation' %>
+      <% if notice || alert %>
+        <div class='container margin-top'>
+          <%= render partial: 'flash' %>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
     <% cache_unless request.host.match(Settings['app.nocache_host'].to_s),

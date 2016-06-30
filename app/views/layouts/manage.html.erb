@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title><%= content_for?(:page_title) ? yield(:page_title).squish.html_safe : "#{@page_title} — #{strip_tags(@site_name.try(:content).try(:body))}".try(:squish) %></title>
+    <title><%= "#{yield(:page_header).squish} — " if content_for? :page_header %><%= I18n.t('app.title') %></title>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag    'manage/application', media: 'all' %>
     <%= javascript_include_tag 'manage/application' %>
@@ -22,11 +22,20 @@
   </head>
   <body>
     <div class='page_wrapper'>
+      <div class='overlay js-overlay hidden-xs'></div>
+      <%= render partial: 'application/navigation/top_navigation' %>
+      <%= render partial: 'application/navigation/subtop_navigation' %>
       <%= render partial: 'manage/application/navigation' %>
-      <div class="container manage content">
-        <%= content_tag(:div, flash[:notice], class: 'notice alert alert-success') if flash[:notice] %>
-        <%= content_tag(:div, flash[:alert], class: 'alert alert-danger') if flash[:alert] %>
-        <%= yield %>
+      <% if notice || alert %>
+        <div class='container margin-top'>
+          <%= render partial: 'application/flash' %>
+        </div>
+      <% end %>
+      <div class='container'>
+        <div class='content'>
+          <%= render partial: 'page_header' if content_for? :page_header %>
+          <%= yield %>
+        </div>
       </div>
     </div>
     <%= render :partial => 'application/footer' %>

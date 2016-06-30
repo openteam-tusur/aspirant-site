@@ -29,7 +29,7 @@
               <div class='visible-xs'>
                 <nav id='main-navbar' class='navbar-collapse collapse' aria-expanded='true'>
                   <ul class='nav navbar-nav'>
-                    <%= render partial: 'application/public_navigation_items' %>
+                    <%= render partial: 'application/public_navigation_items' if @main_navigation.present? %>
                   </ul>
                 </nav>
               </div>

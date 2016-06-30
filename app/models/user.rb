@@ -6,7 +6,7 @@ class User
   acts_as_auth_client_user
 
   def app_name
-    Settings['app.name'].to_s.parameterize('_')
+    'postgraduate'
   end
 
   Permission.available_roles.each do |role|
