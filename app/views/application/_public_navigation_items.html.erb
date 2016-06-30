@@ -54,3 +54,7 @@
     </ul>
   </li>
 <% end %>
+
+<% if current_user.has_any_permissions? %>
+  <li class='pull-right'><%= link_to 'Управление', manage_root_path %></li>
+<% end %>

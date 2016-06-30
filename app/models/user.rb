@@ -11,8 +11,16 @@ class User
 
   Permission.available_roles.each do |role|
     define_method "#{role}?" do
-      has_permission? role: role
+      available_permissions.include? role
     end
+  end
+
+  def available_permissions
+    @available_permissions ||= permissions.pluck(:role)
+  end
+
+  def has_any_permissions?
+    available_permissions.any?
   end
 
 end
