@@ -6,6 +6,10 @@ class DissertationCouncil < ActiveRecord::Base
 
   scope :ordered, -> { order :number }
 
+  extend FriendlyId
+
+  friendly_id :number
+
 end
 
 # == Schema Information
@@ -16,4 +20,9 @@ end
 #  number     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string
+#
+# Indexes
+#
+#  index_dissertation_councils_on_slug  (slug) UNIQUE
 #

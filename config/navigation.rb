@@ -5,7 +5,7 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
 
     primary.item :permissions, 'Диссертационные советы', manage_dissertation_councils_path,
-      highlights_on: /\/manage\/manage_dissertation_councils/,
+      highlights_on: /\/manage\/dissertation_councils/,
       if: -> { can?(:manage, DissertationCouncil) }
 
     primary.item :permissions, 'Управление правами', manage_permissions_path,

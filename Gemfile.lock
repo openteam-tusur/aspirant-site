@@ -184,6 +184,8 @@ GEM
       railties (>= 3.2, < 5.0)
     foreman (0.78.0)
       thor (~> 0.19.1)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     geoip (1.6.1)
     gilenson (1.2.2)
     globalid (0.3.6)
@@ -454,6 +456,7 @@ DEPENDENCIES
   esp-commons
   font-awesome-rails
   foreman
+  friendly_id
   geoip
   gilenson
   gravtastic
