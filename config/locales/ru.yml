@@ -21,6 +21,10 @@ ru:
     empty_search_results: 'По вашему запросу ничего не найдено'
     sitemap_link: 'Карта сайта'
 
+  permissions:
+    admin: 'Администратор'
+    manager: 'Менеджер'
+
   views:
     pagination:
       first: '&laquo; First'
@@ -74,3 +78,9 @@ ru:
     site: 'Сайт: '
     jabber: 'Jabber: '
     jid: 'Jabber: '
+
+  activerecord:
+    attributes:
+      permission:
+        name: 'ФИО'
+        role: 'Роль'

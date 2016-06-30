@@ -4,7 +4,7 @@
                 request.fullpath.to_s.parameterize('_').gsub('-', '_'),
                 expires_in: 5.minutes do %>
 
-  <div class='main_page'>
+  <div class='container main_page'>
 
     <% if @secondary_navigation.present? %>
       <div class='container-fluid secondary_navigation_wrapper'>

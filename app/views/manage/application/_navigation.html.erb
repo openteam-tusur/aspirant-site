@@ -1,0 +1,33 @@
+    <% if user_signed_in? %>
+      <% begin %>
+        <li class='notification_icon'>
+          <%= link_to "#{Settings['profile.url']}/notifications", :class => 'notifications', :title => I18n.t('app.notifications') do %>
+            <% if current_user.respond_to?(:unreaded_notifications) && current_user.unreaded_notifications.to_i > 0 %>
+              <span class='counter'>+<%= current_user.unreaded_notifications %></span>
+            <% end %>
+            <%= image_tag 'mail.png', :width => 16, :height => 16, :alt => 'Unreaded notifications' %>
+          <% end %>
+        </li>
+      <% rescue %>
+      <% end %>
+      <li class='dropdown'>
+        <div class='dropdown-toggle login' data-toggle='dropdown'>
+          <span class='current_user truncated'>
+            <%= image_tag current_user.avatar_url, :width => 24, :height => 24 %><%= current_user.short_name %>
+            <b class='caret'></b>
+          </span>
+        </div>
+        <%= current_user.menu_list %>
+      </li>
+    <% else %>
+      <li class='sign_in'>
+        <%= link_to I18n.t('app.sign_in'), sign_in_url %>
+      </li>
+    <% end %>
+<div class='container-fluid main-navigation js-main-navigation hidden-xs'>
+  <div class='container'>
+    <ul class='nav nav-pills col-sm-12'>
+      <%= render_navigation :renderer => :mobile_menu_renderer, :level => 1 %>
+    </ul>
+  </div>
+</div>

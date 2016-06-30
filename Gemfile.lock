@@ -102,6 +102,7 @@ GEM
     builder (3.2.2)
     bunny (2.0.1)
       amq-protocol (>= 1.9.2)
+    cancancan (1.14.0)
     capistrano (3.5.0)
       airbrussh (>= 1.0.0)
       capistrano-harrow
@@ -198,6 +199,8 @@ GEM
     jquery-rails (2.1.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     json (1.8.3)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -250,6 +253,7 @@ GEM
       unicorn
       whenever
     options (2.3.2)
+    pg (0.18.4)
     progress_bar (1.0.5)
       highline (~> 1.6)
       options (~> 2.3.0)
@@ -322,7 +326,6 @@ GEM
     rest-client-components (1.4.0)
       rack (>= 1.0.1)
       rest-client (>= 1.6.0)
-    ri_cal (0.8.8)
     rinku (1.5.1)
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
@@ -361,6 +364,8 @@ GEM
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
+    simple-navigation (4.0.3)
+      activesupport (>= 2.3.2)
     simple_form (3.2.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -435,6 +440,7 @@ DEPENDENCIES
   awesome_print
   bootstrap-sass
   brakeman
+  cancancan
   capistrano-auth-subscriber
   coffee-rails
   compass-rails
@@ -447,12 +453,14 @@ DEPENDENCIES
   hashie
   jquery-colorbox-rails
   jquery-rails (~> 2.1.4)
+  jquery-ui-rails
   kaminari
   letter_opener
   mechanize
   nokogiri
   non-stupid-digest-assets
   openteam-capistrano (~> 1.0.11)
+  pg
   postman-client!
   progress_bar
   quiet_assets
@@ -473,11 +481,11 @@ DEPENDENCIES
   redis-session-store
   rest-client
   rest-client-components
-  ri_cal
   rspec-rails
   russian
   sass-rails
   sidekiq
+  simple-navigation
   simple_form
   sinatra
   sitemap_generator
@@ -491,4 +499,4 @@ DEPENDENCIES
   yt
 
 BUNDLED WITH
-   1.12.3
+   1.12.5
