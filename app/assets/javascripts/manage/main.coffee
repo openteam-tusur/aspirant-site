@@ -1,4 +1,4 @@
-$(document).on 'ready page:load', ->
+$ ->
 
   $(document).on 'click', 'a.disabled', ->
     return false

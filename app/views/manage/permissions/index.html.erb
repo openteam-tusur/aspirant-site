@@ -28,7 +28,7 @@
             <td>
               <%= link_to manage_permission_path(permission),
                 title: 'удалить',
-                data: { method: :delete, confirm: 'Вы уверены?' } do %>
+                data: { method: :delete, confirm: 'Вы уверены?', toggle: :tooltip, placement: :left } do %>
                 <span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
               <% end %>
             </td>
