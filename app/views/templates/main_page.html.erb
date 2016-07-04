@@ -20,8 +20,10 @@
       </div>
     <% end %>
 
-    <%= render_partial_for_region(@content) if @content %>
-    <%= render_partial_for_region(@banners) if @banners %>
+    <div class='content'>
+      <%= render_partial_for_region(@content) if @content %>
+      <%= render_partial_for_region(@banners) if @banners %>
+    </div>
 
   </div>
 <% end %>
