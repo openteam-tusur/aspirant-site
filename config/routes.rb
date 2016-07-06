@@ -5,13 +5,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   namespace :manage do
-
-    resources :dissertation_councils
-
-    resources :permissions, except: [:edit, :update]
-    get 'users/search' => 'users#search', as: :users_search
-
-    root to: 'welcome#index'
+    root to: 'dashboard#spa'
   end
 
   root :to => 'application#index'

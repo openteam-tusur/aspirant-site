@@ -4,21 +4,11 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title><%= "#{yield(:page_header).squish} — " if content_for? :page_header %><%= I18n.t('app.title') %></title>
+    <title><%= t('app.manage')%></title>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag    'manage/application', media: 'all' %>
-    <%= javascript_include_tag 'manage/application' %>
-    <!--[if lt IE 9]>
-    <%= javascript_include_tag 'html5.js' %>
-    <%= javascript_include_tag 'respond.js' %>
-    <![endif]-->
-    <!--[if lte IE 7]>
-    <%= stylesheet_link_tag    'stop_ie/application' %>
-    <%= javascript_include_tag 'stop_ie/application' %>
-    <![endif]-->
+    <%= javascript_include_tag 'manage/spa' %>
     <%= csrf_meta_tags %>
-    <%#= meta_tags %>
-
   </head>
   <body>
     <div class='page_wrapper'>
@@ -26,16 +16,8 @@
       <%= render partial: 'application/navigation/top_navigation' %>
       <%= render partial: 'application/navigation/subtop_navigation' %>
       <%= render partial: 'manage/application/navigation' %>
-      <% if notice || alert %>
-        <div class='container margin-top'>
-          <%= render partial: 'application/flash' %>
-        </div>
-      <% end %>
       <div class='container'>
-        <div class='content'>
-          <%= render partial: 'page_header' if content_for? :page_header %>
-          <%= yield %>
-        </div>
+        <%= yield %>
       </div>
     </div>
     <%= render :partial => 'application/footer' %>

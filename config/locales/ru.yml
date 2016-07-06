@@ -20,6 +20,7 @@ ru:
     notifications: 'Уведомления'
     empty_search_results: 'По вашему запросу ничего не найдено'
     sitemap_link: 'Карта сайта'
+    manage: 'Управление'
 
   permissions:
     admin: 'Администратор'

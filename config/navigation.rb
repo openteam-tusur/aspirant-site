@@ -3,14 +3,9 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.selected_class = 'active'
 
   navigation.items do |primary|
-
-    primary.item :permissions, 'Диссертационные советы', manage_dissertation_councils_path,
-      highlights_on: /\/manage\/dissertation_councils/,
+    primary.item :permissions, t('app.manage'), manage_root_path,
+      highlights_on: /manage$/,
       if: -> { can?(:manage, DissertationCouncil) }
-
-    primary.item :permissions, 'Управление правами', manage_permissions_path,
-      highlights_on: /\/manage\/permissions/,
-      if: -> { can?(:manage, Permission) }
   end
 end
 

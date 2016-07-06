@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 gem 'annotate'
 gem 'attribute_normalizer'
 gem 'auth_client', :git => 'https://github.com/openteam-tusur/auth_client'
@@ -17,6 +19,7 @@ gem 'geoip'
 gem 'gilenson'
 gem 'gravtastic'
 gem 'hashie'
+gem 'jbuilder'
 gem 'jquery-colorbox-rails'
 gem 'jquery-rails', '~> 2.1.4'
 gem 'jquery-ui-rails'
@@ -60,6 +63,14 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-sugar'
   gem 'rails-assets-tinyscrollbar'
   gem 'rails-assets-waypoints'
+
+  #angular assets stuff
+  gem 'rails-assets-angular'
+  gem 'rails-assets-angular-ui-router'
+  gem 'rails-assets-angucomplete-alt'
+  gem 'rails-assets-bootstrap-datepicker'
+  gem 'rails-assets-moment'
+  gem 'rails-assets-ng-file-upload'
 end
 
 group :development do

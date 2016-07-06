@@ -1,7 +1,7 @@
 class Permission < ActiveRecord::Base
   include AuthClient::Permission
 
-  acts_as_auth_client_permission roles: [:admin]
+  acts_as_auth_client_permission roles: [:admin, :clerk]
 
   attr_accessor :name
 
