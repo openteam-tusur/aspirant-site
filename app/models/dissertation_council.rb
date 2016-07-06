@@ -1,4 +1,8 @@
 class DissertationCouncil < ActiveRecord::Base
+  has_and_belongs_to_many :specialities, class_name: 'CouncilSpeciality'
+
+  has_many :posts, as: :context, dependent: :destroy
+  has_many :persons, through: :posts
 
   validates :number, presence: true, uniqueness: true
 

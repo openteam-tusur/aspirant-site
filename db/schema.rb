@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630101226) do
+ActiveRecord::Schema.define(version: 20160706032858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "council_specialities", force: :cascade do |t|
+    t.string   "code"
+    t.string   "title"
+    t.string   "science_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "council_specialities_dissertation_councils", force: :cascade do |t|
+    t.integer "dissertation_council_id"
+    t.integer "council_speciality_id"
+  end
 
   create_table "dissertation_councils", force: :cascade do |t|
     t.string   "number"
@@ -38,11 +51,31 @@ ActiveRecord::Schema.define(version: 20160630101226) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "people", force: :cascade do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "patronymic"
+    t.string   "science_degree"
+    t.string   "science_title"
+    t.integer  "council_speciality_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.string   "user_id"
     t.integer  "context_id"
     t.string   "context_type"
     t.string   "role"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "context_id"
+    t.string   "context_type"
+    t.integer  "person_id"
+    t.string   "title"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
