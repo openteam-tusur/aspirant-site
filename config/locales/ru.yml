@@ -21,10 +21,18 @@ ru:
     empty_search_results: 'По вашему запросу ничего не найдено'
     sitemap_link: 'Карта сайта'
     manage: 'Управление'
+    dashboard: 'Управление'
+    council: 'Диссертационый совет'
+    adverts: 'Объявления о защите'
+    permissions: 'Управление правами'
+    buttons:
+      remove_permission: 'Удалить'
+      add_permission:    'Добавить'
 
   permissions:
     admin: 'Администратор'
     manager: 'Менеджер'
+    clerk: 'Секретарь'
 
   views:
     pagination:

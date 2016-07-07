@@ -7,6 +7,20 @@ class Permission < ActiveRecord::Base
 
   validates_uniqueness_of :role, :scope => :user_id,
     :message => 'У пользователя не может быть несколько одинаковых ролей'
+
+  def self.localized_available_roles
+    available_roles.map do |role|
+      {
+        localized: I18n.t(%Q(permissions.#{role})),
+        value: role,
+        need_context: role == 'clerk' ? true : false
+      }
+    end
+  end
+
+  def self.available_contexts
+    DissertationCouncil.ordered
+  end
 end
 
 # == Schema Information
