@@ -1,25 +1,19 @@
 angular
   .module('dashboard')
-  .controller('MainController', ['$scope', '$state', '$http', ($scope, $state, $http) ->
+  .controller('MainController', ['$scope', '$state', '$http', 'localization', ($scope, $state, $http, localization) ->
+
     $scope.$state = $state
 
-    $scope.getLocalization = () ->
+    $scope.getDictionary = (dictionary, callback) ->
       $http
-        .get '/manage/angular/get_locale_hash'
-        .success (data) ->
-          $scope.locale = data.locale
+        .get "manage/angular/get_#{dictionary}"
+        .success callback
 
-    $scope.l = (string) ->
-      return string unless $scope.locale
-      result = $scope.recursiveLocalization($scope.locale, string)
-      result || string
+    $scope.removeElementFrom = (array, element) ->
+      i = array.indexOf element
+      array.splice i, 1
 
-    $scope.recursiveLocalization = (obj, string) =>
-      keys = string.split('.')
-      return undefined unless obj
-      return obj[string] if keys.length == 1
-      key = keys.shift()
-      $scope.recursiveLocalization obj[key], keys.join('.')
+    localization.getLocalization()
+    $scope.l = localization.l
 
-    $scope.getLocalization()
     ])

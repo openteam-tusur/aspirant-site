@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'cancancan'
 gem 'coffee-rails'
 gem 'compass-rails'
+gem 'enumerize'
 gem 'esp-commons'
 gem 'font-awesome-rails'
 gem 'friendly_id'
@@ -45,6 +46,7 @@ gem 'simple_form'
 gem 'sinatra', :require => nil
 gem 'sitemap_generator'
 gem 'stop_ie'
+gem 'sunspot_rails'
 gem 'time_diff'
 gem 'truncate_html'
 gem 'tusur_header', '>= 0.2.6'
@@ -74,6 +76,7 @@ source 'https://rails-assets.org' do
 end
 
 group :development do
+  gem 'ryba'
   gem 'brakeman', :require => false
   gem 'capistrano-auth-subscriber'
   gem 'foreman'

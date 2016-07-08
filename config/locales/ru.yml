@@ -21,18 +21,41 @@ ru:
     empty_search_results: 'По вашему запросу ничего не найдено'
     sitemap_link: 'Карта сайта'
     manage: 'Управление'
-    dashboard: 'Управление'
-    council: 'Диссертационый совет'
+    dashboard: 'Панель управления'
+    councils: 'Диссертационые советы'
+    council_edit: 'Редактирование диссертационного совета'
     adverts: 'Объявления о защите'
     permissions: 'Управление правами'
+    actions: 'Действия'
     buttons:
       remove_permission: 'Удалить'
       add_permission:    'Добавить'
+      cancel:            'Отмена'
+      clean:             'Очистить'
+      save:              'Сохранить'
+      add:               'Добавить'
 
   permissions:
     admin: 'Администратор'
     manager: 'Менеджер'
     clerk: 'Секретарь'
+
+  post:
+    title: 'Должность'
+
+  person:
+    academic_degree: "Ученая степень"
+    academic_title:  "Ученое звание"
+    patronymic: Отчество
+    surname:    Фамилия
+    name:       Имя
+
+
+  councils:
+    council_with_number: 'Диссертационный совет № '
+    number: 'Номер диссертационного совета'
+    executive: 'Ответственный секретарь совета'
+    confirm: 'Вы уверены, что хотите удалить диссертационный совет?'
 
   views:
     pagination:

@@ -2,30 +2,15 @@ class Manage::DissertationCouncilsController < Manage::ApplicationController
 
   load_and_authorize_resource
 
-  before_action :set_dissertation_council, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @dissertation_councils = DissertationCouncil.ordered
-  end
+  before_action :set_dissertation_council, only: [:destroy, :update, :show]
 
   def show
-  end
-
-  def new
-    @dissertation_council = DissertationCouncil.new
-  end
-
-  def edit
+    render partial: 'manage/angular/council', locals: { council: @dissertation_council }
   end
 
   def create
-    @dissertation_council = DissertationCouncil.new(dissertation_council_params)
-
-    if @dissertation_council.save
-      redirect_to [:manage, @dissertation_council], notice: 'Диссертационный совет создан'
-    else
-      render :new
-    end
+    @dissertation_council = DissertationCouncil.create(dissertation_council_params)
+    render partial: 'manage/angular/council', locals: { council: @dissertation_council }
   end
 
   def update
@@ -37,18 +22,17 @@ class Manage::DissertationCouncilsController < Manage::ApplicationController
   end
 
   def destroy
-    @dissertation_council.destroy
-    redirect_to manage_dissertation_councils_url, notice: 'Диссертационный совет удалён'
+    render json: (@dissertation_council.destroy ? :ok : :false )
   end
 
   private
 
-    def set_dissertation_council
-      @dissertation_council = DissertationCouncil.find(params[:id])
-    end
+  def set_dissertation_council
+    @dissertation_council = DissertationCouncil.includes(:clerks).find(params[:id])
+  end
 
-    def dissertation_council_params
-      params.require(:dissertation_council).permit(:number)
-    end
+  def dissertation_council_params
+    params.require(:dissertation_council).permit(:number)
+  end
 
 end

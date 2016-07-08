@@ -3,6 +3,7 @@ class DissertationCouncil < ActiveRecord::Base
 
   has_many :posts, as: :context, dependent: :destroy
   has_many :persons, through: :posts
+  has_many :clerks, as: :context, dependent: :destroy, class_name: 'Permission'
 
   validates :number, presence: true, uniqueness: true
 

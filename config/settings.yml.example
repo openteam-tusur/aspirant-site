@@ -24,6 +24,9 @@ profile:
   users_url:          http://profile.url/users/search
   question_url:       http://profile.url/conversations/new?conversation%5Buser_groups%5D%5B%5D=UUID
 
+directory:
+  users_search:      'https://directory.tusur.ru/api/persons/search_by_fullname'
+
 redis_user_connector:
   url:                redis://redis.url/1/users
 

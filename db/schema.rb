@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160706032858) do
     t.string   "name"
     t.string   "surname"
     t.string   "patronymic"
+    t.string   "url"
     t.string   "science_degree"
     t.string   "science_title"
     t.integer  "council_speciality_id"

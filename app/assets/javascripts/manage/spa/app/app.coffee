@@ -9,10 +9,17 @@ angular
         resolve: {}
         })
 
-      .state('council', {
-        url: '/council'
-        templateUrl: 'council.html'
-        controller: 'CouncilController'
+      .state('councils', {
+        url: '/councils'
+        templateUrl: 'councils.html'
+        controller: 'CouncilsController'
+        resolve: {}
+        })
+
+      .state('council_edit',{
+        url: '/council/:councilId'
+        templateUrl: 'edit_council.html'
+        controller: 'EditCouncilController'
         resolve: {}
         })
 

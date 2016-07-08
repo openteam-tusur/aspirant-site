@@ -1,0 +1,68 @@
+<h3>
+  In construction
+</h3>
+<form>
+</form>
+
+<table class='table'>
+  <thead>
+    <th>
+      {{ l('councils.number') }}
+    </th>
+    <th>
+      {{ l('councils.executive') }}
+    </th>
+    <th>
+      {{ l('app.actions') }}
+    </th>
+  </thead>
+  <tbody>
+    <tr ng-hide='formToggled'>
+      <td colspan="3">
+        <button ng-click='toggleForm()'>
+          {{ l('app.buttons.add') }}
+        </button>
+      </td>
+    </tr>
+    <tr ng-if='formToggled'>
+      <td>
+        <input type="text"
+               placeholder="{{ l('councils.number') }}"
+               ng-model='new_council.number'
+               class='form-control form-control-small'
+              >
+      </td>
+      <td></td>
+      <td>
+        <button ng-show='new_council.number.length > 0'
+                ng-click='submitCouncil()'
+                >
+          {{ l('app.buttons.save') }}
+        </button>
+      </td>
+    </tr>
+    <tr ng-repeat='council in councils'>
+      <td>
+        {{ council.number }}
+      </td>
+      <td>
+        <p ng-repeat='clerk in council.clerks'>
+          {{ clerk.fullname }}
+        </p>
+        <span ng-hide='council.clerks.length'>
+          <span>Добавить</span>
+          <span class='glyphicon glyphicon-plus'/>
+        </span>
+      </td>
+      <td>
+        {{ council.id }}
+        <a ui-sref="council_edit({councilId: council.id})">
+          <span class='glyphicon glyphicon-pencil'/>
+        </a>
+        <span class='glyphicon glyphicon-remove'
+              ng-click='removeCouncil(council)'
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -3,9 +3,7 @@ angular
   .controller('PermissionsController', ['$scope', '$http', ($scope, $http) ->
 
     $scope.getPermissions = ()->
-      $http
-        .get '/manage/angular/get_permissions'
-        .success (data) ->
+      $scope.getDictionary 'permissions', (data) ->
           $scope.permissions       = data.permissions
           $scope.availableRoles    = data.available_roles
           $scope.availableContexts = data.available_contexts
@@ -14,7 +12,7 @@ angular
       $http
         .delete "/manage/permissions/#{permission.id}"
         .success (data) ->
-          $scope.getPermissions()
+          $scope.removeElementFrom $scope.permissions, permission
 
     $scope.validatePermission = () ->
       user = $scope.new_user
