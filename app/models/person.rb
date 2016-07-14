@@ -2,6 +2,8 @@ class Person < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :councils, through: :posts, source: :context, source_type: 'DissertationCouncil'
 
+  has_many :people
+
   belongs_to :speciality
 
   searchable do

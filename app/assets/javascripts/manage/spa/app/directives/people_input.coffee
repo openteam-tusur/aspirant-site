@@ -11,6 +11,7 @@ angular.module('dashboard')
         templateUrl: 'people_input.html'
         controller: ($scope, localization) ->
           $scope.l = localization.l
+
           for key in ['new_person', 'science']
             $scope[key] = {}
 
@@ -44,7 +45,6 @@ angular.module('dashboard')
                 $scope.people.push data
                 $scope.cleanPerson()
                 $scope.hideForm()
-
 
           $scope.copyToPerson = (field) ->                                      #workaround for easier sending to rails
             $scope.new_person[field] = $scope.science[field]['value']           #just copy data from $scope to $scope.new_person

@@ -1,3 +1,47 @@
 <h3>
-  In construction
+  {{ l("app.adverts") }}
 </h3>
+<table class='table'>
+  <thead>
+    <th>
+      {{ l('advert.applicant') }}
+    </th>
+    <th>
+      {{ l('advert.title') }}
+    </th>
+    <th>
+      {{ l('advert.publication_date') }}
+    </th>
+    <th>
+      {{ l('advert.actions') }}
+    </th>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan='4'>
+        <button>
+          {{ l('app.buttons.add_advert') }}
+        </button>
+      </td>
+    </tr>
+    <tr ng-repeat='advert in adverts'>
+      <td>
+        {{ advert.applicant.fullname }}
+      </td>
+      <td>
+        {{ advert.title }}
+      </td>
+      <td>
+        {{ app.advert.publication_date }}
+      </td>
+      <td>
+        <button>
+          {{ l('app.buttons.remove')}}
+        </button>
+        <button>
+          {{ l('app.buttons.edit')}}
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

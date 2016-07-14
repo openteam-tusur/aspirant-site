@@ -6,8 +6,11 @@ Rails.application.routes.draw do
 
   namespace :manage do
     resources :permissions, only: [:create, :destroy]
-    resources :dissertation_councils, only: [:create, :destroy, :update, :show]
-    resources :people do
+    resources :dissertation_councils, except: [:edit, :new]
+    resources :posts, only: :destroy
+    resources :adverts
+
+    resources :people, only: [:create] do
       member do
         post :update_order
       end
@@ -16,14 +19,14 @@ Rails.application.routes.draw do
         get :directory_search
       end
     end
-    resources :posts, only: :destroy
-    resources :council_specialities do
+
+    resources :council_specialities, only: [:create] do
       member do
         post :remove_from_council
         post :update_order
       end
       collection do
-        get 'search'
+        get :search
       end
     end
 

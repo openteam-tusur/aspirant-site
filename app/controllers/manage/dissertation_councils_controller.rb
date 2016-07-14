@@ -4,6 +4,11 @@ class Manage::DissertationCouncilsController < Manage::ApplicationController
 
   before_action :set_dissertation_council, only: [:destroy, :update, :show]
 
+  def index
+    @councils = DissertationCouncil.includes(:clerks).all
+    render partial: 'manage/angular/coucnils', locals: { councils: @councils}
+  end
+
   def show
     render partial: 'manage/angular/council', locals: { council: @dissertation_council }
   end

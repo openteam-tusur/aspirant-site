@@ -28,14 +28,18 @@ ru:
     permissions: 'Управление правами'
     actions: 'Действия'
     nothing_found: 'Ничего не найдено'
+
     buttons:
-      remove_permission: 'Удалить'
-      add_permission:    'Добавить'
+      remove:            'Удалить'
+      edit:              'Редактировать'
+      add:               'Добавить'
       cancel:            'Отмена'
       clean:             'Очистить'
       save:              'Сохранить'
-      add:               'Добавить'
+      remove_permission: 'Удалить'
+      add_permission:    'Добавить'
       add_speciality:    'Добавить специальность'
+      add_advert:        'Добавить объявление о защите'
       create_speciality_and_add_to_council: 'Создать специальность и добавить в совет'
 
   permissions:
@@ -52,6 +56,12 @@ ru:
     code_placeholder:        'Введите код специальности'
     title:                   'Название специальности'
     title_placeholder:       'Введите название специальности'
+
+  advert:
+    applicant: 'Соискатель'
+    title: 'Тема диссертации'
+    publication_date: 'Дата публикации'
+    actions: 'Действия'
 
   person:
     academic_degree: "Ученая степень"

@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713073958) do
+ActiveRecord::Schema.define(version: 20160714043915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adverts", force: :cascade do |t|
+    t.string   "science_degree"
+    t.integer  "council_speciality_id"
+    t.integer  "dissertation_council_id"
+    t.date     "placement_date"
+    t.string   "place"
+    t.date     "publication_date"
+    t.integer  "applicant_id"
+    t.integer  "mentor_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.text     "title"
+  end
+
+  add_index "adverts", ["council_speciality_id"], name: "index_adverts_on_council_speciality_id", using: :btree
+  add_index "adverts", ["dissertation_council_id"], name: "index_adverts_on_dissertation_council_id", using: :btree
 
   create_table "council_specialities", force: :cascade do |t|
     t.string   "code"
@@ -85,4 +102,6 @@ ActiveRecord::Schema.define(version: 20160713073958) do
     t.integer  "row_order"
   end
 
+  add_foreign_key "adverts", "council_specialities"
+  add_foreign_key "adverts", "dissertation_councils"
 end

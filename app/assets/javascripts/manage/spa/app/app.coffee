@@ -37,5 +37,12 @@ angular
         resolve: {}
         })
 
+      .state('advert_edit', {
+        url: '/advert/:advertId'
+        templateUrl: 'edit_advert.html'
+        controller: 'EditAdvertsController'
+        resolve: {}
+        })
+
     $urlRouterProvider.otherwise 'dashboard'
     ])
