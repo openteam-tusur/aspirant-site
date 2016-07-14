@@ -302,6 +302,9 @@ GEM
     rails-assets-angular (1.5.7)
     rails-assets-angular-ui-router (0.3.1)
       rails-assets-angular (>= 1.0.8, < 2)
+    rails-assets-angular-ui-sortable (0.14.0)
+      rails-assets-angular (>= 1.2)
+      rails-assets-jquery-ui (>= 1.9)
     rails-assets-bootstrap-datepicker (1.6.1)
       rails-assets-jquery (>= 1.7.1)
     rails-assets-chosen (1.4.2)
@@ -314,6 +317,8 @@ GEM
     rails-assets-jquery-animatenumber (0.0.13)
       rails-assets-jquery (>= 1.7.0)
     rails-assets-jquery-touchswipe (1.6.15)
+    rails-assets-jquery-ui (1.11.4)
+      rails-assets-jquery (>= 1.6)
     rails-assets-jquery.scrollTo (2.1.2)
       rails-assets-jquery (>= 1.8)
     rails-assets-moment (2.14.1)
@@ -337,6 +342,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.15.0)
     rake (11.1.2)
+    ranked-model (0.4.0)
+      activerecord (>= 3.1.12)
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -516,6 +523,7 @@ DEPENDENCIES
   rails-assets-angucomplete-alt!
   rails-assets-angular!
   rails-assets-angular-ui-router!
+  rails-assets-angular-ui-sortable!
   rails-assets-bootstrap-datepicker!
   rails-assets-chosen!
   rails-assets-galleria!
@@ -529,6 +537,7 @@ DEPENDENCIES
   rails-assets-sugar!
   rails-assets-tinyscrollbar!
   rails-assets-waypoints!
+  ranked-model
   recaptcha
   redis-session-store
   rest-client

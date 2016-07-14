@@ -27,6 +27,7 @@ ru:
     adverts: 'Объявления о защите'
     permissions: 'Управление правами'
     actions: 'Действия'
+    nothing_found: 'Ничего не найдено'
     buttons:
       remove_permission: 'Удалить'
       add_permission:    'Добавить'
@@ -34,6 +35,8 @@ ru:
       clean:             'Очистить'
       save:              'Сохранить'
       add:               'Добавить'
+      add_speciality:    'Добавить специальность'
+      create_speciality_and_add_to_council: 'Создать специальность и добавить в совет'
 
   permissions:
     admin: 'Администратор'
@@ -42,6 +45,13 @@ ru:
 
   post:
     title: 'Должность'
+
+  speciality:
+    speciality_search:       'Поиск специальностей'
+    code:                    'Код специальности'
+    code_placeholder:        'Введите код специальности'
+    title:                   'Название специальности'
+    title_placeholder:       'Введите название специальности'
 
   person:
     academic_degree: "Ученая степень"
@@ -56,6 +66,7 @@ ru:
     number: 'Номер диссертационного совета'
     executive: 'Ответственный секретарь совета'
     confirm: 'Вы уверены, что хотите удалить диссертационный совет?'
+    council_members: 'Состав диссертационного совета'
 
   views:
     pagination:
@@ -104,3 +115,7 @@ ru:
       permission:
         name: 'ФИО'
         role: 'Роль'
+  enumerize:
+    council_speciality:
+      science_type:
+        technical: Технические науки

@@ -15,7 +15,6 @@ angular
         result = f.recursiveLocalization(f.locale, string)
         result || string
 
-
       f.recursiveLocalization = (obj, string) =>
         keys = string.split('.')
         return undefined unless obj

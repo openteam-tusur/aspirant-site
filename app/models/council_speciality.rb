@@ -1,6 +1,23 @@
 class CouncilSpeciality < ActiveRecord::Base
-  has_and_belongs_to_many :councils, class_name: 'DissertationCouncil'
-  has_many :persons
+  extend Enumerize
+
+  has_many :council_specialities_dissertation_councils, dependent: :destroy
+  has_many :councils, through: :council_specialities_dissertation_councils, source: :dissertation_council
+
+  has_many :people
+
+  enumerize :science_type, in: [:technical]
+
+  searchable do
+    text    :code
+    text    :title
+    text    :science_type
+    integer :id
+  end
+
+  def row_order_for(council)
+    council_specialities_dissertation_councils.find_by(dissertation_council: council).row_order
+  end
 end
 
 # == Schema Information

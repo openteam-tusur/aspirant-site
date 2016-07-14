@@ -8,11 +8,10 @@ class Manage::PermissionsController < Manage::ApplicationController
   end
 
   def destroy
-    render json: (Permission.find(params[:id]).destroy ? :ok : :false )
+    render json: !!Permission.find(params[:id]).destroy
   end
 
   private
-
   def permission_params
     params.require(:permission).permit(:number, :user_id, :role, :context_type, :context_id)
   end

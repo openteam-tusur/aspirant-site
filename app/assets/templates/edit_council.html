@@ -1,8 +1,21 @@
-<h3>
-  {{ l('councils.council_with_number') + council.number }}
-</h3>
+<div class="row">
+  <div class="col-xs-12">
+    <h3 class='page-header'>
+      {{ l('councils.council_with_number') + council.number }}
+    </h3>
+  </div>
+</div>
 
-<people-list />
+<people-input context='context' people='council.people'></people-input>
 
-<br/>
-{{ council | json }}
+<h3>{{ l('councils.council_members') }}</h3>
+<people-list people='council.people'
+             destroy-with='destroyPost'
+             update-order-function='updatePersonOrder'
+             >
+</people-list>
+<speciality-input specialities='council.specialities' add-function='addSpecialityToCouncil'></speciality-input>
+<speciality-list specialities='council.specialities'
+                 destroy-function='removeSpecialityFromCouncil'
+                 update-order-function='updateSpecialityOrder'
+                 ></speciality-list>

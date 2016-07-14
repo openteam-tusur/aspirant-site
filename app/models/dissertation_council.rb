@@ -1,8 +1,10 @@
 class DissertationCouncil < ActiveRecord::Base
-  has_and_belongs_to_many :specialities, class_name: 'CouncilSpeciality'
+  has_many :council_specialities_dissertation_councils, dependent: :destroy
+  has_many :specialities, through: :council_specialities_dissertation_councils, source: :council_speciality
 
-  has_many :posts, as: :context, dependent: :destroy
-  has_many :persons, through: :posts
+  has_many :posts,  as: :context, dependent: :destroy
+  has_many :people, through: :posts
+
   has_many :clerks, as: :context, dependent: :destroy, class_name: 'Permission'
 
   validates :number, presence: true, uniqueness: true

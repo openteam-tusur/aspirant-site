@@ -33,6 +33,7 @@ gem 'postman-client', :github => 'openteam-tusur/postman-client'
 gem 'progress_bar', :require => false
 gem 'rack-cache'
 gem 'rack-utf8_sanitizer'
+gem 'ranked-model'
 gem 'rails', '~> 4.2.0'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'redis-session-store'
@@ -69,6 +70,7 @@ source 'https://rails-assets.org' do
   #angular assets stuff
   gem 'rails-assets-angular'
   gem 'rails-assets-angular-ui-router'
+  gem 'rails-assets-angular-ui-sortable'
   gem 'rails-assets-angucomplete-alt'
   gem 'rails-assets-bootstrap-datepicker'
   gem 'rails-assets-moment'

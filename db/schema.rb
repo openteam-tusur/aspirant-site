@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706032858) do
+ActiveRecord::Schema.define(version: 20160713073958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160706032858) do
   create_table "council_specialities_dissertation_councils", force: :cascade do |t|
     t.integer "dissertation_council_id"
     t.integer "council_speciality_id"
+    t.integer "row_order"
   end
 
   create_table "dissertation_councils", force: :cascade do |t|
@@ -61,6 +62,8 @@ ActiveRecord::Schema.define(version: 20160706032858) do
     t.integer  "council_speciality_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.string   "science_degree_abbr"
+    t.string   "science_title_abbr"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -79,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160706032858) do
     t.string   "title"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "row_order"
   end
 
 end

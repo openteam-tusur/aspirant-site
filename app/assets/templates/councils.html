@@ -1,5 +1,5 @@
 <h3>
-  In construction
+  {{ l('app.councils') }}
 </h3>
 <form>
 </form>
@@ -55,7 +55,6 @@
         </span>
       </td>
       <td>
-        {{ council.id }}
         <a ui-sref="council_edit({councilId: council.id})">
           <span class='glyphicon glyphicon-pencil'/>
         </a>

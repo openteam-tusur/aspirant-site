@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-xs-12" ng-hide='showSearch'>
+    <button ng-click='showSearch = !showSearch' ng-hide='showSearch'>
+      {{ l('app.buttons.add_speciality') }}
+    </button>
+  </div>
+  <div class="col-xs-12" ng-if='showSearch'>
+    <angucomplete-alt  id="speciality-angucomplete"
+                       placeholder="{{ l('speciality.speciality_search') }}"
+                       minlength="1"
+                       clear-selected='true'
+                       remote-url='manage/council_specialities/search'
+                       remote-url-request-formatter='requestFormatter'
+                       remote-url-response-formatter='searchResponseFormatter'
+                       selected-object="addSpeciality"
+                       title-field="code"
+                       description-field="title"
+                       search-fields="code,title"
+                       match-class="highlight"
+                       input-class="form-control form-control-small angucomplete-input"
+                     ></angucomplete-alt>
+    <button ng-click='hideSpecialityForm()'>
+      {{ l('app.buttons.cancel') }}
+    </button>
+  </div>
+</div>
+<div ng-if='showCreateSpecialityForm'>
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <label>
+        {{ l('speciality.code')}}
+      </label>
+      <input type="text"
+             ng-model='new_speciality.code'
+             placeholder="{{ l('speciality.code_placeholder') }}"
+             class='form-control form-control-small'
+             >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <label>
+        {{ l('speciality.title')}}
+      </label>
+      <input type="text"
+             ng-model='new_speciality.title'
+             placeholder="{{ l('speciality.title_placeholder') }}"
+             class='form-control form-control-small'
+             >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <label> {{ l('speciality.science_title') }} </label>
+      <select ng-options='type.localized for type in avalaibleScienceTypes'
+              ng-model='new_speciality_science_type'
+              ng-change='cloneScienceType(new_speciality_science_type)'
+      ></select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button ng-click='createNewSpeciality()'>
+        {{ l('app.buttons.create_speciality_and_add_to_council') }}
+      </button>
+      <button ng-click='hideSpecialityForm()'>
+        {{ l('app.buttons.cancel') }}
+      </button>
+    </div>
+  </div>
+
+</div>

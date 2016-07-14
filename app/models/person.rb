@@ -6,10 +6,19 @@ class Person < ActiveRecord::Base
 
   searchable do
     text :fullname
+    integer :id
   end
 
   def fullname
     [surname, name, patronymic] * ' '
+  end
+
+  def post_for(context)
+    posts.find_by(context_id: context.id)
+  end
+
+  def row_order_for(council)
+    post_for(council).row_order
   end
 end
 
@@ -27,4 +36,6 @@ end
 #  council_speciality_id :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  science_degree_abbr   :string
+#  science_title_abbr    :string
 #

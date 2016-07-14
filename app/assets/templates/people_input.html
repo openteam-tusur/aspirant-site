@@ -1,0 +1,142 @@
+<div class='add-person-form'>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6" ng-hide='personNotFound'>
+      <!-- ready person search -->
+      <div class="search" ng-hide='new_person.fullname'>
+        <angucomplete-alt id="user-angucomplete"
+                          placeholder="Поиск среди участников"
+                          minlength="3"
+                          clear-selected='true'
+                          remote-url='manage/people/search'
+                          remote-url-request-formatter='requestFormatter'
+                          remote-url-response-formatter='searchResponseFormatter'
+                          title-field="fullname"
+                          description-field="email"
+                          search-fields="fullname,email"
+                          selected-object="setPerson"
+                          match-class="highlight"
+                          input-class="form-control form-control-small angucomplete-input"
+                          />
+      </div>
+
+      <div ng-show='new_person.fullname'>
+        <!-- ready person output -->
+        <span >
+          {{ new_person.fullname }}
+        </span>
+        <button type="button" name="button" ng-click='cleanPerson()'>
+          {{ l('app.buttons.clean') }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- New person form -->
+    <div class="col-xs-12 col-sm-8 col-md-7 col-lg-8 person-form" ng-if='personNotFound'>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <!-- Фамилия -->
+          <input type="text"
+                 placeholder="{{ l('person.surname')}}"
+                 ng-model='new_person.surname'
+                 class='form-control form-control-small'
+                 ng-change='updateDirectorySearch()'
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <!-- Имя -->
+          <input type="text"
+                 placeholder="{{ l('person.name')}}"
+                 ng-model='new_person.name'
+                 class='form-control form-control-small'
+                 ng-change='updateDirectorySearch()'
+                 >
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <!-- Отчество -->
+          <input type="text"
+                 placeholder="{{ l('person.patronymic')}}"
+                 ng-model='new_person.patronymic'
+                 class='form-control form-control-small'
+                 ng-change='updateDirectorySearch()'
+                 >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <!-- Ученая степень -->
+          <label>{{ l('person.academic_degree')}}</label>
+          <select ng-model='science.science_degree'
+                  ng-change='copyToPerson("science_degree")'
+                  class='form-control form-control-small'
+                  ng-options='degree.value for degree in avalaibleAcademicDegrees'
+                  />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <!-- Ученое звание -->
+          <label>{{ l('person.academic_title')}}</label>
+          <select ng-model='science.science_title'
+                  ng-change='copyToPerson("science_title")'
+                  class='form-control form-control-small'
+                  ng-options='title.value for title in avalaibleAcademicTitles'
+                 />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <button ng-click='cleanPerson()'>
+            {{ l('app.buttons.clean') }}
+          </button>
+          <button ng-click='cleanPerson(); hideForm()'>
+            {{ l('app.buttons.cancel') }}
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Directory results -->
+    <div class="col-xs-12 col-sm-4 col-md-5 col-lg-4 directory-results"  ng-if='personNotFound'>
+      <ul>
+        <li ng-repeat='result in directory_search'
+            ng-click='fillPerson(result)'
+            >
+          <div class="row">
+            <strong>
+              {{ result.full_name }}
+            </strong>
+            <small ng-if='result.academic_degree'>
+              <br/>
+              {{ l('person.academic_degree') }}: {{ result.academic_degree }}
+            </small>
+            <small ng-if='result.academic_rank'>
+              <br/>
+              {{ l('person.academic_title') }}: {{ result.academic_rank }}
+            </small>
+            <small ng-repeat='post in postsOf(result.posts)'>
+              {{ post }}
+            </small>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--  End of new person form -->
+
+  <!-- Post title -->
+  <div class="row" ng-if='new_person.fullname || showPostForm(new_person)'>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+      <input placeholder="{{ l('post.title') }}"
+             ng-model='new_person.post.title'
+             type="text"
+             class='form-control form-control-small'
+             >
+    </div>
+  </div>
+  <div class="row" ng-show='showPostForm()'>
+    <div class="col-xs-12">
+      <button ng-click='submitPerson()'>
+        {{ l('app.buttons.save') }}
+      </button>
+    </div>
+  </div>
+</div>

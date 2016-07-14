@@ -1,5 +1,5 @@
 angular
-  .module('dashboard', ['ui.router', 'templates', 'angucomplete-alt'])
+  .module('dashboard', ['ui.router', 'templates', 'angucomplete-alt', 'ui.sortable'])
   .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) ->
     $stateProvider
       .state('dashboard', {

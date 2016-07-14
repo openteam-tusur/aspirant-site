@@ -1,10 +1,12 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/sortable
 
 //= require bootstrap-datepicker
 
 //= require angular
 //= require angular-rails-templates
+//= require angular-ui-sortable
 //= require ng-file-upload/ng-file-upload-shim
 //= require ng-file-upload/ng-file-upload
 

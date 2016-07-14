@@ -1,0 +1,15 @@
+<div class="row" ui-sortable='sortableOptions' ng-model='specialities'>
+  <div class="col-xs-12" ng-repeat='speciality in specialities'>
+    <p>
+      <strong>
+        {{ speciality.code }}
+      </strong
+      <br />
+      <small>
+        {{ speciality.title }}
+      </small>
+      <br />
+      <button ng-click='destroyFunction(speciality)'>Удалить</button>
+    </p>
+  </div>
+</div>

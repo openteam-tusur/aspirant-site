@@ -1,9 +1,9 @@
 module Searcher
-  class PeopleSearcher < SearcherCarcas
+  class CouncilSpecialitySearcher < SearcherCarcas
     private
 
     def search
-      Person.search do
+      CouncilSpeciality.search do
         fulltext search_params.q if search_params.q
         without :id, search_params.ids if search_params.ids.present?
       end
