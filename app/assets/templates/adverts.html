@@ -35,10 +35,10 @@
         {{ app.advert.publication_date }}
       </td>
       <td>
-        <button>
+        <button >
           {{ l('app.buttons.remove')}}
         </button>
-        <button>
+        <button ui-sref="advert_edit({advertId: advert.id})">
           {{ l('app.buttons.edit')}}
         </button>
       </td>

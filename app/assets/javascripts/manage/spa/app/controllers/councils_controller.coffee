@@ -3,8 +3,10 @@ angular
   .controller('CouncilsController', ['$scope', '$http', ($scope, $http) ->
 
     $scope.getCouncils = () ->
-      $scope.getDictionary 'councils', (data) ->
-        $scope.councils = data.councils
+      $http
+        .get '/manage/dissertation_councils'
+        .success (data) ->
+          $scope.councils = data.councils
 
     $scope.submitCouncil = () ->
       council = $scope.new_council

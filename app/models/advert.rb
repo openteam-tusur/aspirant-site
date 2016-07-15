@@ -1,8 +1,17 @@
 class Advert < ActiveRecord::Base
   belongs_to :council_speciality
   belongs_to :dissertation_council
-  belongs_to :applicant, class_name: 'Person', foreign_key: 'applicant_id'
-  belongs_to :mentor, class_name: 'Person', foreign_key: 'mentor_id'
+
+  %w(applicant mentor).each do |scope|
+    has_one %Q(#{scope}_post).to_sym, -> { send(scope) },
+             as: :context,
+             dependent: :destroy,
+             class_name: 'Post'
+    has_one scope.to_sym, through: %Q(#{scope}_post).to_sym, source: :person
+  end
+
+  # belongs_to :applicant, class_name: 'Person', foreign_key: 'applicant_id'
+  # belongs_to :mentor, class_name: 'Person', foreign_key: 'mentor_id'
 end
 
 # == Schema Information
@@ -16,8 +25,6 @@ end
 #  placement_date          :date
 #  place                   :string
 #  publication_date        :date
-#  applicant_id            :integer
-#  mentor_id               :integer
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  title                   :text

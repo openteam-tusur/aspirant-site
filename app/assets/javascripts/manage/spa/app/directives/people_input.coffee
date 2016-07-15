@@ -5,6 +5,8 @@ angular.module('dashboard')
         scope:
           context: '=context'
           people:  '=people'
+          person:  '=person'
+          askPost: '@askPost'
           kind:    '@kind'
         transclude: true
         restrict: 'E'
@@ -18,33 +20,42 @@ angular.module('dashboard')
           $scope.setPerson = (obj) ->
             unless obj.originalObject.id
               $scope.personNotFound = true
+              $scope.peopleInput.$setPristine()
             else
               $scope.new_person = obj.originalObject
 
           $scope.fillPerson = (person) ->
             u = $scope.new_person
-            for key in ['patronymic', 'surname', 'name', 'academic_degree']
+            for key in ['patronymic', 'surname', 'name']
               u[key] = person[key]
-            u.directory_id = person.id
-            u.academic_title = person.academic_rank
+            u.url = "https://directory.tusur.ru/people/#{person.id}"
+            u.work_post = /(^[^,]*)/.exec(person.posts.split(';')[0])[0]
+            u.work_place = /([^,]*$)/.exec(person.posts.split(';')[0])[0]
+
             $scope.updateDirectorySearch()
 
           $scope.cleanPerson = () ->
+            $scope.peopleInput.$setPristine() if $scope.peopleInput
             $scope.new_person = {}
 
-          $scope.showPostForm = () ->
-            u = $scope.new_person
-            u.name && u.surname
-
           $scope.submitPerson = () ->
-            params = Object.assign {}, $scope.context
-            params['person'] = $scope.new_person
-            $http
-              .post '/manage/people', params
-              .success (data) ->
-                $scope.people.push data
-                $scope.cleanPerson()
-                $scope.hideForm()
+            if $scope.peopleInput && $scope.peopleInput.$invalid
+              $scope.peopleInput.$setSubmitted()
+              for _, input of $scope.peopleInput
+                if input && input.$name
+                  input.$setDirty()
+            else
+              params = Object.assign {}, $scope.context
+              params['person'] = $scope.new_person
+              $http
+                .post '/manage/people', params
+                .success (data) ->
+                  if $scope.people
+                    $scope.people.push data
+                  else
+                    $scope.person = data
+                  $scope.cleanPerson()
+                  $scope.hideForm()
 
           $scope.copyToPerson = (field) ->                                      #workaround for easier sending to rails
             $scope.new_person[field] = $scope.science[field]['value']           #just copy data from $scope to $scope.new_person
@@ -67,7 +78,7 @@ angular.module('dashboard')
             $scope.personNotFound = false
 
           $scope.requestFormatter = (str) ->
-            q: str, ids: $scope.people.map((p) -> p.id )
+            q: str, ids: ($scope.people || []).map((p) -> p.id )        # ||[] decision is for one person case
 
           $scope.getScienceDictionaries = () ->
             $http
@@ -87,8 +98,6 @@ angular.module('dashboard')
               }
               results.push empty_object
             return results
-
           $scope.getScienceDictionaries()
-
       }
     ])

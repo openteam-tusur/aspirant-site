@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   namespace :manage do
-    resources :permissions, only: [:create, :destroy]
+    resources :permissions, only: [:create, :destroy, :index]
     resources :dissertation_councils, except: [:edit, :new]
     resources :posts, only: :destroy
     resources :adverts
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :people, only: [:create] do
       member do
         post :update_order
+        post :remove_from_advert
       end
       collection do
         get :search
@@ -33,9 +34,9 @@ Rails.application.routes.draw do
     root to: 'dashboard#spa'
     get 'users/search', to: 'users#search', as: :users_search
 
-    %w(get_permissions get_locale_hash get_councils
-      get_science_degrees_and_titles get_enumerize_values).each do |route|
-      get %Q(angular/#{route}), to: %Q(angular##{route})
+    %w(get_permissions get_locale_hash get_enumerize_values
+      get_science_degrees_and_titles).each do |route|
+        get %Q(angular/#{route}), to: %Q(angular##{route})
     end
 
   end

@@ -1,4 +1,6 @@
 class Manage::CouncilSpecialitiesController < Manage::ApplicationController
+  load_and_authorize_resource
+
   def search
     @result = Searcher::CouncilSpecialitySearcher.new(search_params).collection
     render partial: 'manage/angular/council_specialities', locals: { specialities: @result }

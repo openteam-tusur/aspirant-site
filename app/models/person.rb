@@ -40,4 +40,6 @@ end
 #  updated_at            :datetime         not null
 #  science_degree_abbr   :string
 #  science_title_abbr    :string
+#  work_place            :text
+#  work_post             :text
 #

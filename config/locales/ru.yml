@@ -28,6 +28,7 @@ ru:
     permissions: 'Управление правами'
     actions: 'Действия'
     nothing_found: 'Ничего не найдено'
+    advert_edit: 'Редактирование объявления'
 
     buttons:
       remove:            'Удалить'
@@ -48,7 +49,7 @@ ru:
     clerk: 'Секретарь'
 
   post:
-    title: 'Должность'
+    title: 'Должность в совете'
 
   speciality:
     speciality_search:       'Поиск специальностей'
@@ -56,20 +57,27 @@ ru:
     code_placeholder:        'Введите код специальности'
     title:                   'Название специальности'
     title_placeholder:       'Введите название специальности'
+    science_title:           'Группа специальностей'
 
   advert:
     applicant: 'Соискатель'
+    mentor: 'Научный руководитель'
     title: 'Тема диссертации'
     publication_date: 'Дата публикации'
     actions: 'Действия'
 
+  forms:
+    field-invalid: 'Поле обязательно для заполнения'
+
   person:
     academic_degree: "Ученая степень"
     academic_title:  "Ученое звание"
-    patronymic: Отчество
-    surname:    Фамилия
-    name:       Имя
-
+    work_place:      "Место работы"
+    patronymic:      "Отчество"
+    work_post:       "Должность"
+    surname:         "Фамилия"
+    name:            "Имя"
+    url:             "Ссылка на страницу пользователя"
 
   councils:
     council_with_number: 'Диссертационный совет № '

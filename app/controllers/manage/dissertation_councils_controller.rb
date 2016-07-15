@@ -1,12 +1,11 @@
 class Manage::DissertationCouncilsController < Manage::ApplicationController
-
   load_and_authorize_resource
 
   before_action :set_dissertation_council, only: [:destroy, :update, :show]
 
   def index
     @councils = DissertationCouncil.includes(:clerks).all
-    render partial: 'manage/angular/coucnils', locals: { councils: @councils}
+    render partial: 'manage/angular/councils', locals: { councils: @councils}
   end
 
   def show

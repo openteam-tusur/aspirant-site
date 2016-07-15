@@ -1,6 +1,10 @@
 class Manage::PermissionsController < Manage::ApplicationController
-
   load_and_authorize_resource
+
+  def index
+    @permissions = Permission.all
+    render partial: 'manage/angular/permissions', locals: { permissions: @permissions }
+  end
 
   def create
     @permission = Permission.create(permission_params)

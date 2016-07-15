@@ -1,3 +1,78 @@
 <div class="row">
-  {{ l('advert.edit_state')}}
+  <small>{{ advert | json }}</small>
 </div>
+
+<h3>
+  {{ l('app.advert_edit') }}
+</h3>
+<form name='advertForm' novalidate>
+   <!-- applicant input -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class='page-header'>
+        {{ l('advert.applicant') }}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <people-input context='applicant_context || contextFor("applicant")'
+                    person='advert.applicant'
+                    ng-hide='advert.applicant.id'
+                    ></people-input>
+
+      </people-input>
+      <people-list person='advert.applicant'
+                   person_type='applicant'
+                   destroy-with='destroyPost'
+                   ng-if='advert.applicant.id'
+                   >
+      </people-list>
+    </div>
+  </div>
+  <!-- end of applicant input -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class='page-header'>
+        {{ l('advert.title') }}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <input type="text"
+             ng-model='advert.title'
+             placeholder='{{advert.title}}'
+             name='title'
+             class='form-control form-control-small'
+             required
+            >
+
+      <span ng-show='advertForm.title.$invalid && advertForm.title.$dirty'>
+        {{ l('forms.field-invalid')}}
+      </span>
+    </div>
+  </div>
+
+  <!-- mentor input -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class='page-header'>
+        {{ l('advert.mentor') }}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <people-input context='mentor_context || contextFor("mentor")'
+                    person='advert.mentor'
+                    ng-hide='advert.mentor.id'
+                    ></people-input>
+
+      </people-input>
+      <people-list person='advert.mentor'
+                   person_type='mentor'
+                   destroy-with='destroyPost'
+                   ng-if='advert.mentor.id'
+                   >
+      </people-list>
+
+    </div>
+  </div>
+  <!-- end of applicant input -->
+</form>

@@ -1,4 +1,5 @@
-<div class="row" ui-sortable='sortableOptions' ng-model='people' >
+<!-- if used with list -->
+<div class="row" ui-sortable='sortableOptions' ng-model='people' ng-if='people.length'>
   <div class="col-xs-12" ng-repeat='person in people'>
     <p>
       <strong>
@@ -13,6 +14,28 @@
         {{ personDegrees(person) }}
       </small>
       <button ng-click='destroyPersonFunction(person)'>Удалить</button>
+    </p>
+  </div>
+</div>
+
+<!-- if used with one person -->
+<div class="row" ng-if='person'>
+  <div class="col-xs-12">
+    <p>
+      <strong>
+        {{ person.fullname }}
+      </strong
+      <br />
+      <small>
+        {{ person.current_post.title }}
+      </small>
+      <br />
+      <small>
+        {{ personDegrees(person) }}
+      </small>
+      <button ng-click='destroyPersonFunction(person, person_type)'>
+        {{ l('app.buttons.remove')}}
+      </button>
     </p>
   </div>
 </div>

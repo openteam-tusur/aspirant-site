@@ -3,7 +3,9 @@ angular
   .controller('PermissionsController', ['$scope', '$http', ($scope, $http) ->
 
     $scope.getPermissions = ()->
-      $scope.getDictionary 'permissions', (data) ->
+      $http
+        .get '/manage/permissions'
+        .success (data) ->
           $scope.permissions       = data.permissions
           $scope.availableRoles    = data.available_roles
           $scope.availableContexts = data.available_contexts

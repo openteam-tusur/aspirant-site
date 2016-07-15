@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714043915) do
+ActiveRecord::Schema.define(version: 20160715072244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 20160714043915) do
     t.date     "placement_date"
     t.string   "place"
     t.date     "publication_date"
-    t.integer  "applicant_id"
-    t.integer  "mentor_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.text     "title"
@@ -81,6 +79,8 @@ ActiveRecord::Schema.define(version: 20160714043915) do
     t.datetime "updated_at",            null: false
     t.string   "science_degree_abbr"
     t.string   "science_title_abbr"
+    t.text     "work_place"
+    t.text     "work_post"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160714043915) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "row_order"
+    t.string   "person_type"
   end
 
   add_foreign_key "adverts", "council_specialities"

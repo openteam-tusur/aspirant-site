@@ -6,7 +6,11 @@
   </div>
 </div>
 
-<people-input context='context' people='council.people'></people-input>
+<people-input context='context'
+              people='council.people'
+              ask-post='true'
+
+              ></people-input>
 
 <h3>{{ l('councils.council_members') }}</h3>
 <people-list people='council.people'

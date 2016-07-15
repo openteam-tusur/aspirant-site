@@ -1,14 +1,8 @@
 class Manage::AngularController < Manage::ApplicationController
-  def get_permissions
-    @permissions = Permission.all
-  end
+  load_and_authorize_resource class: :angular
 
   def get_locale_hash
     @locale = I18n.backend.send(:translations)[I18n.locale]
-  end
-
-  def get_councils
-    @councils = DissertationCouncil.includes(:clerks).all
   end
 
   def get_science_degrees_and_titles

@@ -1,8 +1,10 @@
 angular.module('dashboard')
-  .directive('peopleList', ['$http',
-    ($http) ->
+  .directive('peopleList', ['$http', 'localization',
+    ($http, localization) ->
       return {
         scope:
+          person:  '=person'
+          person_type:  '@personType'
           people:  '=people'
           destroyPersonFunction: '=destroyWith'
           updateOrderFunction: '=updateOrderFunction'
@@ -10,6 +12,7 @@ angular.module('dashboard')
         restrict: 'E'
         templateUrl: 'people_list.html'
         controller: ($scope) ->
+          $scope.l = localization.l
 
           $scope.personDegrees = (person) ->
             result = []

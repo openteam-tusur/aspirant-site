@@ -1,0 +1,19 @@
+.spa
+  #validation styles
+  =custom_transition
+    transition: 0.5s
+  =invalid_input
+    background-color: red
+    +custom_transition
+
+  =invalid_form
+    border: 1px dashed red
+    +custom_transition
+
+  input, select
+    &.ng-invalid.ng-dirty
+      +invalid_input
+
+  form
+    &.ng-invalid.ng-submitted
+      +invalid_form

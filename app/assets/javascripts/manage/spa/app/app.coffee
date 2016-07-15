@@ -40,7 +40,7 @@ angular
       .state('advert_edit', {
         url: '/advert/:advertId'
         templateUrl: 'edit_advert.html'
-        controller: 'EditAdvertsController'
+        controller: 'EditAdvertController'
         resolve: {}
         })
 
