@@ -1,83 +1,87 @@
-<h3>
-  {{ l('app.permissions') }}
-</h3>
+<div class='permissions'>
+  <h3>
+    {{ l('app.permissions') }}
+  </h3>
 
-<div class='filters'>
-  <input type='text' placeholder='Фильтровать'
-         ng-model='filterText'
-         class='form-control form-control-small'
-         >
-</div>
-<table class='permissions table'>
-  <tr ng-hide='showAddPermissionsForm'>
-    <td colspan="4" >
-      <span ng-click='toggleForm()'>
-        <span>Добавить права</span>
-        <span class='glyphicon glyphicon-plus'/>
-      </span>
-    </td>
-  </tr>
-
-  <tr ng-if='showAddPermissionsForm'>
-    <td class='role'>
-      <select ng-model='new_user.role' ng-options='role.localized for role in availableRoles' />
-    </td>
-    <td class='context'>
-      <select ng-model='new_user.context'
-              ng-options='context.title for context in availableContexts'
-              ng-show='new_user.role.need_context'
-              />
-    </td>
-    <td class='name' ng-hide='new_user.fullname'>
-      <angucomplete-alt id="user-angucomplete"
-                        placeholder="Поиск пользователя"
-                        selected-object="setUser"
-                        clear-selected='true'
-                        remote-url='manage/users/search?term='
-                        title-field="fullname"
-                        remote-url-response-formatter='searchResponseFormatter'
-                        search-fields="fullname,email"
-                        description-field="email"
-                        minlength="3"
-                        input-class="form-control form-control-small angucomplete-input"
-                        match-class="highlight"
-                        />
-      </td>
-      <td ng-show='new_user.fullname'>
-        {{ new_user.fullname }}
-        <span ng-click='cleanUser()' class='glyphicon glyphicon-remove'/>
-      </td>
-      <td class='email'>
-        {{ new_user.email }}
-      </td>
-      <td colspan='4'>
-        <button ng-click='submitPermission()'
-                ng-show='validatePermission()'
-                >
-          {{ l("app.buttons.add_permission") }}
-        </button>
+  <div class='filters'>
+    <input type='text' placeholder='Фильтровать'
+           ng-model='filterText'
+           class='form-control form-control-small'
+           >
+  </div>
+  <table class='table'>
+    <tr ng-hide='showAddPermissionsForm'>
+      <td colspan="5" class='actions'>
+        <span ng-click='toggleForm()'>
+          <span class='btn btn-success'>Добавить права</span>
+        </span>
       </td>
     </tr>
 
-  <tr ng-repeat='permission in permissions | filter: filterText '>
-    <td class='role'>
-      {{ l('permissions.' + permission.role) }}
-    </td>
-    <td>
-      {{ permission.context.number }}
-    </td>
-    <td class='fullname'>
-      {{ permission.user.fullname }}
-    </td>
-    <td class='email'>
-      {{ permission.user.email }}
-    </td>
-    <td>
-      <button ng-click=' removePermission(permission) '
-             >
-        {{ l('app.buttons.remove_permission') }}
-      </button>
-    </td>
-  </tr>
+    <tr class='add-roles' ng-if='showAddPermissionsForm'>
+      <td class='role'>
+        <select class='form-control' ng-model='new_user.role' ng-options='role.localized for role in availableRoles' />
+      </td>
+      <td class='context'>
+        <select ng-model='new_user.context'
+                ng-options='context.title for context in availableContexts'
+                ng-show='new_user.role.need_context'
+                />
+      </td>
+      <td class='name' ng-hide='new_user.fullname'>
+        <angucomplete-alt id="user-angucomplete"
+                          placeholder="Поиск пользователя"
+                          selected-object="setUser"
+                          clear-selected='true'
+                          remote-url='manage/users/search?term='
+                          title-field="fullname"
+                          remote-url-response-formatter='searchResponseFormatter'
+                          search-fields="fullname,email"
+                          description-field="email"
+                          minlength="3"
+                          input-class="form-control form-control-small angucomplete-input"
+                          match-class="highlight"
+                          text-no-results="Ничего не найдено"
+                          text-searching="Идет поиск..."
+                          />
+        </td>
+        <td ng-show='new_user.fullname' class='new-user-fullname'>
+          {{ new_user.fullname }}
+          <span ng-click='cleanUser()' class='glyphicon glyphicon-remove'/>
+        </td>
+        <td class='email'>
+          {{ new_user.email }}
+        </td>
+        <td colspan='4'>
+          <button ng-click='submitPermission()'
+                  ng-show='validatePermission()'
+                  class='btn btn-success'
+                  >
+            {{ l("app.buttons.add_permission") }}
+          </button>
+        </td>
+      </tr>
 
-</table>
+    <tr ng-repeat='permission in permissions | filter: filterText '>
+      <td class='role'>
+        {{ l('permissions.' + permission.role) }}
+      </td>
+      <td>
+        {{ permission.context.number }}
+      </td>
+      <td class='fullname'>
+        {{ permission.user.fullname }}
+      </td>
+      <td class='email'>
+        {{ permission.user.email }}
+      </td>
+      <td>
+        <button ng-click=' removePermission(permission) '
+                class='btn btn-danger'
+               >
+          {{ l('app.buttons.remove_permission') }}
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

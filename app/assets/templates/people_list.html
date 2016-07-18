@@ -1,22 +1,27 @@
 <!-- if used with list -->
-<div class="row" ui-sortable='sortableOptions' ng-model='people' ng-if='people.length'>
-  <div class="col-xs-12" ng-repeat='person in people'>
-    <p>
+<table ng-model='people' ng-if='people.length' class='people-list-table'>
+  <tbody ui-sortable='sortableOptions' >
+    <tr ng-repeat='person in people'>
+      <td class='info'>
       <strong>
         {{ person.fullname }}
-      </strong
-      <br />
+      </strong>
+      <br>
       <small>
         {{ person.current_post.title }}
       </small>
-      <br />
+      <br>
       <small>
         {{ personDegrees(person) }}
       </small>
-      <button ng-click='destroyPersonFunction(person)'>Удалить</button>
-    </p>
-  </div>
-</div>
+      </td>
+      <td class='actions'>
+        <span class='handle glyphicon glyphicon-sort'></span>
+        <button ng-click='destroyPersonFunction(person)' class='btn btn-danger'>Удалить</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- if used with one person -->
 <div class="row" ng-if='person'>
@@ -33,7 +38,7 @@
       <small>
         {{ personDegrees(person) }}
       </small>
-      <button ng-click='destroyPersonFunction(person, person_type)'>
+      <button ng-click='destroyPersonFunction(person, person_type)' class='btn btn-danger'>
         {{ l('app.buttons.remove')}}
       </button>
     </p>

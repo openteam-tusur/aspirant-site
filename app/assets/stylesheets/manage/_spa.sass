@@ -1,14 +1,39 @@
 .spa
+  padding-bottom: 20px
+
+  .margin-top-10
+    margin-top: 10px
+
   #validation styles
   =custom_transition
     transition: 0.5s
   =invalid_input
-    background-color: red
+    border: 1px solid red
     +custom_transition
 
   =invalid_form
     border: 1px dashed red
     +custom_transition
+
+  .angucomplete-dropdown
+    padding-left: 10px
+    border: 1px solid #ccc
+    border-top: 0
+
+    .angucomplete-row
+      margin-left: -10px
+      padding: 3px 0 3px 10px
+
+      &:hover
+        cursor: pointer
+        background: #f2f2f2
+
+    .angucomplete-searching
+      &:first-child
+        color: green
+
+      &:last-child
+        color: red
 
   input, select
     &.ng-invalid.ng-dirty
@@ -16,4 +41,87 @@
 
   form
     &.ng-invalid.ng-submitted
-      +invalid_form
+
+  .glyphicon
+    +custom_transition
+    font-size: 1.8rem
+    margin: 0 3px
+    +opacity(0.9)
+
+    &:hover
+      cursor: pointer
+      +opacity(1.0)
+
+    &.glyphicon-remove
+      color: red
+
+    &.glyphicon-plus
+      color: green
+
+    &.glyphicon-sort
+      cursor: move
+      margin: 0 5px
+
+  .no-hover-text-decoration
+    &:hover
+      text-decoration: none
+
+  .permissions
+    .filters
+      margin: 10px 0
+
+    table
+      tbody
+        .add-roles
+          .role
+            padding-left: 0
+
+          .name
+            .highlight
+              color: red
+
+        tr
+          td.actions
+            padding-left: 0
+
+  .add-person-form
+    .invalid-message
+      color: red
+      font-size: 1.4rem
+
+    label
+      margin-top: 10px
+
+    .directory-results
+      .person
+        padding: 10px
+
+        &:hover
+          background: #f2f2f2
+          cursor: pointer
+
+  .people-list-table,
+  .specialities-items
+    width: 100%
+    margin-bottom: 20px
+
+    td
+      padding: 10px 0
+
+      &.info
+        width: 60%
+
+    .ui-sortable-helper
+      background: #fff
+
+      .info
+        width: 60%
+
+      .actions
+        display: none
+
+  .speciality-form
+    label
+      margin-top: 10px
+
+  .specialities

@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-xs-12" ng-hide='showSearch'>
-    <button ng-click='showSearch = !showSearch' ng-hide='showSearch'>
+    <button ng-click='showSearch = !showSearch' ng-hide='showSearch' class='btn btn-primary'>
       {{ l('app.buttons.add_speciality') }}
     </button>
   </div>
-  <div class="col-xs-12" ng-if='showSearch'>
+  <div class="col-xs-6" ng-if='showSearch'>
     <angucomplete-alt  id="speciality-angucomplete"
                        placeholder="{{ l('speciality.speciality_search') }}"
                        minlength="1"
@@ -18,15 +18,17 @@
                        search-fields="code,title"
                        match-class="highlight"
                        input-class="form-control form-control-small angucomplete-input"
+                       text-searching="Идет поиск..."
                      ></angucomplete-alt>
-    <button ng-click='hideSpecialityForm()'>
-      {{ l('app.buttons.cancel') }}
-    </button>
+     <br>
+      <button ng-click='hideSpecialityForm()' class='btn btn-danger'>
+        {{ l('app.buttons.cancel') }}
+      </button>
   </div>
 </div>
-<div ng-if='showCreateSpecialityForm'>
+<div ng-if='showCreateSpecialityForm' class='speciality-form'>
   <div class="row">
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-6 col-lg-6">
       <label>
         {{ l('speciality.code')}}
       </label>
@@ -38,7 +40,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-lg-6">
       <label>
         {{ l('speciality.title')}}
       </label>
@@ -50,20 +52,21 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-6">
       <label> {{ l('speciality.science_title') }} </label>
       <select ng-options='type.localized for type in avalaibleScienceTypes'
               ng-model='new_speciality_science_type'
               ng-change='cloneScienceType(new_speciality_science_type)'
+              class='form-control'
       ></select>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
-      <button ng-click='createNewSpeciality()'>
+    <div class="col-xs-12 margin-top-10">
+      <button ng-click='createNewSpeciality()' class='btn btn-success'>
         {{ l('app.buttons.create_speciality_and_add_to_council') }}
       </button>
-      <button ng-click='hideSpecialityForm()'>
+      <button ng-click='hideSpecialityForm()' class='btn btn-danger'>
         {{ l('app.buttons.cancel') }}
       </button>
     </div>

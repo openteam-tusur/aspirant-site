@@ -1,15 +1,19 @@
-<div class="row" ui-sortable='sortableOptions' ng-model='specialities'>
-  <div class="col-xs-12" ng-repeat='speciality in specialities'>
-    <p>
-      <strong>
-        {{ speciality.code }}
-      </strong
-      <br />
-      <small>
-        {{ speciality.title }}
-      </small>
-      <br />
-      <button ng-click='destroyFunction(speciality)'>Удалить</button>
-    </p>
-  </div>
-</div>
+<table class='specialities-items' class="row specialities-items" ui-sortable='sortableOptions' ng-model='specialities'>
+  <tbody ng-repeat='speciality in specialities'>
+    <tr>
+      <td class='info'>
+        <strong>
+          {{ speciality.code }}
+        </strong>
+        <br />
+        <small>
+          {{ speciality.title }}
+        </small>
+      </td>
+      <td class='actions'>
+        <span class='handle glyphicon glyphicon-sort'></span>
+        <button ng-click='destroyFunction(speciality)' class='btn btn-danger'>Удалить</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

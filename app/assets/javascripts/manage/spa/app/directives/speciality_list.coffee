@@ -21,6 +21,7 @@ angular.module('dashboard')
           $scope.sortableOptions = {
             axis: 'y'
             cursor: 'move'
+            handle: '.handle'
             stop: $scope.updateOrder
           }
       }
