@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715072244) do
+ActiveRecord::Schema.define(version: 20160718052419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,19 @@ ActiveRecord::Schema.define(version: 20160715072244) do
 
   add_index "dissertation_councils", ["slug"], name: "index_dissertation_councils_on_slug", unique: true, using: :btree
 
+  create_table "file_copies", force: :cascade do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.date     "placement_date"
+    t.string   "kind"
+    t.integer  "context_id"
+    t.string   "context_type"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -71,7 +84,6 @@ ActiveRecord::Schema.define(version: 20160715072244) do
     t.string   "name"
     t.string   "surname"
     t.string   "patronymic"
-    t.string   "url"
     t.string   "science_degree"
     t.string   "science_title"
     t.integer  "council_speciality_id"

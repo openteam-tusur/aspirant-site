@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'mechanize'
 gem 'nokogiri'
 gem 'non-stupid-digest-assets'
+gem 'paperclip'
 gem 'pg'
 gem 'postman-client', :github => 'openteam-tusur/postman-client'
 gem 'progress_bar', :require => false

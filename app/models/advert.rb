@@ -3,15 +3,26 @@ class Advert < ActiveRecord::Base
   belongs_to :dissertation_council
 
   %w(applicant mentor).each do |scope|
-    has_one %Q(#{scope}_post).to_sym, -> { send(scope) },
+    has_one %Q(#{scope}_post).to_sym, -> { send scope },
              as: :context,
              dependent: :destroy,
              class_name: 'Post'
     has_one scope.to_sym, through: %Q(#{scope}_post).to_sym, source: :person
   end
 
-  # belongs_to :applicant, class_name: 'Person', foreign_key: 'applicant_id'
-  # belongs_to :mentor, class_name: 'Person', foreign_key: 'mentor_id'
+  %w(dissertation synopsis protocol council_conclusion).each do |association_name|
+    has_one association_name.to_sym, -> { send :with_kind, association_name },
+            as: :context,
+            dependent: :destroy,
+            class_name: 'FileCopy'
+  end
+
+  %w(review conclusion).each do |association_name|
+    has_many association_name.to_sym, -> { send :with_kind, association_name },
+             as: :context,
+             dependent: :destroy,
+             class_name: 'FileCopy'
+  end
 end
 
 # == Schema Information
