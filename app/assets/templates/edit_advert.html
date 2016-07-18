@@ -1,7 +1,3 @@
-<div class="row">
-  <small>{{ advert | json }}</small>
-</div>
-
 <h3>
   {{ l('app.advert_edit') }}
 </h3>
@@ -42,12 +38,15 @@
              placeholder='{{advert.title}}'
              name='title'
              class='form-control form-control-small'
+             ng-model-options='{ debounce: 1000 }'
+             ng-change='updateField("title")'
              required
             >
 
       <span ng-show='advertForm.title.$invalid && advertForm.title.$dirty'>
         {{ l('forms.field-invalid')}}
       </span>
+      </button>
     </div>
   </div>
 
@@ -75,4 +74,96 @@
     </div>
   </div>
   <!-- end of applicant input -->
+
+  <!-- speciality input -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class='page-header'>
+        {{ l('advert.speciality') }}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <speciality-input speciality='advert.council_speciality'
+                        add-function='addSpeciality'
+                        ></speciality-input>
+
+      <speciality-list speciality='advert.council_speciality'
+                       destroy-function='destroySpeciality'
+      ></speciality-list>
+    </div>
+  </div>
+  <!-- end of speciality input -->
+
+  <!-- dissertation council select -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class='page-header'>
+        {{ l('advert.dissertation_council') }}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <select ng-model='advert.dissertation_council'
+              ng-options='council.number for council in avalaibleCouncils track by council.id'
+              ng-change='updateDissertationCouncil()'
+              required
+              >
+              </select>
+    </div>
+  </div>
+  <!-- end of dissertation council select -->
+
+  <!-- publication date -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class='page-header'>
+        {{ l('advert.publication_date') }}
+      </h5>
+    </div>
+    <div class="col-xs-12" ng-if='advert.id'>
+
+      <date-selector label="{{ l('advert.publication_date') }}"
+                     target='advert.publication_date'
+                     update-function='updateField'
+                     field-name='publication_date'
+                     ></date-selector>
+    </div>
+  </div>
+  <!-- end of publication date -->
+
+  <!-- place of dissertation defense -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class="page-header">
+          {{ l('advert.place')}}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <input type="text"
+             ng-model='advert.place'
+             placeholder='{{ l("advert.place") }}'
+             name='place'
+             class='form-control form-control-small'
+             ng-model-options='{ debounce: 1000 }'
+             ng-change='updateField("place")'
+             required
+            >
+      <span ng-show='advertForm.place.$invalid && advertForm.place.$dirty'>
+        {{ l('forms.field-invalid')}}
+      </span>
+    </div>
+  </div>
+  <!-- end place of dissertation defense -->
+
+  <!-- file upload -->
+  <div class="row">
+    <div class="col-xs-12">
+      <file-uploader multiple='multiple'
+                     files='advert.dissertation_file'
+                     type='dissertation_file'
+                     >
+      </file-uploader>
+    </div>
+  </div>
+  <!-- end of file upload -->
+
 </form>

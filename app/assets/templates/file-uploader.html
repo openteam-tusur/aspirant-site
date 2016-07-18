@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form name='form'>
+      <input type="file"
+             nv-file-select
+             uploader="uploader"
+             id='file-uploader-{{type}}'
+             class='hidden'
+             name='file'
+             ng-if="need('multiple')"
+             multiple
+             />
+      <input type="file"
+             nv-file-select
+             uploader="uploader"
+             id='file-uploader-{{type}}'
+             class='hidden'
+             name='file'
+             ng-if="need('single')"
+             />
+      <button class='btn btn-primary fake-upload-button'>
+        {{ l("file.choose")}}
+      </button>
+      <ul>
+        <li ng-repeat="item in uploader.queue">
+          <strong>
+            {{ l('file.name')}}:
+          </strong>
+          <span>{{ item.file.name }}</span>
+          <button ng-click="item.upload()">{{ l('file.upload') }}</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>

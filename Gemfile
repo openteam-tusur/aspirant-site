@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'angular-rails-templates'
+gem 'angularjs-file-upload-rails', '~> 2.2.0'
 gem 'angular_rails_csrf'
 gem 'annotate'
 gem 'attribute_normalizer'

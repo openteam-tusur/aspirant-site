@@ -3,12 +3,11 @@
 //= require jquery-ui/sortable
 
 //= require bootstrap-datepicker
-
+//= require commons/bootstrap-datepicker-localization
 //= require angular
 //= require angular-rails-templates
+//= require angularjs-file-upload
 //= require angular-ui-sortable
-//= require ng-file-upload/ng-file-upload-shim
-//= require ng-file-upload/ng-file-upload
 
 //= require moment
 //= require angucomplete-alt

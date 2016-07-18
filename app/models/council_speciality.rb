@@ -11,7 +11,7 @@ class CouncilSpeciality < ActiveRecord::Base
   searchable do
     text    :code
     text    :title
-    text    :science_type
+    text    :science_type_text
     integer :id
   end
 

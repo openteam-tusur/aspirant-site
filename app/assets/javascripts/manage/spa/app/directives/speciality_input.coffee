@@ -5,6 +5,7 @@ angular.module('dashboard')
         scope:
           specialities:  '=specialities'
           addFunction: '=addFunction'
+          speciality: '=speciality'
         transclude: true
         restrict: 'E'
         templateUrl: 'speciality_input.html'
@@ -23,7 +24,9 @@ angular.module('dashboard')
           $scope.requestFormatter = (q) ->
             {
               q: q
-              "ids[]": $scope.specialities.map (s) -> s.id
+              "ids[]": ($scope.specialities || [$scope.speciality])
+                        .filter (s) -> s && s.hasOwnProperty "id"
+                        .map (s) -> s.id
             }
 
           $scope.searchResponseFormatter = (response_array) ->

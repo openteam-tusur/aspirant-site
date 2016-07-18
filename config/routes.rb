@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :permissions, only: [:create, :destroy, :index]
     resources :dissertation_councils, except: [:edit, :new]
     resources :posts, only: :destroy
-    resources :adverts
+    resources :adverts, only: [:update, :show, :index]
 
     resources :people, only: [:create] do
       member do

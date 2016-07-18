@@ -11,8 +11,25 @@ class Manage::AdvertsController < Manage::ApplicationController
     render partial: 'manage/angular/advert', locals: { advert: @advert }
   end
 
+  def update
+    @advert = Advert.find(params[:id])
+    @advert.update_attributes(update_params)
+    render partial: 'manage/angular/advert', locals: { advert: @advert }
+  end
+
   private
   def set_advert
     @advert = Advert.find(params[:id])
+  end
+
+  def update_params
+    params
+      .require(:advert)
+      .permit( %w(
+                  title council_speciality_id
+                  dissertation_council_id
+                  publication_date place
+                  ).map(&:to_sym)
+              )
   end
 end

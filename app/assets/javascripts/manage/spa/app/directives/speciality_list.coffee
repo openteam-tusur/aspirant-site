@@ -3,6 +3,7 @@ angular.module('dashboard')
     ($http, localization) ->
       return {
         scope:
+          speciality: '=speciality'
           specialities:  '=specialities'
           destroyFunction: '=destroyFunction'
           updateOrderFunction: '=updateOrderFunction'

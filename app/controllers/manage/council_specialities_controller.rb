@@ -8,12 +8,7 @@ class Manage::CouncilSpecialitiesController < Manage::ApplicationController
 
   def create
     @speciality = CouncilSpeciality.where(speciality_params).first_or_create
-    council = DissertationCouncil.find(params[:council_id])
-
-    CouncilSpecialitiesDissertationCouncil
-      .where(dissertation_council: council, council_speciality: @speciality)
-      .first_or_create
-
+    associate_council_with_speciality if params[:council_id]
     render partial: 'manage/angular/council_speciality', locals: { speciality: @speciality }
   end
 
@@ -41,5 +36,12 @@ class Manage::CouncilSpecialitiesController < Manage::ApplicationController
 
   def speciality_params
     params.require(:speciality).permit(:id, :title, :code, :science_type)
+  end
+
+  def associate_council_with_speciality
+    council = DissertationCouncil.find(params[:council_id])
+    CouncilSpecialitiesDissertationCouncil
+      .where(dissertation_council: council, council_speciality: @speciality)
+      .first_or_create
   end
 end

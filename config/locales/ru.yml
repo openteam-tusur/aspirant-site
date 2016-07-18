@@ -41,7 +41,7 @@ ru:
       add_permission:    'Добавить'
       add_speciality:    'Добавить специальность'
       add_advert:        'Добавить объявление о защите'
-      create_speciality_and_add_to_council: 'Создать специальность и добавить в совет'
+      create_speciality_and_add_to_council: 'Создать специальность'
 
   permissions:
     admin: 'Администратор'
@@ -50,6 +50,11 @@ ru:
 
   post:
     title: 'Должность в совете'
+
+  file:
+    name: 'Название файла'
+    upload: 'Загрузить файлы'
+    choose: 'Выбрать файл'
 
   speciality:
     speciality_search:       'Поиск специальностей'
@@ -65,6 +70,9 @@ ru:
     title: 'Тема диссертации'
     publication_date: 'Дата публикации'
     actions: 'Действия'
+    speciality: 'Специальность диссертации'
+    dissertation_council: 'Диссертационный совет'
+    place: 'Место проведения защиты'
 
   forms:
     field-invalid: 'Поле обязательно для заполнения'
