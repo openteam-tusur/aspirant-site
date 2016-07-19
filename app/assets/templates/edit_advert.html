@@ -236,4 +236,24 @@
   </div>
   <!-- end of file upload -->
 
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class="page-header">
+        {{ l('advert.opponents') }}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <people-input context='opponent_context || contextFor("opponent")'
+                    people='advert.opponents'
+                    >
+      </people-input>
+      <people-list people='advert.opponents'
+                   person-type='opponent'
+                   context='opponent_context || contextFor("opponent")'
+                   destroy-with='destroyPost'
+                   >
+      </people-list>
+    </div>
+  </div>
+
 </form>

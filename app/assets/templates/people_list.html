@@ -3,21 +3,32 @@
   <tbody ui-sortable='sortableOptions' ng-model='people'>
     <tr ng-repeat='person in people'>
       <td class='info'>
-      <strong>
-        {{ person.fullname }}
-      </strong>
-      <br>
-      <small>
-        {{ person.current_post.title }}
-      </small>
-      <br>
-      <small>
-        {{ personDegrees(person) }}
-      </small>
+        <strong>
+          {{ person.fullname }}
+        </strong>
+        <br>
+        <small>
+          {{ person.current_post.title }}
+        </small>
+        <br>
+        <small>
+          {{ personDegrees(person) }}
+        </small>
       </td>
       <td class='actions'>
         <span class='handle glyphicon glyphicon-sort' ng-show='people.length > 1'></span>
         <button ng-click='destroyPersonFunction(person)' class='btn btn-danger'>Удалить</button>
+      </td>
+      <td ng-if='context && person_type == "opponent" '>
+        <label> {{ l('advert.files.opponent_review') }} </label>
+        <file-uploader multiple='single'
+                       file='person.opponent_review'
+                       kind='opponent_review'
+                       context-type='{{context.context_type}}'
+                       context-id='context.context_id'
+                       person-id ='person.id'
+                       >
+        </file-uploader>
       </td>
     </tr>
   </tbody>

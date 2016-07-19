@@ -8,6 +8,8 @@ angular.module('dashboard')
           people:  '=people'
           destroyPersonFunction: '=destroyWith'
           updateOrderFunction: '=updateOrderFunction'
+          context: '=context'
+
         transclude: true
         restrict: 'E'
         templateUrl: 'people_list.html'

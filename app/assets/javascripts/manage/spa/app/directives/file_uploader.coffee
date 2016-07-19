@@ -10,6 +10,7 @@ angular
           kind: '@kind'
           files: '=files'
           file: '=file'
+          personId: '=personId'
 
         transclude: true
         restrict: 'E'
@@ -28,6 +29,7 @@ angular
             {
               context_type: $scope.contextType
               context_id: $scope.contextId
+              'file_copy[person_id]': $scope.personId || null
               'file_copy[kind]': $scope.kind
             }
 

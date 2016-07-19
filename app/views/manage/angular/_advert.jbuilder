@@ -30,3 +30,8 @@ end
 json.review do
   json.array! advert.review, partial: 'manage/angular/file_copy', as: :file
 end
+json.opponents do
+  json.array! advert.opponents, partial: 'manage/angular/person',
+                                as: :person,
+                                locals: { context: advert }
+end

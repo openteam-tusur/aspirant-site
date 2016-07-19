@@ -25,7 +25,7 @@ class Manage::FileCopiesController < Manage::ApplicationController
 
   private
   def file_params
-    params.require(:file_copy).permit(:file, :placement_date, :kind)
+    params.require(:file_copy).permit(:file, :placement_date, :kind, :person_id)
   end
 
   def find_context

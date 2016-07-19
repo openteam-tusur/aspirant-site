@@ -2,8 +2,6 @@ angular
   .module('dashboard')
   .controller('EditAdvertController', ['$scope', '$http', ($scope, $http) ->
     console.time('controller loaded')
-    $scope.stored_advert = {}
-    $scope.advert = {}
 
     $scope.getAdvert = () ->
       id = $scope.$state.params.advertId
@@ -11,6 +9,8 @@ angular
       $http
         .get "manage/adverts/#{id}"
           .success (data) ->
+            $scope.advert = {}
+            $scope.stored_advert = {}
             angular.copy data, $scope.advert
             angular.copy data, $scope.stored_advert                 #object for changes detection
             console.timeEnd('controller loaded')

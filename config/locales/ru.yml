@@ -78,12 +78,14 @@ ru:
     dissertation_council: 'Диссертационный совет'
     place: 'Место проведения защиты'
     files_upload: 'Загрузка файлов'
+    opponents: 'Оппоненты'
     files:
       dissertation: 'Диссертация'
       synopsis:     'Автореферат'
       conclusion:   'Заключение организации'
       review:       'Отзыв научного руководителя'
       protocol:     'Протокол принятия к защите'
+      opponent_review: 'Отзыв оппонента'
       council_conclusion: 'Заключение диссертационного совета'
 
   forms:
