@@ -1,5 +1,5 @@
-<table class='specialities-items' class="row specialities-items" ui-sortable='sortableOptions' ng-model='specialities'>
-  <tbody >
+<table class='specialities-items'>
+  <tbody ui-sortable='sortableOptions' ng-model='specialities'>
     <tr ng-repeat='speciality in specialities' ng-if='specialities.length'>
       <td class='info'>
         <strong>
@@ -11,7 +11,7 @@
         </small>
       </td>
       <td class='actions'>
-        <span class='handle glyphicon glyphicon-sort'></span>
+        <span class='handle glyphicon glyphicon-sort' ng-show='specialities.length > 1'></span>
         <button ng-click='destroyFunction(speciality)' class='btn btn-danger'>Удалить</button>
       </td>
     </tr>
