@@ -9,24 +9,28 @@ class Manage::CouncilSpecialitiesController < Manage::ApplicationController
   def create
     @speciality = CouncilSpeciality.where(speciality_params).first_or_create
     council = DissertationCouncil.find(params[:council_id])
+
     CouncilSpecialitiesDissertationCouncil
       .where(dissertation_council: council, council_speciality: @speciality)
       .first_or_create
+
     render partial: 'manage/angular/council_speciality', locals: { speciality: @speciality }
   end
 
   def remove_from_council
-    link = CouncilSpecialitiesDissertationCouncil
-      .find_by council_speciality_id:   params[:id],
-               dissertation_council_id: params[:council_id]
-    render json: !!link.destroy
+    association = CouncilSpecialitiesDissertationCouncil
+      .find_by(council_speciality_id:   params[:id],
+               dissertation_council_id: params[:council_id])
+
+    render json: !!association.destroy
   end
 
   def update_order
-    link = CouncilSpecialitiesDissertationCouncil
-      .find_by council_speciality_id:   params[:id],
-               dissertation_council_id: params[:council_id]
-    render json: link.update_attribute(:row_order_position, params[:index])
+    association  = CouncilSpecialitiesDissertationCouncil
+      .find_by(council_speciality_id:   params[:id],
+               dissertation_council_id: params[:council_id])
+
+    render json: association.update_attribute(:row_order_position, params[:index])
   end
 
   private

@@ -18,10 +18,10 @@ class Manage::PeopleController < Manage::ApplicationController
   end
 
   def directory_search
-     url = "#{Settings['directory.users_search']}?q=#{URI.encode params[:term]}"
-     @response = JSON.parse RestClient::Request.execute(method: :get, url: url, timeout: 90)
+    url = "#{Settings['directory.users_search']}?q=#{URI.encode params[:term]}"
+    @response = JSON.parse RestClient::Request.execute(method: :get, url: url, timeout: 90)
 
-     render json: @response
+    render json: @response
   end
 
   def update_order
@@ -49,6 +49,7 @@ class Manage::PeopleController < Manage::ApplicationController
 
   def person_params
     params.require(:person)
+          .except(:post)
           .permit( :id, :name, :surname, :patronymic,
                    :science_degree, :science_degree_abbr,
                    :science_title,  :science_title_abbr,

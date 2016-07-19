@@ -32,6 +32,7 @@ end
 #  name                  :string
 #  surname               :string
 #  patronymic            :string
+#  url                   :string
 #  science_degree        :string
 #  science_title         :string
 #  council_speciality_id :integer

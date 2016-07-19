@@ -2,17 +2,19 @@ class Manage::PermissionsController < Manage::ApplicationController
   load_and_authorize_resource
 
   def index
-    @permissions = Permission.all
     render partial: 'manage/angular/permissions', locals: { permissions: @permissions }
   end
 
   def create
-    @permission = Permission.create(permission_params)
-    render partial: 'manage/angular/permission', locals: { permission: @permission }
+    if @permission.save
+      render partial: 'manage/angular/permission', locals: { permission: @permission }
+    else
+      render json: :false
+    end
   end
 
   def destroy
-    render json: !!Permission.find(params[:id]).destroy
+    render json: !!@permission.destroy
   end
 
   private
