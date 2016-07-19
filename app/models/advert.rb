@@ -10,6 +10,12 @@ class Advert < ActiveRecord::Base
     has_one scope.to_sym, through: %Q(#{scope}_post).to_sym, source: :person
   end
 
+  has_many :opponent_post, -> { opponent },
+           as: :context,
+           dependent: :destroy,
+           class_name: 'Post'
+  has_many :opponents, through: :opponent_post, source: :person
+
   %w(dissertation synopsis protocol council_conclusion).each do |association_name|
     has_one association_name.to_sym, -> { send :with_kind, association_name },
             as: :context,
@@ -17,7 +23,7 @@ class Advert < ActiveRecord::Base
             class_name: 'FileCopy'
   end
 
-  %w(review conclusion).each do |association_name|
+  %w(review conclusion opponent_review publication).each do |association_name|
     has_many association_name.to_sym, -> { send :with_kind, association_name },
              as: :context,
              dependent: :destroy,

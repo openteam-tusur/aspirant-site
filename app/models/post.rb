@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   belongs_to :context, polymorphic: true
   belongs_to :person
 
-  [:applicant, :mentor].each do |scope_name|
+  [:applicant, :mentor, :opponent].each do |scope_name|
     scope scope_name , -> { where(person_type: scope_name) }
   end
 end

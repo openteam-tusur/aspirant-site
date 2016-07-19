@@ -22,6 +22,13 @@ class Person < ActiveRecord::Base
   def row_order_for(council)
     post_for(council).row_order
   end
+
+  %w(opponent_review publication).each do |method_name|
+    define_method %Q(#{method_name}_for) do |context|
+      context.send(method_name).find_by(person_id: self.id)
+    end
+  end
+
 end
 
 # == Schema Information

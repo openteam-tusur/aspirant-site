@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718052419) do
+ActiveRecord::Schema.define(version: 20160719085230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,7 +65,10 @@ ActiveRecord::Schema.define(version: 20160718052419) do
     t.string   "context_type"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "person_id"
   end
+
+  add_index "file_copies", ["person_id"], name: "index_file_copies_on_person_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -118,4 +121,5 @@ ActiveRecord::Schema.define(version: 20160718052419) do
 
   add_foreign_key "adverts", "council_specialities"
   add_foreign_key "adverts", "dissertation_councils"
+  add_foreign_key "file_copies", "people"
 end
