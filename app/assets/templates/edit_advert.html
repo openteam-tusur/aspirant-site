@@ -148,18 +148,88 @@
              required
             >
       <span ng-show='advertForm.place.$invalid && advertForm.place.$dirty'>
-        {{ l('forms.field-invalid')}}
+        {{ l('forms.field-invalid') }}
       </span>
     </div>
   </div>
   <!-- end place of dissertation defense -->
 
   <!-- file upload -->
-  <div class="row">
+  <div class="row" ng-if='advert.id'>
     <div class="col-xs-12">
+      <h5 class="page-header">
+        {{ l('advert.files_upload') }}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <label>
+        {{ l('advert.files.dissertation') }}
+      </label>
+      <file-uploader multiple='single'
+                     file='advert.dissertation'
+                     kind='dissertation'
+                     context-type='Advert'
+                     context-id='advert.id'
+                     >
+      </file-uploader>
+    </div>
+    <div class="col-xs-12">
+      <label>
+        {{ l('advert.files.synopsis') }}
+      </label>
+      <file-uploader multiple='single'
+                     file='advert.synopsis'
+                     kind='synopsis'
+                     context-type='Advert'
+                     context-id='advert.id'
+                     >
+      </file-uploader>
+    </div>
+    <div class="col-xs-12">
+      <label>
+        {{ l('advert.files.conclusion') }}
+      </label>
       <file-uploader multiple='multiple'
-                     files='advert.dissertation_file'
-                     type='dissertation_file'
+                     files='advert.conclusion'
+                     kind='conclusion'
+                     context-type='Advert'
+                     context-id='advert.id'
+                     >
+      </file-uploader>
+    </div>
+    <div class="col-xs-12">
+      <label>
+        {{ l('advert.files.review') }}
+      </label>
+      <file-uploader multiple='multiple'
+                     files='advert.review'
+                     kind='review'
+                     context-type='Advert'
+                     context-id='advert.id'
+                     >
+      </file-uploader>
+    </div>
+    <div class="col-xs-12">
+      <label>
+        {{ l('advert.files.protocol') }}
+      </label>
+      <file-uploader multiple='single'
+                     file='advert.protocol'
+                     kind='protocol'
+                     context-type='Advert'
+                     context-id='advert.id'
+                     >
+      </file-uploader>
+    </div>
+    <div class="col-xs-12">
+      <label>
+        {{ l('advert.files.council_conclusion') }}
+      </label>
+      <file-uploader multiple='single'
+                     file='advert.council_conclusion'
+                     kind='council_conclusion'
+                     context-type='Advert'
+                     context-id='advert.id'
                      >
       </file-uploader>
     </div>

@@ -8,31 +8,36 @@ angular
           target: '=target'
           updateFunction: '=updateFunction'
           fieldName: '@fieldName'
+          parentObject: '=parentObject'
         transclude: true
         restrict: 'E'
         templateUrl: 'date-selector.html'
-        controller: ($scope) ->
-          if $scope.target
-            $scope.innerDate = $scope.target
-                                     .split('-')
+        link: ($scope, element, attributes) ->
+          target = $scope.target
+          element
+            .find('.js-date-picker')
+            .datepicker
+              format: 'dd.mm.yyyy'
+              language: 'ru'
+          if target
+            $scope.innerDate = target.split('-')
                                      .reverse()
                                      .join('.')
           else
             $scope.innerDate = moment().format('DD[.]MM[.]YYYY')
+          element
+            .find('.js-date-picker')
+            .datepicker("update", $scope.innerDate)
 
+        controller: ($scope) ->
           $scope.updateTarget = () ->
-            $scope.target = $scope.innerDate.replace(/\./g, '-')
-            setTimeout(
-              ()-> $scope.updateFunction($scope.fieldName),
-              100
-              ) #wait for SLOW databinding
+            if $scope.target != $scope.innerDate.replace(/\./g, '-')
+              $scope.target = $scope.innerDate.replace(/\./g, '-')
+              setTimeout(
+                ()-> $scope.updateFunction($scope.fieldName, $scope.parentObject),
+                100
+                ) #wait for SLOW databinding
 
-          $('#date-picker')
-            .datepicker
-              format: 'dd.mm.yyyy'
-              language: 'ru'
-
-          $('#date-picker').datepicker("update", $scope.innerDate)
 
       }
     ])

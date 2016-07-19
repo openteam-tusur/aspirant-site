@@ -55,6 +55,10 @@ ru:
     name: 'Название файла'
     upload: 'Загрузить файлы'
     choose: 'Выбрать файл'
+    remove: 'Удалить файл'
+    mb:     'Мб'
+    kb:     'Кб'
+    destroy_confirm: 'Вы уверены что хотите удалить файл?'
 
   speciality:
     speciality_search:       'Поиск специальностей'
@@ -73,6 +77,14 @@ ru:
     speciality: 'Специальность диссертации'
     dissertation_council: 'Диссертационный совет'
     place: 'Место проведения защиты'
+    files_upload: 'Загрузка файлов'
+    files:
+      dissertation: 'Диссертация'
+      synopsis:     'Автореферат'
+      conclusion:   'Заключение организации'
+      review:       'Отзыв научного руководителя'
+      protocol:     'Протокол принятия к защите'
+      council_conclusion: 'Заключение диссертационного совета'
 
   forms:
     field-invalid: 'Поле обязательно для заполнения'

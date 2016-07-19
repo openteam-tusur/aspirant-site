@@ -13,8 +13,20 @@ json.applicant advert.applicant,
 json.mentor advert.mentor,
                 partial: 'manage/angular/person',
                 as: :person
+
 if advert.dissertation_council
   json.dissertation_council advert.dissertation_council,
                   partial: 'manage/angular/council',
                   as: :council
+end
+
+json.dissertation advert.dissertation, partial: 'manage/angular/file_copy', as: :file
+json.synopsis advert.synopsis, partial: 'manage/angular/file_copy', as: :file
+json.protocol advert.protocol, partial: 'manage/angular/file_copy', as: :file
+json.council_conclusion advert.council_conclusion, partial: 'manage/angular/file_copy', as: :file
+json.conclusion do
+  json.array! advert.conclusion, partial: 'manage/angular/file_copy', as: :file
+end
+json.review do
+  json.array! advert.review, partial: 'manage/angular/file_copy', as: :file
 end

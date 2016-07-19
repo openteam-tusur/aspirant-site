@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :dissertation_councils, except: [:edit, :new]
     resources :posts, only: :destroy
     resources :adverts, only: [:update, :show, :index]
+    resources :file_copies, only: [:create, :update, :destroy]
 
     resources :people, only: [:create] do
       member do

@@ -24,7 +24,7 @@ class Manage::AngularController < Manage::ApplicationController
 
   def get_enumerize_values
     values = params[:class_name].constantize.send(params[:enumerize_value]).options
-    @values = values.map do |localized, enumerized| 
+    @values = values.map do |localized, enumerized|
       {
         localized: localized,
         enumerized: enumerized

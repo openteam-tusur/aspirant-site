@@ -18,7 +18,7 @@
              name='file'
              ng-if="need('single')"
              />
-      <button class='btn btn-primary fake-upload-button'>
+      <button class='btn btn-primary fake-upload-button' ng-show='showUploadButton()'>
         {{ l("file.choose")}}
       </button>
       <ul>
@@ -27,9 +27,30 @@
             {{ l('file.name')}}:
           </strong>
           <span>{{ item.file.name }}</span>
-          <button ng-click="item.upload()">{{ l('file.upload') }}</button>
+          <div ng-show="uploader.isHTML5 && item.progress != 0">
+            <div class="progress" style="margin-bottom: 0;">
+              <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+            </div>
+          </div>
         </li>
       </ul>
     </form>
+  </div>
+  <div class="col-xs-12">
+    <ul>
+      <li ng-repeat='file in allFiles()'>
+        <strong>{{ fileNameOf(file) }}</strong>
+        <small>({{ sizeOf(file) }})</small>
+        <date-selector label="{{ l('advert.publication_date') }}"
+                       target='file.placement_date'
+                       update-function='updatePlacementDate'
+                       field-name='placement_date'
+                       parent-object='file'
+                       ></date-selector>
+        <button ng-click='destroyFile(file)'>
+          {{ l('file.remove') }}
+        </button>
+      </li>
+    </ul>
   </div>
 </div>
