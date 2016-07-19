@@ -1,6 +1,6 @@
 <!-- if used with list -->
-<table ng-model='people' ng-if='people.length' class='people-list-table'>
-  <tbody ui-sortable='sortableOptions' >
+<table ng-if='people.length' class='people-list-table'>
+  <tbody ui-sortable='sortableOptions' ng-model='people'>
     <tr ng-repeat='person in people'>
       <td class='info'>
       <strong>
@@ -29,8 +29,8 @@
     <p>
       <strong>
         {{ person.fullname }}
-      </strong
-      <br />
+      </strong>
+      <br>
       <small>
         {{ person.current_post.title }}
       </small>

@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
   end
 
+  get 'ru/dissertatsionnye-sovety', to: 'dissertation_councils#index', as: :dissertion_councils
+
   root to: 'application#index'
 
   get '/(*path)', to: 'application#index'
