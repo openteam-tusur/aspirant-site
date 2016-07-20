@@ -148,11 +148,11 @@
 
   <!-- file upload -->
   <br>
-  <div class="row" ng-if='advert.id'>
+  <div class="row file-uploads" ng-if='advert.id'>
     <div class="col-xs-12">
       <legend> {{ l('advert.files_upload') }} </legend>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 well">
       <label>
         {{ l('advert.files.dissertation') }}
       </label>
@@ -164,7 +164,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 well">
       <label>
         {{ l('advert.files.synopsis') }}
       </label>
@@ -176,7 +176,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 well">
       <label>
         {{ l('advert.files.conclusion') }}
       </label>
@@ -188,7 +188,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 well">
       <label>
         {{ l('advert.files.review') }}
       </label>
@@ -200,7 +200,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 well">
       <label>
         {{ l('advert.files.protocol') }}
       </label>
@@ -212,7 +212,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 well">
       <label>
         {{ l('advert.files.council_conclusion') }}
       </label>
@@ -228,8 +228,8 @@
   <!-- end of file upload -->
 
   <!-- leading organization -->
-  <div class="row" ng-if='advert.id'>
-    <div class="col-xs-12">
+  <div class="row leading-organization" ng-if='advert.id'>
+    <div class="col-xs-12 title">
       <legend> {{ l('advert.organization_name') }} </legend>
       <input type="text"
              ng-model='advert.organization_name'
@@ -244,8 +244,7 @@
         {{ l('forms.field-invalid') }}
       </span>
     </div>
-    <div class="col-xs-12">
-      <br>
+    <div class="col-xs-12 well">
       <label>
         {{ l('advert.files.organization_review') }}
       </label>
@@ -256,6 +255,8 @@
                context-id='advert.id'
                >
       </file-uploader>
+    </div>
+    <div class="col-xs-12 well">
       <label>
         {{ l('advert.files.organization_publication') }}
       </label>

@@ -21,7 +21,7 @@ class Manage::PeopleController < Manage::ApplicationController
     url = "#{Settings['directory.users_search']}?q=#{URI.encode params[:term]}"
     @response = JSON.parse RestClient::Request.execute(method: :get, url: url, timeout: 90)
 
-    render json: @response
+    render json: @response.take(4)
   end
 
   def update_order

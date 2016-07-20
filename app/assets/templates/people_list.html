@@ -10,7 +10,6 @@
         <small>
           {{ person.current_post.title }}
         </small>
-        <br>
         <small>
           {{ personDegrees(person) }}
         </small>
@@ -41,7 +40,7 @@
                        >
         </file-uploader>
       </div>
-      <div ng-if='context && person_type == "reviewer" ' class='col-xs-12'>
+      <div ng-if='context && person_type == "reviewer" ' class='col-xs-12 reviewer-file'>
         <label> {{ l('advert.files.reviewer_review') }} </label>
         <file-uploader multiple='single'
                        file='person.reviewer_review'

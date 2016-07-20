@@ -6,19 +6,31 @@
   </div>
 </div>
 
-<people-input context='context'
-              people='council.people'
-              ask-post='true'
-              ></people-input>
+<div class='row'>
+  <div class='col-xs-12'>
+    <people-input context='context'
+                  people='council.people'
+                  ask-post='true'
+                  ></people-input>
+  </div>
+</div>
 
-<h3>{{ l('councils.council_members') }}</h3>
-<people-list people='council.people'
-             destroy-with='destroyPost'
-             update-order-function='updatePersonOrder'
-             >
-</people-list>
-<speciality-input specialities='council.specialities' add-function='addSpecialityToCouncil'></speciality-input>
-<speciality-list specialities='council.specialities'
-                 destroy-function='removeSpecialityFromCouncil'
-                 update-order-function='updateSpecialityOrder'
-                 ></speciality-list>
+<div class='row'>
+  <div class='col-xs-12'>
+    <h3>{{ l('councils.council_members') }}</h3>
+    <people-list people='council.people'
+                 destroy-with='destroyPost'
+                 update-order-function='updatePersonOrder'
+                 >
+    </people-list>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-xs-12'>
+    <speciality-input specialities='council.specialities' add-function='addSpecialityToCouncil'></speciality-input>
+    <speciality-list specialities='council.specialities'
+                     destroy-function='removeSpecialityFromCouncil'
+                     update-order-function='updateSpecialityOrder'
+                     ></speciality-list>
+  </div>
+</div>

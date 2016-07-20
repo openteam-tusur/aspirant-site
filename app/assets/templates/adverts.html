@@ -19,7 +19,7 @@
   <tbody>
     <tr>
       <td colspan='4'>
-        <button>
+        <button class='btn btn-primary'>
           {{ l('app.buttons.add_advert') }}
         </button>
       </td>
@@ -35,10 +35,10 @@
         {{ advert.publication_date }}
       </td>
       <td>
-        <button >
+        <button class='btn btn-danger'>
           {{ l('app.buttons.remove')}}
         </button>
-        <button ui-sref="advert_edit({advertId: advert.id})">
+        <button ui-sref="advert_edit({advertId: advert.id})" class='btn btn-warning'>
           {{ l('app.buttons.edit')}}
         </button>
       </td>

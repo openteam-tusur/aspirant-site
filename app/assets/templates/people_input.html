@@ -206,19 +206,19 @@
     </div>
   </div>
   <!-- end of Post title -->
-  <div ng-show='new_person.name' class='row add-person-form-actions'>
-    <div class="col-lg-1">
+  <div class='row add-person-form-actions'>
+    <div class="col-lg-1" ng-show='new_person.name' >
       <button ng-click='submitPerson()' class='btn btn-success'>
         {{ l('app.buttons.save') }}
       </button>
     </div>
     <div class='col-lg-1'>
-      <button ng-click='cleanPerson()' class='btn btn-warning'>
+      <button ng-click='cleanPerson()' class='btn btn-warning' ng-show='personNotFound || new_person.name'>
         {{ l('app.buttons.clean') }}
       </button>
     </div>
     <div class='col-lg-1'>
-      <button ng-click='cleanPerson(); hideForm()' class='btn btn-danger'>
+      <button ng-click='cleanPerson(); hideForm()' class='btn btn-danger' ng-show='personNotFound || new_person.name'>
         {{ l('app.buttons.cancel') }}
       </button>
     </div>
