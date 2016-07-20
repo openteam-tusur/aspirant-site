@@ -23,4 +23,8 @@ class User
     available_permissions.any?
   end
 
+  def available_contexts
+    permissions.where(role: 'clerk').map(&:context)
+  end
+
 end
