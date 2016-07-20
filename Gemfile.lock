@@ -485,6 +485,7 @@ GEM
     webrobots (0.1.2)
     whenever (0.9.4)
       chronic (>= 0.6.3)
+    yajl-ruby (1.2.1)
     yt (0.25.12)
       activesupport
 
@@ -574,6 +575,7 @@ DEPENDENCIES
   uglifier
   unicorn
   whenever
+  yajl-ruby
   yt
 
 BUNDLED WITH

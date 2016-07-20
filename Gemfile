@@ -55,6 +55,7 @@ gem 'truncate_html'
 gem 'tusur_header', '>= 0.2.6'
 gem 'uglifier'
 gem 'whenever'
+gem 'yajl-ruby', require: 'yajl'
 gem 'yt'
 
 source 'https://rails-assets.org' do
