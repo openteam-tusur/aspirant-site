@@ -12,6 +12,14 @@
     border: 1px dashed red
     +custom_transition
 
+  h3
+    clear: both
+
+  label
+    abbr
+      &.required
+        color: red
+
   .angucomplete-dropdown
     padding-left: 10px
     border: 1px solid #ccc
@@ -81,21 +89,24 @@
           td.actions
             padding-left: 0
 
-  .add-person-form
-    .invalid-message
-      color: red
-      font-size: 1.4rem
+  .invalid-message
+    color: red
+    font-size: 1.4rem
 
     label
       margin-top: 10px
 
-    .directory-results
-      .person
-        padding: 10px
+  .directory-results
+    .person
+      padding: 10px
 
-        &:hover
-          background: #f2f2f2
-          cursor: pointer
+      &:hover
+        background: #f2f2f2
+        cursor: pointer
+
+  .btn-danger
+    &.file-uploader-btn
+      margin: 5px 0
 
   .people-list-table,
   .specialities-items
@@ -119,6 +130,13 @@
           float: right
           margin-right: 5px
 
+  .people-list-table
+    clear: both
+
+    .review-uploader
+      padding: 10px 0 10px 5px
+      border-bottom: 1px solid #ccc
+
     .ui-sortable-helper
       background: #fff
       +box-shadow(0px 0px 18px -5px rgba(0,0,0,0.75))
@@ -132,3 +150,27 @@
   .speciality-form
     label
       margin-top: 10px
+
+  .add-person-form
+    label
+      margin-top: 5px
+
+    .add-person-form-actions
+      margin-top: 5px
+
+  .advert-add-person-form
+    margin-top: 10px
+    margin-bottom: 10px
+
+    .people-list
+      margin-top: 15px
+
+      .opponent-review
+        margin: 10px 0
+
+      .actions
+        vertical-align: top
+
+      .actions,
+      .info
+        border-bottom: 1px solid #ccc

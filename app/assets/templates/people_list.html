@@ -58,7 +58,7 @@
 
 <!-- if used with one person -->
 <div class="row" ng-if='person'>
-  <div class="col-xs-12">
+  <div class="col-xs-5">
     <p>
       <strong>
         {{ person.fullname }}
@@ -71,9 +71,11 @@
       <small>
         {{ personDegrees(person) }}
       </small>
-      <button ng-click='destroyPersonFunction(person, person_type)' class='btn btn-danger'>
-        {{ l('app.buttons.remove')}}
-      </button>
     </p>
+  </div>
+  <div class='col-xs-7'>
+    <button ng-click='destroyPersonFunction(person, person_type)' class='btn btn-danger'>
+      {{ l('app.buttons.remove')}}
+    </button>
   </div>
 </div>

@@ -26,6 +26,7 @@
         <select ng-model='new_user.context'
                 ng-options='context.title for context in availableContexts'
                 ng-show='new_user.role.need_context'
+                class='form-control'
                 />
       </td>
       <td class='name' ng-hide='new_user.fullname'>
