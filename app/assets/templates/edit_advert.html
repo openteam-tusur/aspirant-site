@@ -236,6 +236,50 @@
   </div>
   <!-- end of file upload -->
 
+  <!-- leading organization -->
+  <div class="row" ng-if='advert.id'>
+    <div class="col-xs-12">
+      <h5 class="page-header">
+        {{ l('advert.organization_name') }}
+      </h5>
+      <input type="text"
+             ng-model='advert.organization_name'
+             placeholder='{{ l("advert.organization_name") }}'
+             name='organization_name'
+             class='form-control form-control-small'
+             ng-model-options='{ debounce: 1000 }'
+             ng-change='updateField("organization_name")'
+             required
+            >
+      <span ng-show='advertForm.organization_name.$invalid && advertForm.organization_name.$dirty'>
+        {{ l('forms.field-invalid') }}
+      </span>
+    </div>
+    <div class="col-xs-12">
+      <label>
+        {{ l('advert.files.organization_review') }}
+      </label>
+      <file-uploader multiple='single'
+               file='advert.organization_review'
+               kind='organization_review'
+               context-type='Advert'
+               context-id='advert.id'
+               >
+      </file-uploader>
+      <label>
+        {{ l('advert.files.organization_publication') }}
+      </label>
+      <file-uploader multiple='single'
+               file='advert.organization_publication'
+               kind='organization_publication'
+               context-type='Advert'
+               context-id='advert.id'
+               >
+      </file-uploader>
+    </div>
+  </div>
+  <!-- end of leading organization -->
+
   <!-- opponents -->
   <div class="row">
     <div class="col-xs-12">
@@ -258,7 +302,7 @@
   </div>
   <!-- end of opponents -->
 
-  <!-- opponents -->
+  <!-- reviewers -->
   <div class="row">
     <div class="col-xs-12">
       <h5 class="page-header">
@@ -278,6 +322,6 @@
       </people-list>
     </div>
   </div>
-  <!-- end of opponents -->
+  <!-- end of reviewers -->
 
 </form>

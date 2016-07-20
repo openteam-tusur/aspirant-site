@@ -25,11 +25,11 @@ class Manage::AdvertsController < Manage::ApplicationController
   def update_params
     params
       .require(:advert)
-      .permit( %w(
+      .permit %w(
                   title council_speciality_id
                   dissertation_council_id
                   publication_date place
+                  organization_name
                   ).map(&:to_sym)
-              )
   end
 end

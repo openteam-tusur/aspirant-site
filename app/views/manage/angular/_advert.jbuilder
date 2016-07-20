@@ -1,9 +1,10 @@
 json.id advert.id
 json.title advert.title
+json.place advert.place
 json.science_degree advert.science_degree
 json.placement_date advert.placement_date
-json.place advert.place
 json.publication_date advert.publication_date
+json.organization_name advert.organization_name
 
 json.council_speciality advert.council_speciality,
                 partial: 'manage/angular/council_speciality',
@@ -23,10 +24,12 @@ if advert.dissertation_council
                   as: :council
 end
 
-json.dissertation advert.dissertation, partial: 'manage/angular/file_copy', as: :file
+json.organization_review advert.organization_review, partial: 'manage/angular/file_copy', as: :file
+json.organization_publication advert.organization_publication, partial: 'manage/angular/file_copy', as: :file
 json.synopsis advert.synopsis, partial: 'manage/angular/file_copy', as: :file
 json.protocol advert.protocol, partial: 'manage/angular/file_copy', as: :file
 json.council_conclusion advert.council_conclusion, partial: 'manage/angular/file_copy', as: :file
+json.dissertation advert.dissertation, partial: 'manage/angular/file_copy', as: :file
 
 json.conclusion do
   json.array! advert.conclusion, partial: 'manage/angular/file_copy', as: :file
