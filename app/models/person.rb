@@ -29,6 +29,13 @@ class Person < ActiveRecord::Base
     end
   end
 
+  def opponent_files(context)
+    [opponent_review_for(context), publication_for(context)]
+  end
+
+  def reviewer_files
+    [reviewer_review]
+  end
 end
 
 # == Schema Information

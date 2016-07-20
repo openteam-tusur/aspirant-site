@@ -2,12 +2,17 @@ class Post < ActiveRecord::Base
   include RankedModel
 
   ranks :row_order, with_same: [:context_id, :context_type]
+  after_destroy :destroy_associated_files
 
   belongs_to :context, polymorphic: true
   belongs_to :person
 
   [:applicant, :mentor, :opponent, :reviewer].each do |scope_name|
     scope scope_name , -> { where(person_type: scope_name) }
+  end
+
+  def destroy_associated_files
+    person.send(%Q(#{person_type}_files), context).map(&:destroy) if context.is_a? Advert
   end
 end
 
