@@ -12,6 +12,7 @@ angular
             $scope.stored_advert = {}
             angular.copy data, $scope.advert
             angular.copy data, $scope.stored_advert                 #object for changes detection
+            $scope.getAvalaibleCouncils()
           .error -> $scope.$state.go 'dashboard'
 
     $scope.contextFor = (string) ->
@@ -87,6 +88,8 @@ angular
       $scope.advert.dissertation_council_id = $scope.advert.dissertation_council.id
       $scope.updateField "dissertation_council_id"
 
-    $scope.getAvalaibleCouncils()
-    $scope.getAdvert()
+    $scope.initializer = () ->
+      $scope.getAdvert()
+
+    $scope.initializer()
     ])

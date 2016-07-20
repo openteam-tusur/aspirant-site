@@ -33,8 +33,8 @@ class Person < ActiveRecord::Base
     [opponent_review_for(context), publication_for(context)]
   end
 
-  def reviewer_files
-    [reviewer_review]
+  def reviewer_files(context)
+    [reviewer_review_for(context)]
   end
 end
 

@@ -34,6 +34,15 @@ class Advert < ActiveRecord::Base
              dependent: :destroy,
              class_name: 'FileCopy'
   end
+
+  before_create :set_current_date
+
+  private
+
+  def set_current_date
+    self.publication_date = Date.today
+    self.placement_date = Date.today
+  end
 end
 
 # == Schema Information

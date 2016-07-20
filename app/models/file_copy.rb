@@ -12,6 +12,14 @@ class FileCopy < ActiveRecord::Base
                         :opponent_review, :publication, :reviewer_review,
                         :organization_review, :organization_publication],
                    scope: true
+
+  before_create :set_current_date
+
+  private
+
+  def set_current_date
+    self.placement_date = Date.today
+  end
 end
 
 # == Schema Information
