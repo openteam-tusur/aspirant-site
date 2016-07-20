@@ -2,7 +2,7 @@
 <div ng-if='people.length' class='people-list-table'>
   <div ui-sortable='sortableOptions' ng-model='people'>
     <div ng-repeat='person in people' class='row'>
-      <div class='info col-xs-6'>
+      <div class='info col-xs-9 info'>
         <strong>
           {{ person.fullname }}
         </strong>
@@ -15,7 +15,7 @@
           {{ personDegrees(person) }}
         </small>
       </div>
-      <div class='actions col-xs-6'>
+      <div class='actions col-xs-3 actions'>
         <span class='handle glyphicon glyphicon-sort' ng-show='people.length > 1'></span>
         <button ng-click='destroyPersonFunction(person, person_type)' class='btn btn-danger'>Удалить</button>
       </div>
@@ -30,7 +30,7 @@
                        >
         </file-uploader>
       </div>
-      <div ng-if='context && person_type == "opponent" ' class='col-xs-12'>
+      <div ng-if='context && person_type == "opponent" ' class='col-xs-12 publication'>
         <label> {{ l('advert.files.publication') }} </label>
         <file-uploader multiple='single'
                        file='person.publication'

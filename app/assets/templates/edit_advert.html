@@ -230,9 +230,7 @@
   <!-- leading organization -->
   <div class="row" ng-if='advert.id'>
     <div class="col-xs-12">
-      <h5 class="page-header">
-        {{ l('advert.organization_name') }}
-      </h5>
+      <legend> {{ l('advert.organization_name') }} </legend>
       <input type="text"
              ng-model='advert.organization_name'
              placeholder='{{ l("advert.organization_name") }}'
@@ -247,6 +245,7 @@
       </span>
     </div>
     <div class="col-xs-12">
+      <br>
       <label>
         {{ l('advert.files.organization_review') }}
       </label>
@@ -296,9 +295,7 @@
   <!-- reviewers -->
   <div class="row">
     <div class="col-xs-12">
-      <h5 class="page-header">
-        {{ l('advert.reviewer_review') }}
-      </h5>
+      <legend> {{ l('advert.reviewer_review') }} </legend>
     </div>
     <div class="col-xs-12">
       <people-input context='reviewer_context || contextFor("reviewer")'
