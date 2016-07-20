@@ -17,6 +17,15 @@ class Manage::AdvertsController < Manage::ApplicationController
     render partial: 'manage/angular/advert', locals: { advert: @advert }
   end
 
+  def create
+    @advert.save
+    render partial: 'manage/angular/advert', locals: { advert: @advert }
+  end
+
+  def destroy
+    render json: @advert.destroy
+  end
+
   private
   def set_advert
     @advert = Advert.find(params[:id])

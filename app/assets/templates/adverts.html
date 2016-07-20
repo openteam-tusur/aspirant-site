@@ -19,7 +19,7 @@
   <tbody>
     <tr>
       <td colspan='4'>
-        <button class='btn btn-primary'>
+        <button ng-click="addAdvert()" class='btn btn-primary'>
           {{ l('app.buttons.add_advert') }}
         </button>
       </td>
@@ -35,7 +35,7 @@
         {{ advert.publication_date }}
       </td>
       <td>
-        <button class='btn btn-danger'>
+        <button ng-click='destroyAdvert(advert)' class='btn btn-danger'>
           {{ l('app.buttons.remove')}}
         </button>
         <button ui-sref="advert_edit({advertId: advert.id})" class='btn btn-warning'>
