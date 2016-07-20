@@ -9,7 +9,8 @@ class FileCopy < ActiveRecord::Base
 
   enumerize :kind, in: [:dissertation, :synopsis, :conclusion,
                         :review, :protocol, :council_conclusion,
-                        :opponent_review, :publication, :reviewer_review],
+                        :opponent_review, :publication, :reviewer_review,
+                        :organization_review, :organization_publication],
                    scope: true
 end
 

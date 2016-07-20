@@ -20,7 +20,8 @@ class Advert < ActiveRecord::Base
              source: :person
   end
 
-  %w(dissertation synopsis protocol council_conclusion).each do |association_name|
+  %w(dissertation synopsis protocol council_conclusion
+     organization_review organization_publication).each do |association_name|
     has_one association_name.to_sym, -> { send :with_kind, association_name },
             as: :context,
             dependent: :destroy,
@@ -49,6 +50,7 @@ end
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  title                   :text
+#  organization_name       :string
 #
 # Indexes
 #
