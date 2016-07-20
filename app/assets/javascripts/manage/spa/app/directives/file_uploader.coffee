@@ -26,7 +26,6 @@ angular
           $scope.l = localization.l
 
           $scope.makeParams = () ->
-            console.log $scope
             h = {
               context_type: $scope.contextType
               context_id: $scope.contextId

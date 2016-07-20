@@ -87,6 +87,14 @@ angular.module('dashboard')
                 $scope.avalaibleAcademicTitles = data.science_titles
                 $scope.avalaibleAcademicDegrees = data.science_degrees
 
+          $scope.setSpeciality = (speciality) ->
+            $scope.new_person.council_speciality_id = speciality.id
+            $scope.new_person.speciality = speciality
+
+          $scope.destroySpeciality = () ->
+            $scope.new_person.council_speciality_id = null
+            $scope.new_person.speciality = null
+
           $scope.searchResponseFormatter = (data) ->
             results = []
             for result in data

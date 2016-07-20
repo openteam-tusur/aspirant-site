@@ -4,7 +4,7 @@ class Person < ActiveRecord::Base
 
   has_many :people
 
-  belongs_to :speciality
+  belongs_to :speciality, class_name: 'CouncilSpeciality', foreign_key: 'council_speciality_id'
 
   searchable do
     text :fullname

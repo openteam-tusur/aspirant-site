@@ -1,7 +1,6 @@
 angular
   .module('dashboard')
   .controller('EditAdvertController', ['$scope', '$http', ($scope, $http) ->
-    console.time('controller loaded')
 
     $scope.getAdvert = () ->
       id = $scope.$state.params.advertId
@@ -13,7 +12,6 @@ angular
             $scope.stored_advert = {}
             angular.copy data, $scope.advert
             angular.copy data, $scope.stored_advert                 #object for changes detection
-            console.timeEnd('controller loaded')
           .error -> $scope.$state.go 'dashboard'
 
     $scope.contextFor = (string) ->

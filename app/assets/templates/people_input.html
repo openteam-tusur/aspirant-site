@@ -143,6 +143,20 @@
         </div>
 
 
+        <!-- speciality input -->
+          <div class="col-xs-12">
+            <label>
+              {{ l('person.speciality') }}
+            </label>
+            <speciality-input speciality='new_person.speciality'
+                              add-function='setSpeciality'
+                              ></speciality-input>
+
+            <speciality-list speciality='new_person.speciality'
+                             destroy-function='destroySpeciality'
+            ></speciality-list>
+          </div>
+        <!-- end of speciality input -->
       </div>
     </div>
 

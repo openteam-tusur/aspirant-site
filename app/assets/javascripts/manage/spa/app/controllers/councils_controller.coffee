@@ -18,7 +18,7 @@ angular
           $scope.toggleForm()
 
     $scope.removeCouncil = (council) ->
-      confirm $scope.l('councils.confirm'), $scope.actuallyRemove(council)
+      $scope.actuallyRemove(council) if confirm $scope.l('councils.confirm')
 
     $scope.actuallyRemove = (council) ->
       $http

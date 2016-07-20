@@ -6,7 +6,6 @@ angular
           .get '/manage/adverts'
           .success (data) ->
             $scope.adverts = data
-
       $scope.editAdvert = (advert) ->
       $scope.getAdverts()
     ])

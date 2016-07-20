@@ -49,11 +49,11 @@ class Manage::PeopleController < Manage::ApplicationController
 
   def person_params
     params.require(:person)
-          .except(:post)
+          .except(:post, :speciality)
           .permit( :id, :name, :surname, :patronymic,
                    :science_degree, :science_degree_abbr,
                    :science_title,  :science_title_abbr,
-                   :work_place, :work_post, :url
+                   :work_place, :work_post, :url, :council_speciality_id
                     )
   end
 
