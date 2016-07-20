@@ -2,19 +2,23 @@ class Advert < ActiveRecord::Base
   belongs_to :council_speciality
   belongs_to :dissertation_council
 
-  %w(applicant mentor).each do |scope|
-    has_one %Q(#{scope}_post).to_sym, -> { send scope },
+  %w(applicant mentor).each do |association_name|
+    has_one %Q(#{association_name}_post).to_sym, -> { send association_name },
              as: :context,
              dependent: :destroy,
              class_name: 'Post'
-    has_one scope.to_sym, through: %Q(#{scope}_post).to_sym, source: :person
+    has_one association_name.to_sym, through: %Q(#{association_name}_post).to_sym, source: :person
   end
 
-  has_many :opponent_post, -> { opponent },
-           as: :context,
-           dependent: :destroy,
-           class_name: 'Post'
-  has_many :opponents, through: :opponent_post, source: :person
+  %w(opponents reviewers).each do |association_name|
+    has_many %Q(#{association_name}_post).to_sym, -> { send association_name.singularize },
+             as: :context,
+             dependent: :destroy,
+             class_name: 'Post'
+    has_many association_name.to_sym,
+             through: %Q(#{association_name}_post).to_sym,
+             source: :person
+  end
 
   %w(dissertation synopsis protocol council_conclusion).each do |association_name|
     has_one association_name.to_sym, -> { send :with_kind, association_name },
@@ -23,7 +27,7 @@ class Advert < ActiveRecord::Base
             class_name: 'FileCopy'
   end
 
-  %w(review conclusion opponent_review publication).each do |association_name|
+  %w(review conclusion opponent_review publication reviewer_review).each do |association_name|
     has_many association_name.to_sym, -> { send :with_kind, association_name },
              as: :context,
              dependent: :destroy,

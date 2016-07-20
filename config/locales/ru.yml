@@ -79,14 +79,18 @@ ru:
     place: 'Место проведения защиты'
     files_upload: 'Загрузка файлов'
     opponents: 'Оппоненты'
+    reviewer_review: 'Отзывы на автореферат'
     files:
-      dissertation: 'Диссертация'
-      synopsis:     'Автореферат'
-      conclusion:   'Заключение организации'
-      review:       'Отзыв научного руководителя'
-      protocol:     'Протокол принятия к защите'
-      opponent_review: 'Отзыв оппонента'
+      review:             'Отзыв научного руководителя'
+      synopsis:           'Автореферат'
+      protocol:           'Протокол принятия к защите'
+      conclusion:         'Заключение организации'
+      publication:        'Сведения/Публикации'
+      dissertation:       'Диссертация'
+      reviewer_review:    'Отзыв на автореферат'
+      opponent_review:    'Отзыв оппонента'
       council_conclusion: 'Заключение диссертационного совета'
+
 
   forms:
     field-invalid: 'Поле обязательно для заполнения'

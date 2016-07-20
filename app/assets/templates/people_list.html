@@ -1,8 +1,8 @@
 <!-- if used with list -->
-<table ng-if='people.length' class='people-list-table'>
-  <tbody ui-sortable='sortableOptions' ng-model='people'>
-    <tr ng-repeat='person in people'>
-      <td class='info'>
+<div ng-if='people.length' class='people-list-table'>
+  <div ui-sortable='sortableOptions' ng-model='people'>
+    <div ng-repeat='person in people' class='row'>
+      <div class='info col-xs-6'>
         <strong>
           {{ person.fullname }}
         </strong>
@@ -14,12 +14,12 @@
         <small>
           {{ personDegrees(person) }}
         </small>
-      </td>
-      <td class='actions'>
+      </div>
+      <div class='actions col-xs-6'>
         <span class='handle glyphicon glyphicon-sort' ng-show='people.length > 1'></span>
-        <button ng-click='destroyPersonFunction(person)' class='btn btn-danger'>Удалить</button>
-      </td>
-      <td ng-if='context && person_type == "opponent" '>
+        <button ng-click='destroyPersonFunction(person, person_type)' class='btn btn-danger'>Удалить</button>
+      </div>
+      <div ng-if='context && person_type == "opponent" ' class='col-xs-12'>
         <label> {{ l('advert.files.opponent_review') }} </label>
         <file-uploader multiple='single'
                        file='person.opponent_review'
@@ -29,10 +29,32 @@
                        person-id ='person.id'
                        >
         </file-uploader>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+      <div ng-if='context && person_type == "opponent" ' class='col-xs-12'>
+        <label> {{ l('advert.files.publication') }} </label>
+        <file-uploader multiple='single'
+                       file='person.publication'
+                       kind='publication'
+                       context-type='{{context.context_type}}'
+                       context-id='context.context_id'
+                       person-id ='person.id'
+                       >
+        </file-uploader>
+      </div>
+      <div ng-if='context && person_type == "reviewer" ' class='col-xs-12'>
+        <label> {{ l('advert.files.reviewer_review') }} </label>
+        <file-uploader multiple='single'
+                       file='person.reviewer_review'
+                       kind='reviewer_review'
+                       context-type='{{context.context_type}}'
+                       context-id='context.context_id'
+                       person-id ='person.id'
+                       >
+        </file-uploader>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- if used with one person -->
 <div class="row" ng-if='person'>

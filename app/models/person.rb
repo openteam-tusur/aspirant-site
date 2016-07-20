@@ -23,7 +23,7 @@ class Person < ActiveRecord::Base
     post_for(council).row_order
   end
 
-  %w(opponent_review publication).each do |method_name|
+  %w(opponent_review publication reviewer_review).each do |method_name|
     define_method %Q(#{method_name}_for) do |context|
       context.send(method_name).find_by(person_id: self.id)
     end

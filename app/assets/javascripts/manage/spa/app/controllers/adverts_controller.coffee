@@ -8,7 +8,5 @@ angular
             $scope.adverts = data
 
       $scope.editAdvert = (advert) ->
-        
-
       $scope.getAdverts()
     ])

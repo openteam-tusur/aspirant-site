@@ -58,6 +58,8 @@ angular
       $scope.updateField 'council_speciality_id'
 
     $scope.destroyPost = (person, person_type) ->
+      console.log person
+      console.log person_type
       params = $scope.contextFor person_type
       $http
         .post "/manage/people/#{person.id}/remove_from_advert", params

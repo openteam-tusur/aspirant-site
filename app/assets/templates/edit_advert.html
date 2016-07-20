@@ -236,6 +236,7 @@
   </div>
   <!-- end of file upload -->
 
+  <!-- opponents -->
   <div class="row">
     <div class="col-xs-12">
       <h5 class="page-header">
@@ -255,5 +256,28 @@
       </people-list>
     </div>
   </div>
+  <!-- end of opponents -->
+
+  <!-- opponents -->
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class="page-header">
+        {{ l('advert.reviewer_review') }}
+      </h5>
+    </div>
+    <div class="col-xs-12">
+      <people-input context='reviewer_context || contextFor("reviewer")'
+                    people='advert.reviewers'
+                    >
+      </people-input>
+      <people-list people='advert.reviewers'
+                   person-type='reviewer'
+                   context='reviewer_context || contextFor("reviewer")'
+                   destroy-with='destroyPost'
+                   >
+      </people-list>
+    </div>
+  </div>
+  <!-- end of opponents -->
 
 </form>
