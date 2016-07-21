@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720034459) do
+ActiveRecord::Schema.define(version: 20160721084911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160720034459) do
     t.string   "science_title_abbr"
     t.text     "work_place"
     t.text     "work_post"
+    t.integer  "directory_id"
   end
 
   create_table "permissions", force: :cascade do |t|

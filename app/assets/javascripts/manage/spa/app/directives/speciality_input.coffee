@@ -6,6 +6,7 @@ angular.module('dashboard')
           specialities:  '=specialities'
           addFunction: '=addFunction'
           speciality: '=speciality'
+          isSingle: '@isSingle'
         transclude: true
         restrict: 'E'
         templateUrl: 'speciality_input.html'
@@ -20,6 +21,7 @@ angular.module('dashboard')
               .get "/manage/angular/get_enumerize_values", params: params
               .success (data) ->
                 $scope.avalaibleScienceTypes = data.values
+
 
           $scope.requestFormatter = (q) ->
             {
@@ -44,10 +46,18 @@ angular.module('dashboard')
                 if $scope.new_speciality_science_type
                   $scope.new_speciality.science_type = $scope.avalaibleScienceTypes[0].enumerized
                 $scope.showCreateSpecialityForm = true
-                $scope.showSearch = false
+
+          $scope.showSearchButton = () ->
+
 
           $scope.createNewSpeciality = () ->
-            $scope.addFunction $scope.new_speciality, $scope.hideSpecialityForm          #code and title
+            if $scope.specialityForm.$valid
+              $scope.addFunction $scope.new_speciality, $scope.hideSpecialityForm          #code and title
+            else
+              $scope.specialityForm.$setSubmitted()
+              for _, input of $scope.specialityForm
+                if input && input.$name
+                  input.$setDirty()
 
           $scope.hideSpecialityForm = () ->
             $scope.new_person = {}

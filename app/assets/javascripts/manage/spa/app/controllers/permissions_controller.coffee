@@ -7,6 +7,8 @@ angular
         .get '/manage/permissions'
         .success (data) ->
           $scope.permissions       = data.permissions
+          for permission in $scope.permissions
+            permission.localized = $scope.l("permissions.#{permission.role}")
           $scope.availableRoles    = data.available_roles
           $scope.availableContexts = data.available_contexts
 
@@ -39,6 +41,7 @@ angular
       $http
         .post 'manage/permissions', permission
         .success (data) ->
+          data.localized = $scope.l("permissions.#{data.role}")
           $scope.permissions.unshift data
           $scope.new_user = {}
           $scope.toggleForm()

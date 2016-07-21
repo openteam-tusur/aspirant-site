@@ -16,7 +16,7 @@ class Manage::AdvertsController < Manage::ApplicationController
 
   def create
     council = current_user.available_contexts.sample()
-    @advert .dissertation_council_id = council.id
+    @advert.dissertation_council = council
 
     @advert.save
 

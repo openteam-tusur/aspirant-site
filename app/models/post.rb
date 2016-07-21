@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   def destroy_associated_files
     available_files_array = %w(opponent reviewer)
     if context.is_a?(Advert) && available_files_array.include?(person_type)
-      person.send(%Q(#{person_type}_files), context).map(&:destroy)
+      person.send(%Q(#{person_type}_files), context).compact.map(&:destroy)
     end
   end
 end

@@ -56,4 +56,5 @@ end
 #  science_title_abbr    :string
 #  work_place            :text
 #  work_post             :text
+#  directory_id          :integer
 #

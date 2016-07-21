@@ -24,7 +24,7 @@ angular
         }
 
     $scope.updateField = (field) ->
-      if $scope.fieldChanged(field) && $scope.advert[field]
+      if $scope.fieldChanged(field)
         params = {
           id: $scope.advert.id
           advert:

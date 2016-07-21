@@ -86,7 +86,7 @@
                   required
                   name='science_degree'
                  ></select>
-          <span ng-if='peopleInput.science_degree.$error.required' class='invalid-message'>
+          <span ng-if='peopleInput.science_degree.$error.required && peopleInput.science_degree.$dirty' class='invalid-message'>
             {{ l('forms.field-invalid')}}
           </span>
         </div>
@@ -103,7 +103,7 @@
                   required
                   name='science_title'
                  ></select>
-          <span ng-if='peopleInput.science_title.$error.required' class='invalid-message'>
+          <span ng-if='peopleInput.science_title.$error.required && peopleInput.science_title.$dirty' class='invalid-message'>
             {{ l('forms.field-invalid')}}
           </span>
         </div>
@@ -150,6 +150,7 @@
             </label>
             <speciality-input speciality='new_person.speciality'
                               add-function='setSpeciality'
+                              is-single="true"
                               ></speciality-input>
 
             <speciality-list speciality='new_person.speciality'

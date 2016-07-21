@@ -29,12 +29,16 @@ angular.module('dashboard')
             for key in ['patronymic', 'surname', 'name']
               u[key] = person[key]
             u.url = "https://directory.tusur.ru/people/#{person.id}"
-            u.work_post = /(^[^,]*)/.exec(person.posts.split(';')[0])[0]
-            u.work_place = /([^,]*$)/.exec(person.posts.split(';')[0])[0]
+            u.work_post    = person.main_post.title
+            u.work_post    = person.main_post.short_title unless u.work_post.length
+            u.work_place   = person.main_post.subdivision.title + ' ТУСУР'
+            u.directory_id = person.id
 
             $scope.updateDirectorySearch()
 
           $scope.cleanPerson = () ->
+            $scope.science.science_title = null
+            $scope.science.science_degree = null
             $scope.peopleInput.$setPristine() if $scope.peopleInput
             $scope.new_person = {}
 
@@ -87,9 +91,19 @@ angular.module('dashboard')
                 $scope.avalaibleAcademicTitles = data.science_titles
                 $scope.avalaibleAcademicDegrees = data.science_degrees
 
-          $scope.setSpeciality = (speciality) ->
+          $scope.setSpeciality = (speciality, callback) ->
+            unless speciality.id
+              params = { speciality }
+              $http
+                .post 'manage/council_specialities', params
+                .success (data) ->
+                  $scope.new_person.council_speciality_id = data.id
+                  $scope.new_person.speciality = data
+                  callback()
+
             $scope.new_person.council_speciality_id = speciality.id
             $scope.new_person.speciality = speciality
+            callback()
 
           $scope.destroySpeciality = () ->
             $scope.new_person.council_speciality_id = null
@@ -99,12 +113,11 @@ angular.module('dashboard')
             results = []
             for result in data
               results.push result
-            unless data.length
-              empty_object = {
-                fullname: 'Ничего не найдено'
-                id: false
-              }
-              results.push empty_object
+            empty_object = {
+              fullname: $scope.l('person.create_new')
+              id: false
+            }
+            results.push empty_object
             return results
           $scope.getScienceDictionaries()
       }

@@ -31,6 +31,7 @@ ru:
     advert_edit: 'Редактирование объявления'
 
     buttons:
+      change:            'Изменить'
       remove:            'Удалить'
       edit:              'Редактировать'
       add:               'Добавить'
@@ -78,6 +79,7 @@ ru:
     speciality:           'Специальность диссертации'
     files_upload:         'Загрузка файлов'
     reviewer_review:      'Отзывы на автореферат'
+    placement_date:       'Дата размещения'
     publication_date:     'Дата публикации'
     organization_name:    'Ведущая организация'
     dissertation_council: 'Диссертационный совет'
@@ -103,7 +105,9 @@ ru:
     academic_title:  "Ученое звание"
     work_place:      "Место работы"
     patronymic:      "Отчество"
+    speciality:      "Специальность"
     work_post:       "Должность"
+    create_new:      "Создать нового участника"
     surname:         "Фамилия"
     name:            "Имя"
     url:             "Ссылка на страницу пользователя"

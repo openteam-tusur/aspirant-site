@@ -53,8 +53,9 @@ class Manage::PeopleController < Manage::ApplicationController
           .permit( :id, :name, :surname, :patronymic,
                    :science_degree, :science_degree_abbr,
                    :science_title,  :science_title_abbr,
-                   :work_place, :work_post, :url, :council_speciality_id
-                    )
+                   :council_speciality_id,:directory_id,
+                   :work_place, :work_post, :url
+                  )
   end
 
   def title

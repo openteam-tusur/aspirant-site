@@ -12,7 +12,9 @@
       </td>
       <td class='actions'>
         <span class='handle glyphicon glyphicon-sort' ng-show='specialities.length > 1'></span>
-        <button ng-click='destroyFunction(speciality)' class='btn btn-danger'>Удалить</button>
+        <button ng-click='destroyFunction(speciality)' class='btn btn-danger'>
+          {{ l('app.buttons.remove')}}
+        </button>
       </td>
     </tr>
     <tr ng-if='speciality.id'>
@@ -26,7 +28,9 @@
         </small>
       </td>
       <td class='actions'>
-        <button ng-click='destroyFunction(speciality)' class='btn btn-danger'>Удалить</button>
+        <button ng-click='destroyFunction(speciality)' class='btn btn-danger'>
+          {{ l('app.buttons.change') }}
+        </button>
       </td>
     </tr>
   </tbody>
