@@ -36,6 +36,11 @@ class Person < ActiveRecord::Base
   def reviewer_files(context)
     [reviewer_review_for(context)]
   end
+
+  def self.imitate(post)
+    return nil unless post
+    self.new post.snapshot
+  end
 end
 
 # == Schema Information

@@ -10,11 +10,11 @@ json.council_speciality advert.council_speciality,
                 partial: 'manage/angular/council_speciality',
                 as: :speciality
 
-json.applicant advert.applicant,
+json.applicant Person.imitate(advert.applicant_post),
                 partial: 'manage/angular/person',
                 as: :person
 
-json.mentor advert.mentor,
+json.mentor Person.imitate(advert.mentor_post),
                 partial: 'manage/angular/person',
                 as: :person
 
@@ -40,13 +40,13 @@ json.review do
 end
 
 json.opponents do
-  json.array! advert.opponents, partial: 'manage/angular/person',
+  json.array! advert.opponents_post.map{ |post| Person.imitate(post) }, partial: 'manage/angular/person',
                                 as: :person,
                                 locals: { context: advert }
 end
 
 json.reviewers do
-  json.array! advert.reviewers, partial: 'manage/angular/person',
+  json.array! advert.reviewers_post.map{ |post| Person.imitate(post) }, partial: 'manage/angular/person',
                                 as: :person,
                                 locals: { context: advert }
 end

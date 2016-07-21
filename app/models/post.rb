@@ -3,9 +3,12 @@ class Post < ActiveRecord::Base
 
   ranks :row_order, with_same: [:context_id, :context_type]
   after_destroy :destroy_associated_files
+  before_create :create_snapshot
 
   belongs_to :context, polymorphic: true
   belongs_to :person
+
+  serialize :snapshot, Hash
 
   [:applicant, :mentor, :opponent, :reviewer].each do |scope_name|
     scope scope_name , -> { where(person_type: scope_name) }
@@ -16,6 +19,10 @@ class Post < ActiveRecord::Base
     if context.is_a?(Advert) && available_files_array.include?(person_type)
       person.send(%Q(#{person_type}_files), context).compact.map(&:destroy)
     end
+  end
+
+  def create_snapshot
+    self.snapshot = person.attributes
   end
 end
 
@@ -32,4 +39,5 @@ end
 #  updated_at   :datetime         not null
 #  row_order    :integer
 #  person_type  :string
+#  snapshot     :text
 #
