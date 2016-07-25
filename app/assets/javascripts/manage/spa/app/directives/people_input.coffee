@@ -54,6 +54,7 @@ angular.module('dashboard')
                 .success (data) ->
                   if $scope.people
                     $scope.people.push data
+                    $scope.directory_search = null
                   else
                     $scope.person = data
                   $scope.cleanPerson()
@@ -74,6 +75,7 @@ angular.module('dashboard')
 
           $scope.hideForm = () ->
             $scope.personNotFound = false
+            $scope.directory_search = null
 
           $scope.requestFormatter = (str) ->
             q: str, ids: ($scope.people || []).map((p) -> p.id )        # ||[] decision is for one person case

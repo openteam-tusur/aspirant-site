@@ -57,5 +57,12 @@ angular
             squash: true
       })
 
+      .state('specialities', {
+        url: '/specialities'
+        templateUrl: 'specialities.html'
+        controller: 'CouncilSpecialitiesController'
+        resolve: {}
+        })
+
     $urlRouterProvider.otherwise 'dashboard'
     ])

@@ -51,10 +51,6 @@
           <p ng-repeat='clerk in council.clerks'>
             {{ clerk.fullname }}
           </p>
-          <span ng-hide='council.clerks.length'>
-            <span>Добавить</span>
-            <span class='glyphicon glyphicon-plus'/>
-          </span>
         </td>
         <td class='actions councils-actions'>
           <a ui-sref="council_edit({councilId: council.id})" class='no-hover-text-decoration'>

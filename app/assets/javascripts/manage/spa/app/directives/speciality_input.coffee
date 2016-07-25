@@ -13,15 +13,6 @@ angular.module('dashboard')
         controller: ($scope, $http, localization) ->
           $scope.l = localization.l
           $scope.new_speciality = {}
-          $scope.new_speciality_science_type = {}
-
-          $scope.getScienceTypes = () ->
-            params = class_name: 'CouncilSpeciality', enumerize_value: 'science_type'
-            $http
-              .get "/manage/angular/get_enumerize_values", params: params
-              .success (data) ->
-                $scope.avalaibleScienceTypes = data.values
-
 
           $scope.requestFormatter = (q) ->
             {
@@ -42,13 +33,9 @@ angular.module('dashboard')
                 $scope.addFunction speciality, $scope.hideSpecialityForm
                 $scope.showSearch = false
               else
-                $scope.new_speciality_science_type = $scope.avalaibleScienceTypes[0]
-                if $scope.new_speciality_science_type
-                  $scope.new_speciality.science_type = $scope.avalaibleScienceTypes[0].enumerized
                 $scope.showCreateSpecialityForm = true
 
           $scope.showSearchButton = () ->
-
 
           $scope.createNewSpeciality = () ->
             if $scope.specialityForm.$valid
@@ -60,14 +47,10 @@ angular.module('dashboard')
                   input.$setDirty()
 
           $scope.hideSpecialityForm = () ->
-            $scope.new_person = {}
+            $scope.new_speciality = {}
             $scope.$broadcast 'angucomplete-alt:clearInput', 'speciality-angucomplete'
             $scope.showCreateSpecialityForm = false
             $scope.showSearch = false
 
-          $scope.cloneScienceType = (science_type) ->
-            $scope.new_speciality.science_type = science_type.enumerized
-
-          $scope.getScienceTypes()
       }
     ])

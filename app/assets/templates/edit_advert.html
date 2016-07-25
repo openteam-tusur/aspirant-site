@@ -48,6 +48,28 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-xs-12">
+      <legend> {{ l('advert.science_degree') }} </legend>
+    </div>
+    <div class="col-lg-6">
+      <select ng-options='degree.value for degree in science.science_degrees track by degree.value'
+              ng-model='science_degree'
+              placeholder='{{advert.science_degree}}'
+              name='title'
+              class='form-control form-control-small'
+              ng-model-options='{ debounce: 1000 }'
+              ng-change='copyFrom("science_degree")'
+              required
+            >
+
+      <span ng-show='advertForm.title.$invalid && advertForm.title.$dirty' class='invalid-message'>
+        {{ l('forms.field-invalid')}}
+      </span>
+      </button>
+    </div>
+  </div>
+
   <!-- mentor input -->
   <br>
   <div class="row advert-add-person-form">

@@ -1,6 +1,19 @@
 class Manage::CouncilSpecialitiesController < Manage::ApplicationController
   load_and_authorize_resource
 
+  def index
+    render partial: 'manage/angular/council_specialities', locals: { specialities: @council_specialities }
+  end
+
+  def show
+    render partial: 'manage/angular/council_speciality', locals: { speciality: @council_speciality }
+  end
+
+  def update
+    @council_speciality.update speciality_params
+    render partial: 'manage/angular/council_speciality', locals: { speciality: @council_speciality }
+  end
+
   def search
     @result = Searcher::CouncilSpecialitySearcher.new(search_params).collection
     render partial: 'manage/angular/council_specialities', locals: { specialities: @result }

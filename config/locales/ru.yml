@@ -30,6 +30,7 @@ ru:
     actions: 'Действия'
     nothing_found: 'Ничего не найдено'
     advert_edit: 'Редактирование объявления'
+    specialities: 'Управление списком специальностей'
     buttons:
       next:              '>>'
       previous:          '<<'
@@ -82,6 +83,7 @@ ru:
     applicant:            'Соискатель'
     speciality:           'Специальность диссертации'
     files_upload:         'Загрузка файлов'
+    science_degree:       'Претендует на степень'
     reviewer_review:      'Отзывы на автореферат'
     placement_date:       'Дата размещения'
     publication_date:     'Дата публикации'

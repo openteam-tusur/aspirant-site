@@ -1,0 +1,28 @@
+<div class='specialities-index' ng-form='specialitesForm'>
+  <div class="row">
+    <input type="text"
+           ng-model='searchQuery'
+           autofocus='true'
+           class='form-control'
+           ng-model-options='{ debounce: 300 }'
+           placeholder="{{ l('search_placeholder')}}"
+          >
+  </div>
+  <div class="row" ng-repeat='speciality in specialities | filter:searchQuery '>
+    <div class="col-xs-12">
+      <strong ng-show='!(activeSpeciality == speciality.id)'>{{ speciality.code }}: {{ speciality.title }}</strong>
+      <button ng-click='setSpecialityActive(speciality)'
+              ng-show='!activeSpecialityForm' >
+        {{l('app.buttons.edit')}}
+      </button>
+      <speciality-form speciality='speciality' ng-show='activeSpecialityForm == speciality.id'>
+      </speciality-form>
+      <button ng-click='saveSpeciality(speciality)' ng-show=' activeSpecialityForm == speciality.id '>
+        {{ l('app.buttons.save') }}
+      </button>
+      <button ng-click='restoreSpeciality(speciality)' ng-show=' activeSpecialityForm == speciality.id '>
+        {{ l('app.buttons.cancel') }}
+      </button>
+    </div>
+  </div>
+</div>

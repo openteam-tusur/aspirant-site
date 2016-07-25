@@ -28,45 +28,8 @@
     </div>
   </div>
   <div ng-if='showCreateSpecialityForm' class='speciality-form'>
-    <div class="row">
-      <div class="col-xs-12 col-md-6 col-lg-6">
-        <label>
-          {{ l('speciality.code')}}
-        </label>
-        <input type="text"
-               ng-model='new_speciality.code'
-               placeholder="{{ l('speciality.code_placeholder') }}"
-               name='code'
-               required
-               class='form-control form-control-small'
-               >
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-lg-6">
-        <label>
-          {{ l('speciality.title')}}
-        </label>
-        <input type="text"
-               ng-model='new_speciality.title'
-               placeholder="{{ l('speciality.title_placeholder') }}"
-               name='title'
-               required
-               class='form-control form-control-small'
-               >
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6">
-        <label> {{ l('speciality.science_title') }} </label>
-        <select ng-options='type.localized for type in avalaibleScienceTypes'
-                ng-model='new_speciality_science_type'
-                ng-change='cloneScienceType(new_speciality_science_type)'
-                class='form-control'
-        ></select>
-      </div>
-    </div>
-    <br>
+    <speciality-form  speciality='new_speciality'>
+    </speciality-form>
     <div class="row">
       <div class="col-xs-12 margin-top-10">
         <button ng-click='createNewSpeciality()' class='btn btn-success'>

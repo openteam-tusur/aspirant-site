@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :council_specialities, only: [:create] do
+    resources :council_specialities, only: [:index, :create, :update, :show] do
       member do
         post :remove_from_council
         post :update_order

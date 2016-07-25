@@ -9,7 +9,14 @@ angular
         f.promise.success (data) ->
           f.science_titles = data.science_titles
           f.science_degrees = data.science_degrees
-          callback()
+          callback(data)
+
+      f.getScienceTypes = (callback = angular.noop) ->
+        params = class_name: 'CouncilSpeciality', enumerize_value: 'science_type'
+        f.types_promise ||= $http.get "/manage/angular/get_enumerize_values", params: params
+        f.types_promise.success (data) ->
+          f.avalaibleScienceTypes = data.values
+          callback(data)
 
       return f
     ])

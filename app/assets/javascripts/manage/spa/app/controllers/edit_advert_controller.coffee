@@ -1,6 +1,7 @@
 angular
   .module('dashboard')
-  .controller('EditAdvertController', ['$scope', '$http', ($scope, $http) ->
+  .controller('EditAdvertController', ['$scope', '$http', 'science', ($scope, $http, science) ->
+    $scope.science = science
 
     $scope.getAdvert = () ->
       id = $scope.$state.params.advertId
@@ -12,6 +13,7 @@ angular
             $scope.stored_advert = {}
             angular.copy data, $scope.advert
             angular.copy data, $scope.stored_advert                 #object for changes detection
+            $scope.science.getScienceDictionaries $scope.callbackForScienceDegree
             $scope.getAvalaibleCouncils()
           .error -> $scope.$state.go 'dashboard'
 
@@ -22,6 +24,13 @@ angular
           context_id:   $scope.advert.id
           person_type: string
         }
+
+    $scope.callbackForScienceDegree = (data) ->
+      if $scope.advert.science_degree
+        $scope.science_degree = {}
+        science_degree = data.science_degrees.find (e) ->
+          e.value == $scope.advert.science_degree
+        angular.copy science_degree, $scope.science_degree
 
     $scope.updateField = (field) ->
       if $scope.fieldChanged(field)
@@ -87,6 +96,10 @@ angular
     $scope.updateDissertationCouncil = () ->
       $scope.advert.dissertation_council_id = $scope.advert.dissertation_council.id
       $scope.updateField "dissertation_council_id"
+
+    $scope.copyFrom = (key) ->
+      $scope.advert[key] = $scope[key]['value']
+      $scope.updateField key
 
     $scope.initializer = () ->
       $scope.getAdvert()
