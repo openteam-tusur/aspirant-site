@@ -316,6 +316,8 @@ GEM
     rails-assets-angucomplete-alt (2.2.0)
       rails-assets-angular (>= 1.4.0)
     rails-assets-angular (1.5.7)
+    rails-assets-angular-bootstrap (2.0.0)
+      rails-assets-angular (>= 1.4.0)
     rails-assets-angular-ui-router (0.3.1)
       rails-assets-angular (>= 1.0.8, < 2)
     rails-assets-angular-ui-sortable (0.14.0)
@@ -546,6 +548,7 @@ DEPENDENCIES
   rails (~> 4.2.0)
   rails-assets-angucomplete-alt!
   rails-assets-angular!
+  rails-assets-angular-bootstrap!
   rails-assets-angular-ui-router!
   rails-assets-angular-ui-sortable!
   rails-assets-bootstrap-datepicker!

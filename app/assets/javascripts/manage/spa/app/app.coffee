@@ -1,5 +1,5 @@
 angular
-  .module('dashboard', ['ui.router', 'templates', 'angucomplete-alt', 'ui.sortable', 'angularFileUpload'])
+  .module('dashboard', ['ui.router', 'templates', 'angucomplete-alt', 'ui.sortable', 'angularFileUpload', 'ui.bootstrap'])
   .config(['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) ->
     $stateProvider
       .state('dashboard', {
@@ -43,6 +43,19 @@ angular
         controller: 'EditAdvertController'
         resolve: {}
         })
+
+      .state('people', {
+        url: '/people?page&q'
+        templateUrl: 'people.html'
+        controller: 'PeopleController'
+        params:
+          page:
+            value:  '1'
+            squash: true
+          q:
+            value:  ''
+            squash: true
+      })
 
     $urlRouterProvider.otherwise 'dashboard'
     ])

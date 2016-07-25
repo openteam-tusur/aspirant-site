@@ -5,6 +5,10 @@ class Manage::PeopleController < Manage::ApplicationController
 
   attr_accessor :context
 
+  def show
+    render partial: 'manage/angular/person', locals: { person: @person }
+  end
+
   def create
     @person = Person.where(person_params).first_or_create
     Post.where(person: @person, context: context, title: title, person_type: params[:person_type])
@@ -12,9 +16,14 @@ class Manage::PeopleController < Manage::ApplicationController
     render partial: 'manage/angular/person', locals: { person: @person, context: context }
   end
 
+  def update
+    @person.update person_params
+    render partial: 'manage/angular/person', locals: { person: @person }
+  end
+
   def search
     @result = Searcher::PeopleSearcher.new(search_params).collection
-    render partial: 'manage/angular/people', locals: { people: @result }
+    render partial: 'manage/angular/people_search', locals: { result: @result }
   end
 
   def directory_search
@@ -63,7 +72,7 @@ class Manage::PeopleController < Manage::ApplicationController
   end
 
   def search_params
-    %w(q ids).each_with_object({}){ |key, hash| hash[key.to_sym] = params[key] }
+    %w(q ids page).each_with_object({}){ |key, hash| hash[key.to_sym] = params[key] }
   end
 
 end

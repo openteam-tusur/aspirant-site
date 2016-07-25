@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :adverts, only: [:index, :show, :create, :update, :destroy]
     resources :file_copies, only: [:create, :update, :destroy]
 
-    resources :people, only: [:create] do
+    resources :people, only: [:create, :update, :index, :show] do
       member do
         post :update_order
         post :remove_from_advert

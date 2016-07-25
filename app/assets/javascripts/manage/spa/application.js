@@ -5,6 +5,7 @@
 //= require bootstrap-datepicker
 //= require commons/bootstrap-datepicker-localization
 //= require angular
+//= require angular-bootstrap
 //= require angular-rails-templates
 //= require angularjs-file-upload
 //= require angular-ui-sortable

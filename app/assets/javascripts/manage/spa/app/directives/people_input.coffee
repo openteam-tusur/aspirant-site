@@ -37,10 +37,8 @@ angular.module('dashboard')
             $scope.updateDirectorySearch()
 
           $scope.cleanPerson = () ->
-            $scope.science.science_title = null
-            $scope.science.science_degree = null
+            $scope.$broadcast 'cleanPerson'
             $scope.peopleInput.$setPristine() if $scope.peopleInput
-            $scope.new_person = {}
 
           $scope.submitPerson = () ->
             if $scope.peopleInput && $scope.peopleInput.$invalid
@@ -61,10 +59,6 @@ angular.module('dashboard')
                   $scope.cleanPerson()
                   $scope.hideForm()
 
-          $scope.copyToPerson = (field) ->                                      #workaround for easier sending to rails
-            $scope.new_person[field] = $scope.science[field]['value']           #just copy data from $scope to $scope.new_person
-            $scope.new_person["#{field}_abbr"] = $scope.science[field]['abbr']
-
           $scope.updateDirectorySearch = () ->
             query = []
             for key in ['name', 'surname', 'patronymic']
@@ -83,13 +77,6 @@ angular.module('dashboard')
 
           $scope.requestFormatter = (str) ->
             q: str, ids: ($scope.people || []).map((p) -> p.id )        # ||[] decision is for one person case
-
-          $scope.getScienceDictionaries = () ->
-            $http
-              .get 'manage/angular/get_science_degrees_and_titles'
-              .success (data) ->
-                $scope.avalaibleAcademicTitles = data.science_titles
-                $scope.avalaibleAcademicDegrees = data.science_degrees
 
           $scope.setSpeciality = (speciality, callback) ->
             unless speciality.id
@@ -111,7 +98,7 @@ angular.module('dashboard')
 
           $scope.searchResponseFormatter = (data) ->
             results = []
-            for result in data
+            for result in data.people
               results.push result
             empty_object = {
               fullname: $scope.l('person.create_new')
@@ -119,6 +106,5 @@ angular.module('dashboard')
             }
             results.push empty_object
             return results
-          $scope.getScienceDictionaries()
       }
     ])

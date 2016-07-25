@@ -1,0 +1,43 @@
+<div class='people-index' ng-form='personForm'>
+  <div class="row">
+    <ul uib-pagination
+        total-items="total_pages"
+        ng-model="page"
+        previous-text='<<'
+        next-text='>>'
+        ng-change="searchPeople(false)"
+        max-size='5'
+        >
+    </ul>
+  </div>
+  <div class="row">
+    <input type="text"
+           ng-model='q'
+           ng-model-options='{ debounce: 500 }'
+           ng-change='searchPeople(true)'
+           autofocus='true'
+           class='form-control'
+           placeholder="{{ l('search_placeholder')}}"
+          >
+  </div>
+  <div class="row" ng-repeat='person in people'>
+    <div class="col-xs-12">
+      <strong ng-show='!(activePersonForm == person.id)'>{{ person.fullname }}</strong>
+      <button ng-click='setPersonActive(person)'
+              ng-show='!activePersonForm'
+              >
+        {{l('app.buttons.edit')}}
+      </button>
+      <person-form person='person'
+                   person-not-found='activePersonForm == person.id'
+                   form-object='personForm'>
+      </person-form>
+      <button ng-click='savePerson(person)' ng-show=' activePersonForm == person.id '>
+        {{ l('app.buttons.save') }}
+      </button>
+      <button ng-click='restorePerson(person)' ng-show=' activePersonForm == person.id '>
+        {{ l('app.buttons.cancel') }}
+      </button>
+    </div>
+  </div>
+</div>

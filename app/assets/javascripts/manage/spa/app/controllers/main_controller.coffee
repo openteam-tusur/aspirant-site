@@ -14,6 +14,7 @@ angular
       array.splice i, 1
 
     localization.getLocalization()
+    $scope.localization = localization
     $scope.l = localization.l
 
     ])

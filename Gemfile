@@ -71,6 +71,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-sugar'
   gem 'rails-assets-tinyscrollbar'
   gem 'rails-assets-waypoints'
+  gem 'rails-assets-angular-bootstrap'
 
   #angular assets stuff
   gem 'rails-assets-angular'
