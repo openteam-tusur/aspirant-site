@@ -51,6 +51,7 @@ gem 'sinatra', :require => nil
 gem 'sitemap_generator'
 gem 'stop_ie'
 gem 'sunspot_rails'
+gem 'therubyracer'
 gem 'time_diff'
 gem 'truncate_html'
 gem 'tusur_header', '>= 0.2.6'
