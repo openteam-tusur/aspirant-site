@@ -5,5 +5,4 @@ class CommonController < ActionController::Base
   rescue_from ActionView::MissingTemplate, Encoding::UndefinedConversionError do |exception|
     raise ActionController::RoutingError.new('Not Found')
   end if Rails.env.production?
-
 end

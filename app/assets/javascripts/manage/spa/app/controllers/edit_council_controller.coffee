@@ -51,7 +51,8 @@ angular
 
     $scope.updatePersonOrder = (person, index) ->
       params = { index: index }
-      params = Object.assign params, $scope.context
+      for key, value of $scope.context
+        params[key] = value
       $http
         .post "/manage/people/#{person.id}/update_order", params
 

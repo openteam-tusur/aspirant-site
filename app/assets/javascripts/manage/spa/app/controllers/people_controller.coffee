@@ -13,9 +13,6 @@ angular
         .success (data) ->
           for key, value of data
             $scope[key] = value
-        .error ->
-          console.warn 'error happened'
-          $state.go 'dashboard'
 
     $scope.searchPeople = (set_default_page = false) ->
       $scope.page = 1 if set_default_page

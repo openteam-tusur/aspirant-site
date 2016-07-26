@@ -66,3 +66,8 @@ angular
 
     $urlRouterProvider.otherwise 'dashboard'
     ])
+
+  .config(['$httpProvider', ($httpProvider) ->
+     $httpProvider.interceptors.push('redirectInterception')
+     $httpProvider.defaults.headers.common.Angular = true
+    ])
