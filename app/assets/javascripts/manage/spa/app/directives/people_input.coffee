@@ -48,7 +48,8 @@ angular.module('dashboard')
                 if input && input.$name
                   input.$setDirty()
             else
-              params = Object.assign {}, $scope.context
+              params = {}
+              angular.copy $scope.context, params
               params['person'] = $scope.new_person
               $http
                 .post '/manage/people', params

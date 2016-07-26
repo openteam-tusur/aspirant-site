@@ -33,10 +33,8 @@ angular
         role:         user.role.value
       }
       if user.role.need_context
-        permission = Object.assign permission, {
-          context_id:   user.context.id
-          context_type: user.context.type
-        }
+        permission.context_id = user.context.id
+        permission.context_type = user.context.type
 
       $http
         .post 'manage/permissions', permission

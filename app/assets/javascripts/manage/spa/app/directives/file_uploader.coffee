@@ -31,7 +31,7 @@ angular
               context_id: $scope.contextId
               'file_copy[kind]': $scope.kind
             }
-            h = Object.assign(h, {'file_copy[person_id]': $scope.personId }) if $scope.personId
+            h['file_copy[person_id]'] =  $scope.personId if $scope.personId
             h
 
           $scope.need = (string) ->
