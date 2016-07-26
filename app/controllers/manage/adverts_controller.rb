@@ -14,6 +14,16 @@ class Manage::AdvertsController < Manage::ApplicationController
     render partial: 'manage/angular/advert', locals: { advert: @advert }
   end
 
+  def publish
+    @advert.publish!
+    render json: { state: @advert.aasm_state }
+  end
+
+  def unpublish
+    @advert.unpublish!
+    render json: { state: @advert.aasm_state }
+  end
+
   def create
     council = current_user.available_contexts.sample()
     @advert.dissertation_council = council
@@ -30,13 +40,10 @@ class Manage::AdvertsController < Manage::ApplicationController
   private
 
   def update_params
-    params
-      .require(:advert)
-      .permit %w(
-                  organization_name science_degree
-                  title council_speciality_id
-                  dissertation_council_id
-                  publication_date place
-                  ).map(&:to_sym)
+    params.require(:advert)
+          .permit %w(
+                      organization_name science_degree title council_speciality_id
+                      dissertation_council_id publication_date place
+                    ).map(&:to_sym)
   end
 end

@@ -8,14 +8,21 @@ Rails.application.routes.draw do
     resources :permissions, only: [:create, :destroy, :index]
     resources :dissertation_councils, except: [:edit, :new]
     resources :posts, only: :destroy
-    resources :adverts, only: [:index, :show, :create, :update, :destroy]
     resources :file_copies, only: [:create, :update, :destroy]
+
+    resources :adverts, only: [:index, :show, :create, :update, :destroy] do
+      member do
+        post :publish
+        post :unpublish
+      end
+    end
 
     resources :people, only: [:create, :update, :index, :show] do
       member do
         post :update_order
         post :remove_from_advert
       end
+
       collection do
         get :search
         get :directory_search
@@ -27,6 +34,7 @@ Rails.application.routes.draw do
         post :remove_from_council
         post :update_order
       end
+
       collection do
         get :search
       end

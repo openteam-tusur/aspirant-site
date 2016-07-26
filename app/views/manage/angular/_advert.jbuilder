@@ -5,6 +5,7 @@ json.science_degree advert.science_degree
 json.placement_date advert.placement_date
 json.publication_date advert.publication_date
 json.organization_name advert.organization_name
+json.aasm_state advert.aasm_state
 
 json.council_speciality advert.council_speciality,
                 partial: 'manage/angular/council_speciality',

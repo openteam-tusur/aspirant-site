@@ -44,7 +44,6 @@
       <span ng-show='advertForm.title.$invalid && advertForm.title.$dirty' class='invalid-message'>
         {{ l('forms.field-invalid')}}
       </span>
-      </button>
     </div>
   </div>
 
@@ -66,7 +65,6 @@
       <span ng-show='advertForm.title.$invalid && advertForm.title.$dirty' class='invalid-message'>
         {{ l('forms.field-invalid')}}
       </span>
-      </button>
     </div>
   </div>
 
@@ -352,5 +350,13 @@
     </div>
   </div>
   <!-- end of reviewers -->
+
+  <button ng-click="changeState('publish')" ng-if="resolveChangeStateVisibility('draft')" class='btn btn-success'>
+    {{ l('app.buttons.publish') }}
+  </button>
+
+  <button ng-click="changeState('unpublish')" ng-if="resolveChangeStateVisibility('publicated')" class='btn btn-warning'>
+    {{ l('app.buttons.unpublish') }}
+  </button>
 
 </div>

@@ -41,6 +41,13 @@
         <button ui-sref="advert_edit({advertId: advert.id})" class='btn btn-warning'>
           {{ l('app.buttons.edit')}}
         </button>
+        <button ng-click="changeState(advert, 'publish')" ng-if="resolveChangeStateVisibility(advert, 'draft')" class='btn btn-success'>
+          {{ l('app.buttons.publish') }}
+        </button>
+
+        <button ng-click="changeState(advert, 'unpublish')" ng-if="resolveChangeStateVisibility(advert, 'publicated')" class='btn btn-warning'>
+          {{ l('app.buttons.unpublish') }}
+        </button>
       </td>
     </tr>
   </tbody>

@@ -37,6 +37,21 @@ class Advert < ActiveRecord::Base
 
   before_create :set_current_date
 
+  include AASM
+
+  aasm whiny_transitions: false do
+    state :draft, initial: true
+    state :publicated
+
+    event :publish do
+      transitions from: :draft, to: :publicated
+    end
+
+    event :unpublish do
+      transitions from: :publicated, to: :draft
+    end
+  end
+
   private
 
   def set_current_date
@@ -60,6 +75,7 @@ end
 #  updated_at              :datetime         not null
 #  title                   :text
 #  organization_name       :string
+#  aasm_state              :string
 #
 # Indexes
 #

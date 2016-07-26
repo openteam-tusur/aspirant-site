@@ -5,4 +5,5 @@ json.array! adverts do |advert|
                  partial: 'manage/angular/person',
                  as: :person
   json.publication_date I18n.l(advert.publication_date, format: :long) rescue nil
+  json.aasm_state advert.aasm_state
 end

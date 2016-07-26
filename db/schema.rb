@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160726040014) do
     t.datetime "updated_at",              null: false
     t.text     "title"
     t.string   "organization_name"
+    t.string   "aasm_state"
   end
 
   add_index "adverts", ["council_speciality_id"], name: "index_adverts_on_council_speciality_id", using: :btree

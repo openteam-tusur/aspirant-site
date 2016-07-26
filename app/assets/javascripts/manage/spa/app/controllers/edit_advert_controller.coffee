@@ -3,19 +3,29 @@ angular
   .controller('EditAdvertController', ['$scope', '$http', 'science', ($scope, $http, science) ->
     $scope.science = science
 
+    $scope.changeState = (transition) ->
+      $http
+        .post "manage/adverts/#{$scope.advert.id}/#{transition}"
+        .success (data) ->
+          $scope.$state.go 'adverts'
+
+    $scope.resolveChangeStateVisibility = (state) ->
+      return false unless $scope.advert
+      state == $scope.advert.aasm_state
+
     $scope.getAdvert = () ->
       id = $scope.$state.params.advertId
 
       $http
         .get "manage/adverts/#{id}"
-          .success (data) ->
-            $scope.advert = {}
-            $scope.stored_advert = {}
-            angular.copy data, $scope.advert
-            angular.copy data, $scope.stored_advert                 #object for changes detection
-            $scope.science.getScienceDictionaries $scope.callbackForScienceDegree
-            $scope.getAvalaibleCouncils()
-          .error -> $scope.$state.go 'dashboard'
+        .success (data) ->
+          $scope.advert = {}
+          $scope.stored_advert = {}
+          angular.copy data, $scope.advert
+          angular.copy data, $scope.stored_advert                 #object for changes detection
+          $scope.science.getScienceDictionaries $scope.callbackForScienceDegree
+          $scope.getAvalaibleCouncils()
+        .error -> $scope.$state.go 'dashboard'
 
     $scope.contextFor = (string) ->
       if $scope.advert

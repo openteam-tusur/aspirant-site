@@ -20,5 +20,14 @@ angular
             if data
               $scope.removeElementFrom $scope.adverts, advert
 
+      $scope.changeState = (advert, transition) ->
+        $http
+          .post "manage/adverts/#{advert.id}/#{transition}"
+          .success (data) ->
+            advert.aasm_state = data.state
+
+      $scope.resolveChangeStateVisibility = (advert, state) ->
+        state == advert.aasm_state
+
       $scope.getAdverts()
     ])

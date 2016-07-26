@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'aasm'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 gem 'angularjs-file-upload-rails', '~> 2.2.0'
