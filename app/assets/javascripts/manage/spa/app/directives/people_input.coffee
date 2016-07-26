@@ -37,6 +37,7 @@ angular.module('dashboard')
             $scope.updateDirectorySearch()
 
           $scope.cleanPerson = () ->
+            $scope.new_person_post_speciality = null
             $scope.$broadcast 'cleanPerson'
             $scope.peopleInput.$setPristine() if $scope.peopleInput
 
@@ -80,24 +81,6 @@ angular.module('dashboard')
           $scope.requestFormatter = (str) ->
             q: str, ids: ($scope.people || []).map((p) -> p.id )        # ||[] decision is for one person case
 
-          $scope.setSpeciality = (speciality, callback) ->
-            unless speciality.id
-              params = { speciality }
-              $http
-                .post 'manage/council_specialities', params
-                .success (data) ->
-                  $scope.new_person.council_speciality_id = data.id
-                  $scope.new_person.speciality = data
-                  callback()
-
-            $scope.new_person.council_speciality_id = speciality.id
-            $scope.new_person.speciality = speciality
-            callback()
-
-          $scope.destroySpeciality = () ->
-            $scope.new_person.council_speciality_id = null
-            $scope.new_person.speciality = null
-
           $scope.searchResponseFormatter = (data) ->
             results = []
             for result in data.people
@@ -108,5 +91,24 @@ angular.module('dashboard')
             }
             results.push empty_object
             return results
+
+          $scope.setSpeciality = (speciality, callback) ->
+            unless speciality.id              #create new speciality from form
+              params = { speciality }
+              $http
+                .post 'manage/council_specialities', params
+                .success (data) -> $scope.reallySetSpeciality(data, callback)
+            else                              #set speciality id to person post
+              $scope.reallySetSpeciality(speciality, callback)
+
+          $scope.reallySetSpeciality = (speciality, callback) ->
+            $scope.new_person.post ||= {}
+            $scope.new_person.post.council_speciality_id = speciality.id
+            $scope.new_person_post_speciality = speciality
+            callback()
+
+          $scope.destroySpeciality = () ->
+            $scope.new_person.post.council_speciality_id = null
+            $scope.new_person_post_speciality = null
       }
     ])

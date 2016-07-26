@@ -11,7 +11,12 @@ class Manage::PeopleController < Manage::ApplicationController
 
   def create
     @person = Person.where(person_params).first_or_create
-    Post.where(person: @person, context: context, title: title, person_type: params[:person_type])
+    Post.where(person: @person,
+               context: context,
+               title: title,
+               council_speciality_id: speciality,
+               person_type: params[:person_type]
+               )
         .first_or_create
     render partial: 'manage/angular/person', locals: { person: @person, context: context }
   end
@@ -58,7 +63,7 @@ class Manage::PeopleController < Manage::ApplicationController
 
   def person_params
     params.require(:person)
-          .except(:post, :speciality)
+          .except(:post, :speciality, :fullname)
           .permit( :id, :name, :surname, :patronymic,
                    :science_degree, :science_degree_abbr,
                    :science_title,  :science_title_abbr,
@@ -69,6 +74,10 @@ class Manage::PeopleController < Manage::ApplicationController
 
   def title
     params[:person][:post][:title] rescue ''
+  end
+
+  def speciality
+    params[:person][:post][:council_speciality_id] rescue ''
   end
 
   def search_params

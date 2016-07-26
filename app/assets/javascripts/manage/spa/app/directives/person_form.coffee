@@ -31,23 +31,6 @@ angular.module('dashboard')
                                             .find (e) ->
                                               e.value == $scope.new_person[key]
 
-          $scope.setSpeciality = (speciality, callback) ->
-            unless speciality.id
-              params = { speciality }
-              $http
-                .post 'manage/council_specialities', params
-                .success (data) ->
-                  $scope.new_person.council_speciality_id = data.id
-                  $scope.new_person.speciality = data
-                  callback()
-            $scope.new_person.council_speciality_id = speciality.id
-            $scope.new_person.speciality = speciality
-            callback()
-
-          $scope.destroySpeciality = () ->
-            $scope.new_person.council_speciality_id = null
-            $scope.new_person.speciality = null
-
           $scope.$on 'cleanPerson', $scope.cleanPerson
           science.getScienceDictionaries($scope.associateScienceDictionaries)
       }

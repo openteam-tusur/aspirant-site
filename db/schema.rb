@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721091051) do
+ActiveRecord::Schema.define(version: 20160726040014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,9 +91,8 @@ ActiveRecord::Schema.define(version: 20160721091051) do
     t.string   "url"
     t.string   "science_degree"
     t.string   "science_title"
-    t.integer  "council_speciality_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "science_degree_abbr"
     t.string   "science_title_abbr"
     t.text     "work_place"
@@ -115,14 +114,18 @@ ActiveRecord::Schema.define(version: 20160721091051) do
     t.string   "context_type"
     t.integer  "person_id"
     t.string   "title"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "row_order"
     t.string   "person_type"
     t.text     "snapshot"
+    t.integer  "council_speciality_id"
   end
+
+  add_index "posts", ["council_speciality_id"], name: "index_posts_on_council_speciality_id", using: :btree
 
   add_foreign_key "adverts", "council_specialities"
   add_foreign_key "adverts", "dissertation_councils"
   add_foreign_key "file_copies", "people"
+  add_foreign_key "posts", "council_specialities"
 end

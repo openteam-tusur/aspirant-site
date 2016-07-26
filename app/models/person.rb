@@ -4,8 +4,6 @@ class Person < ActiveRecord::Base
 
   has_many :people
 
-  belongs_to :speciality, class_name: 'CouncilSpeciality', foreign_key: 'council_speciality_id'
-
   searchable do
     text :fullname
     integer :id
@@ -47,19 +45,18 @@ end
 #
 # Table name: people
 #
-#  id                    :integer          not null, primary key
-#  name                  :string
-#  surname               :string
-#  patronymic            :string
-#  url                   :string
-#  science_degree        :string
-#  science_title         :string
-#  council_speciality_id :integer
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  science_degree_abbr   :string
-#  science_title_abbr    :string
-#  work_place            :text
-#  work_post             :text
-#  directory_id          :integer
+#  id                  :integer          not null, primary key
+#  name                :string
+#  surname             :string
+#  patronymic          :string
+#  url                 :string
+#  science_degree      :string
+#  science_title       :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  science_degree_abbr :string
+#  science_title_abbr  :string
+#  work_place          :text
+#  work_post           :text
+#  directory_id        :integer
 #
