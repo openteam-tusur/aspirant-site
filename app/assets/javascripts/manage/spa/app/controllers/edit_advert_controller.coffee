@@ -1,11 +1,12 @@
 angular
   .module('dashboard')
   .controller('EditAdvertController', ['$scope', '$http', 'science', ($scope, $http, science) ->
+    $scope.url = '/manage/announcements/'
     $scope.science = science
 
     $scope.changeState = (transition) ->
       $http
-        .post "manage/adverts/#{$scope.advert.id}/#{transition}"
+        .post "#{$scope.url}#{$scope.advert.id}/#{transition}"
         .success (data) ->
           $scope.$state.go 'adverts'
 
@@ -17,7 +18,7 @@ angular
       id = $scope.$state.params.advertId
 
       $http
-        .get "manage/adverts/#{id}"
+        .get "#{$scope.url}#{id}"
         .success (data) ->
           $scope.advert = {}
           $scope.stored_advert = {}
@@ -50,7 +51,7 @@ angular
             "#{field}": $scope.advert[field]
         }
         $http
-          .patch "manage/adverts/#{$scope.advert.id}", params
+          .patch "#{$scope.url}/#{$scope.advert.id}", params
           .success (data) ->
             $scope.stored_advert[field] = data[field]
 
@@ -93,7 +94,7 @@ angular
     $scope.submitAdvert = () ->
       params = $scope.createParams()
       $http
-        .post "manage/adverts/#{$scope.advert.id}"
+        .post "#{$scope.url}#{$scope.advert.id}"
         .success (data) ->
           $scope.advert = data
 

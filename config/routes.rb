@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :posts, only: :destroy
     resources :file_copies, only: [:create, :update, :destroy]
 
-    resources :adverts, only: [:index, :show, :create, :update, :destroy] do
+    resources :adverts, path: :announcements, only: [:index, :show, :create, :update, :destroy] do
       member do
         post :publish
         post :unpublish
