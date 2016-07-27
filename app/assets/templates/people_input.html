@@ -1,4 +1,4 @@
-<div class='add-person-form' ng-form='peopleInput'>
+<div class='add-person-form' ng-form='peopleInput' ng-class='personNotFound ? "material-design-form new-person" : " "'>
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6" ng-hide='personNotFound'>
       <!-- ready person search -->
@@ -70,13 +70,13 @@
   <div class='clearfix'></div>
   <br>
   <div class="row" ng-if='new_person.name && new_person.surname && askPost'>
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-      <input placeholder="{{ l('post.title') }}"
-             ng-model='new_person.post.title'
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 group">
+      <input ng-model='new_person.post.title'
              type="text"
-             class='form-control form-control-small'
              name='post_title'
              >
+      <span class="bar"></span>
+      <label>{{ l('post.title') }}</label>
       <span ng-if='peopleInput.post_title.$error.required && peopleInput.post_title.$dirty'>
         {{ l('forms.field-invalid')}}
       </span>
@@ -84,37 +84,37 @@
   </div>
 
   <!-- speciality input -->
-  <div class="col-xs-12" ng-if='new_person.name && new_person.surname && askPost'>
-    <label>
-      {{ l('person.speciality') }}
-    </label>
-    <speciality-input speciality='new_person_post_speciality'
-                      add-function='setSpeciality'
-                      is-single="true"
-                      ></speciality-input>
+  <div class="row" ng-if='new_person.name && new_person.surname && askPost'>
+    <div class="col-lg-8 group">
+      <label>{{ l('person.speciality') }}</label>
+      <speciality-input speciality='new_person_post_speciality'
+                        add-function='setSpeciality'
+                        is-single="true"
+                        ></speciality-input>
 
-    <speciality-list speciality='new_person_post_speciality'
-                     destroy-function='destroySpeciality'
-    ></speciality-list>
+      <speciality-list speciality='new_person_post_speciality'
+                       destroy-function='destroySpeciality'
+      ></speciality-list>
+    </div>
   </div>
   <!-- end of speciality input -->
 
   <!-- end of Post title -->
   <div class='row add-person-form-actions'>
     <div class="col-lg-1" ng-show='new_person.name' >
-      <button ng-click='submitPerson()' class='btn btn-success'>
+      <button ng-click='submitPerson()' class='btn btn-save'>
         {{ l('app.buttons.save') }}
       </button>
     </div>
     <div class='col-lg-1'>
-      <button ng-click='cleanPerson()' class='btn btn-warning' ng-show='personNotFound || new_person.name'>
-        {{ l('app.buttons.clean') }}
-      </button>
-    </div>
-    <div class='col-lg-1'>
-      <button ng-click='cleanPerson(); hideForm()' class='btn btn-danger' ng-show='personNotFound || new_person.name'>
+      <button ng-click='cleanPerson(); hideForm()' class='btn btn-cancel' ng-show='personNotFound || new_person.name'>
         {{ l('app.buttons.cancel') }}
       </button>
+    </div>
+    <div class='col-lg-1 btn-clean-wrapper'>
+      <a ng-click='cleanPerson()' ng-show='personNotFound || new_person.name' class='btn-clean'>
+        {{ l('app.buttons.clean') }}
+      </a>
     </div>
   </div>
 </div>

@@ -1,68 +1,67 @@
 <div class="col-xs-12 col-sm-8 col-md-7 col-lg-8 person-form" ng-if='personNotFound'>
   {{ personForm | json}}
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
       <!-- Фамилия -->
       <input type="text"
              name='surname'
-             placeholder="{{ l('person.surname')}}"
              ng-model='new_person.surname'
-             class='form-control form-control-small'
              ng-change='infoUpdateFunction()'
              required
              ></input>
+      <span class="bar"></span>
+      <label>{{ l('person.surname')}}<abbr title="{{ l('forms.field-invalid')}}" class="required">*</abbr></label>
+
       <span ng-if='formObject.surname.$error.required && formObject.surname.$dirty' class='invalid-message'>
         {{ l('forms.field-invalid') }}
       </span>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
       <!-- Имя -->
       <input type="text"
-             placeholder="{{ l('person.name')}}"
              name='name'
              ng-model='new_person.name'
-             class='form-control form-control-small'
              ng-change='infoUpdateFunction()'
              required
              ></input>
+      <span class="bar"></span>
+      <label>{{ l('person.name') }}<abbr title="{{ l('forms.field-invalid')}}" class="required">*</abbr></label>
+
       <span ng-if='formObject.name.$error.required && formObject.name.$dirty' class='invalid-message'>
         {{ l('forms.field-invalid')}}
       </span>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
       <!-- Отчество -->
       <input type="text"
-             placeholder="{{ l('person.patronymic')}}"
              ng-model='new_person.patronymic'
-             class='form-control form-control-small'
              ng-change='infoUpdateFunction()'
              ></input>
+      <span class="bar"></span>
+      <label>{{ l('person.patronymic')}}</label>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
       <!-- Ученая степень -->
-      <label>{{ l('person.academic_degree')}}</label>
-      <abbr title="{{ l('forms.field-invalid')}}" ng-if='formObject.science_degree.$error.required'>
-        *
-      </abbr>
       <select ng-model='science.science_degree'
               ng-change='copyToPerson("science_degree")'
-              class='form-control form-control-small'
+              class='form-control'
               ng-options='degree.value for degree in science_dictionaries.science_degrees track by degree.value'
               name='science_degree'
               required
              ></select>
+      <label>{{ l('person.academic_degree')}}
+        <abbr title="{{ l('forms.field-invalid')}}" ng-if='formObject.science_degree.$error.required' class='required'>
+          *
+        </abbr>
+      </label>
       <span ng-if='formObject.science_degree.$error.required && formObject.science_degree.$dirty' class='invalid-message'>
         {{ l('forms.field-invalid')}}
       </span>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
       <!-- Ученое звание -->
-      <label>{{ l('person.academic_title')}}</label>
-      <abbr title="{{ l('forms.field-invalid')}}" ng-if='formObject.science_title.$error.required'>
-        *
-      </abbr>
       <select ng-model='science.science_title'
               ng-options='title.value for title in science_dictionaries.science_titles track by title.value'
               ng-change='copyToPerson("science_title")'
@@ -70,6 +69,11 @@
               name='science_title'
               required
              ></select>
+      <label>{{ l('person.academic_title')}}
+        <abbr title="{{ l('forms.field-invalid')}}" ng-if='formObject.science_title.$error.required' class='required'>
+          *
+        </abbr>
+      </label>
       <span ng-if='formObject.science_title.$error.required && formObject.science_title.$dirty' class='invalid-message'>
         {{ l('forms.field-invalid')}}
       </span>
@@ -77,36 +81,33 @@
 
     <div class='clearfix'></div>
     <!-- Ссылка на страницу пользователя -->
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-      <label>{{ l('person.url')}}</label>
-      <input placeholder="{{ l('person.url') }}"
-             ng-model='new_person.url'
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 group not-required">
+      <input ng-model='new_person.url'
              type="text"
-             class='form-control form-control-small'
              name='person_url'
              ></input>
+      <span class="bar"></span>
+      <label>{{ l('person.url')}}</label>
     </div>
 
     <!-- Место работы пользователя -->
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-      <label>{{ l('person.work_place')}}</label>
-      <input placeholder="{{ l('person.work_place') }}"
-             ng-model='new_person.work_place'
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 group not-required">
+      <input ng-model='new_person.work_place'
              type="text"
-             class='form-control form-control-small'
              name='person_workplace'
              ></input>
+      <span class="bar"></span>
+      <label>{{ l('person.work_place')}}</label>
     </div>
 
     <!-- Должность пользователя -->
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
-      <label>{{ l('person.work_post')}}</label>
-      <input placeholder="{{ l('person.work_post') }}"
-             ng-model='new_person.work_post'
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 group not-required">
+      <input ng-model='new_person.work_post'
              type="text"
-             class='form-control form-control-small'
              name='person_work_title'
              ></input>
+      <span class="bar"></span>
+      <label>{{ l('person.work_post')}}</label>
     </div>
   </div>
 </div>

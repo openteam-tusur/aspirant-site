@@ -94,6 +94,7 @@
 
   .invalid-message
     color: red
+    padding-left: 1px
     font-size: 1.4rem
 
     label
@@ -150,9 +151,17 @@
     label
       margin-top: 10px
 
+  //Form for adding person
   .add-person-form
-    label
-      margin-top: 5px
+    &.new-person
+      padding: 20px
+      background: #eaf2ff
+
+      .group
+        input,
+        select
+          background: #eaf2ff
+          +border-radius(0)
 
     .add-person-form-actions
       margin-top: 5px
