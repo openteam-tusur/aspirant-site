@@ -37,10 +37,18 @@
                       <% council.people.sort_by{ |person| person.row_order_for(council) }.each do |person| %>
                         <tr>
                           <td>
-                            <%= council_person_fullname_and_posts(person) %>
+                            <p>
+                              <%= person.url.blank? ? person.fullname : link_to(person.fullname, person.url, target: '_blank') %><br>
+                              <span class="gray-text small"><%= person.post_for(council).title %></span>
+                            </p>
                           </td>
                           <td>
-                            <%= council_person_science_and_speciality(person) %>
+                            <% if person.post_for(council).speciality.present? %>
+                              <p>
+                                <strong><%= person.post_for(council).speciality.code %></strong> <%= person.post_for(council).speciality.title %><br>
+                                <span class="gray-text small"><%= person.science_degree %>, <%= person.work_post if person.work_post.present? %></span>
+                              </p>
+                            <% end %>
                           </td>
                         </tr>
                       <% end %>
