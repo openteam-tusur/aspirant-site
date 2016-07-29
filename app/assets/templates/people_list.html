@@ -1,23 +1,57 @@
 <!-- if used with list -->
-<div ng-if='people.length' class='people-list-table'>
+<div ng-if='people.length' class='alternative-table people-list-table'>
+  <div class='header'>
+    <div class='col-lg-4 header-cell'>ФИО, должность в совете</div>
+    <div class='col-lg-4 header-cell'>Место работы, должность</div>
+    <div class='col-lg-2 header-cell'>Специальность</div>
+    <div class='col-lg-1 header-cell'>Действия</div>
+    <div class='col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort'></span></abbr></div>
+  </div>
+
   <div ui-sortable='sortableOptions' ng-model='people'>
-    <div ng-repeat='person in people' class='row'>
-      <div class='info col-xs-9 info'>
-        <strong>
-          {{ person.fullname }}
-        </strong>
+    <div ng-repeat='person in people' class='row content-row person-block'>
+      <!-- Person FIO and work post-->
+      <div class='info col-lg-4 content-cell'>
+        <span class='person-name'>{{ person.fullname }}</span>
         <br>
-        <small>
-          {{ person.current_post.title }}
-        </small>
-        <small>
-          {{ personDegrees(person) }}
-        </small>
+        <span ng-click="personPostInput = !personPostInput" ng-hide='personPostInput' class='gray-text small orange-line'>{{ person.current_post.title }}</span>
+        <div class='row material-design-form' ng-show="personPostInput">
+          <div class='col-lg-6'>
+            <input class='form-control'
+                   type='text'
+                   value="{{ person.current_post.title }}">
+          </div>
+
+          <div class='col-lg-3'>
+            <button ng-click='' class='btn btn-save'>
+              {{ l('app.buttons.save') }}
+            </button>
+          </div>
+          <div class='col-lg-3'>
+            <button ng-click='personPostInput = !personPostInput' class='btn btn-cancel'>
+              {{ l('app.buttons.cancel') }}
+            </button>
+          </div>
+        </div>
       </div>
-      <div class='actions col-xs-3 actions'>
-        <span class='handle glyphicon glyphicon-sort' ng-show='people.length > 1'></span>
-        <button ng-click='destroyPersonFunction(person, person_type)' class='btn btn-danger'>Удалить</button>
+
+      <!-- Work place and work post-->
+      <div class='col-lg-4 content-cell'>
+        <span class='work-place'>{{ person.work_place }}</span><br>
+        <span class='gray-text small'>{{ person.science_degree }} {{ person.science_degree.length != 0 ? ', ' : ''}} {{ person.work_post }}</span>
       </div>
+
+      <!-- Person speciality-->
+      <div class='col-lg-2 content-cell'>
+        <span class='speciality-code orange-line'>Код специальности</span>
+      </div>
+
+      <!-- Person actions -->
+      <div class='col-lg-1 content-cell actions'>
+        <span ng-click='destroyPersonFunction(person, person_type)' class='glyphicon glyphicon-remove'></span>
+        <span class='handle sort-icon' ng-show='people.length > 1'></span>
+      </div>
+
       <div ng-if='context && person_type == "opponent" ' class='col-xs-12'>
         <label> {{ l('advert.files.opponent_review') }} </label>
         <file-uploader multiple='single'

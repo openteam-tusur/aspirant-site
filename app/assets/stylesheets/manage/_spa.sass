@@ -106,7 +106,6 @@
 
   .people-list-table,
   .specialities-items
-    width: 50%
     margin-bottom: 20px
 
     td
@@ -124,13 +123,60 @@
 
   .people-list-table
     clear: both
+    border: 1px solid #e7e7e7
+
+    .header
+      .header-cell
+        &:last-child
+          padding: 3px
+
+    .alfavit-sort
+      background: asset_url('spa/alfavit-sort.png')
+      background-repeat: no-repeat
+      background-color: #005ca9
+      background-position: 6px
+      width: 25px
+      height: 29px
+      display: block
+      +border-radius(5px)
+      float: right
+
+      &:hover
+        cursor: pointer
 
     .review-uploader
       padding: 10px 0 10px 5px
       border-bottom: 1px solid #ccc
 
-    .info
-      margin: 5px 0
+    .person-block
+      margin-left: 0
+      margin-right: 0
+
+      .orange-line
+        border-bottom: 2px solid #f18d4f
+
+        &:hover
+          cursor: pointer
+
+      .person-name,
+      .work-place,
+      .speciality-code
+        font-size: 18px
+
+      .person-name
+        white-space: nowrap
+
+      .actions
+        .sort-icon
+          background: asset_url('spa/sort-icon.png')
+          background-repeat: no-repeat
+          width: 30px
+          height: 15px
+          display: inline-block
+          margin: 0 3px
+
+          &:hover
+            cursor: move
 
   .ui-sortable-helper
     background: #fff
