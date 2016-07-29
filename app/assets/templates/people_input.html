@@ -39,12 +39,13 @@
                  >
     </person-form>
     <!-- Directory results -->
-    <div class="col-xs-12 col-sm-4 col-md-5 col-lg-4 directory-results"  ng-if='personNotFound'>
+    <div class="col-xs-12 col-sm-4 col-md-5 col-lg-4 search-person-block"  ng-if='personNotFound'>
       <ul>
         <li ng-repeat='result in directory_search'
             ng-click='fillPerson(result)'
             >
-          <div class="search-person-result">
+          <p class='search-person-block-motivation'>Выберите из сотрудников<p>
+          <div class="search-person-block-result">
             <strong>
               {{ result.full_name }}
             </strong>

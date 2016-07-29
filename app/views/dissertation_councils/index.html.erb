@@ -26,7 +26,7 @@
                   <% if council.specialities.present? %>
                     <ul class='ul-rhombus'>
                       <% council.specialities.sort_by{ |speciality| speciality.row_order_for(council) }.each do |speciality| %>
-                        <li><%= speciality.code %> <%= speciality.title %></li>
+                        <li><strong><%= speciality.code %></strong> <%= speciality.title %></li>
                       <% end %>
                     </ul>
                   <% end %>
@@ -34,24 +34,37 @@
                   <% if council.people.present? %>
                     <p><strong>Состав диссертационного совета</strong></p>
                     <table>
-                      <% council.people.sort_by{ |person| person.row_order_for(council) }.each do |person| %>
+                      <thead class='gray-bg'>
                         <tr>
-                          <td>
-                            <p>
-                              <%= person.url.blank? ? person.fullname : link_to(person.fullname, person.url, target: '_blank') %><br>
-                              <span class="gray-text small"><%= person.post_for(council).title %></span>
-                            </p>
-                          </td>
-                          <td>
-                            <% if person.post_for(council).speciality.present? %>
-                              <p>
-                                <strong><%= person.post_for(council).speciality.code %></strong> <%= person.post_for(council).speciality.title %><br>
-                                <span class="gray-text small"><%= person.science_degree %>, <%= person.work_post if person.work_post.present? %></span>
-                              </p>
-                            <% end %>
-                          </td>
+                          <th>ФИО, должность в совете</th>
+                          <th>Место работы, должность</th>
+                          <th>Специальность</th>
                         </tr>
-                      <% end %>
+                      </thead>
+                      <tbody>
+                        <% council.people.sort_by{ |person| person.row_order_for(council) }.each do |person| %>
+                          <tr>
+                            <td>
+                              <p>
+                                <span class='no-wrap-words'><%= person.url.blank? ? person.fullname : link_to(person.fullname, person.url, target: '_blank') %></span>
+                                <br>
+                                <span class='gray-text small'><%= person.post_for(council).title %></span>
+                              </p>
+                            </td>
+                            <td>
+                                <p>
+                                  <%= person.work_place if person.work_place.present? %><br>
+                                  <span class='gray-text small'><%= person.science_degree %>, <%= person.work_post if person.work_post.present? %></span>
+                                </p>
+                            </td>
+                            <td>
+                              <% if person.post_for(council).speciality.present? %>
+                                <abbr title="<%= person.post_for(council).speciality.title %>"><%= person.post_for(council).speciality.code %></abbr>
+                              <% end %>
+                            </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
                     </table>
                   <% end %>
                 </div>

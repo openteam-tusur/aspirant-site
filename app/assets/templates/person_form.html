@@ -6,6 +6,7 @@
       <input type="text"
              name='surname'
              ng-model='new_person.surname'
+             ng-model-options='{ debounce:200 }'
              ng-change='infoUpdateFunction()'
              required
              ></input>
@@ -21,6 +22,7 @@
       <input type="text"
              name='name'
              ng-model='new_person.name'
+             ng-model-options='{ debounce:200 }'
              ng-change='infoUpdateFunction()'
              required
              ></input>
