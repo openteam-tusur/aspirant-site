@@ -13,7 +13,7 @@ angular.module('dashboard')
         transclude: true
         restrict: 'E'
         templateUrl: 'people_list.html'
-        controller: ($scope) ->
+        controller: ($scope, $http) ->
           $scope.l = localization.l
 
           $scope.personDegrees = (person) ->
@@ -33,5 +33,17 @@ angular.module('dashboard')
             handle: '.handle'
             stop: $scope.updateOrder
           }
+
+          $scope.updatePost = (post, callback) ->
+            params = { post:
+                         title: post.title
+                     }
+            $http
+              .patch "manage/posts/#{post.id}", params
+              .success (data) ->
+                post = data
+                callback(true)
+              .error (error) ->
+                callback(error)
       }
     ])

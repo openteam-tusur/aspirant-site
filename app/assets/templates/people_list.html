@@ -14,25 +14,10 @@
       <div class='info col-lg-4 content-cell'>
         <span class='person-name'>{{ person.fullname }}</span>
         <br>
-        <span ng-click="personPostInput = !personPostInput" ng-hide='personPostInput' class='gray-text small orange-line'>{{ person.current_post.title }}</span>
-        <div class='row material-design-form' ng-show="personPostInput">
-          <div class='col-lg-6'>
-            <input class='form-control'
-                   type='text'
-                   value="{{ person.current_post.title }}">
-          </div>
-
-          <div class='col-lg-3'>
-            <button ng-click='' class='btn btn-save'>
-              {{ l('app.buttons.save') }}
-            </button>
-          </div>
-          <div class='col-lg-3'>
-            <button ng-click='personPostInput = !personPostInput' class='btn btn-cancel'>
-              {{ l('app.buttons.cancel') }}
-            </button>
-          </div>
-        </div>
+        <text-input target='person.current_post.title'
+                    update-function='updatePost'
+                    target-context='person.current_post'>
+        </text-input>
       </div>
 
       <!-- Work place and work post-->

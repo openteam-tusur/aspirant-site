@@ -1,0 +1,23 @@
+<span ng-click="showInput = !showInput"
+      ng-hide='showInput'
+      class='gray-text small orange-line'>
+      {{ target }}
+</span>
+<div class='row material-design-form' ng-show="showInput">
+  <div class='col-lg-6'>
+    <input class='form-control'
+           type='text'
+           ng-model="target">
+  </div>
+
+  <div class='col-lg-3'>
+    <button ng-click='save()' class='btn btn-save'>
+      {{ l('app.buttons.save') }}
+    </button>
+  </div>
+  <div class='col-lg-3'>
+    <button ng-click='cancel()' class='btn btn-cancel'>
+      {{ l('app.buttons.cancel') }}
+    </button>
+  </div>
+</div>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :manage do
     resources :permissions, only: [:create, :destroy, :index]
     resources :dissertation_councils, except: [:edit, :new]
-    resources :posts, only: :destroy
+    resources :posts, only: [:update, :destroy]
     resources :file_copies, only: [:create, :update, :destroy]
 
     resources :adverts, path: :announcements, only: [:index, :show, :create, :update, :destroy] do
