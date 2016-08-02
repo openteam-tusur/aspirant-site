@@ -10,7 +10,7 @@ angular.module('dashboard')
         transclude: true
         restrict: 'E'
         templateUrl: 'text_input.html'
-        controller: ($scope, localization) ->
+        controller: ($scope, localization, $timeout) ->
           $scope.l = localization.l
 
           $scope.makeBackup = () ->
@@ -25,6 +25,10 @@ angular.module('dashboard')
           $scope.updateCallback = (state) ->
             if state == true
               $scope.showInput = false
+              $scope.highlight = true
+              $timeout ->
+                $scope.highlight = false
+              , 800
             else
               $scope.error = state
               $scope.showError = true

@@ -13,6 +13,6 @@ class Manage::PostsController < Manage::ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:title, :council_speciality_id)
   end
 end

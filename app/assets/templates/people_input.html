@@ -83,24 +83,22 @@
       </span>
     </div>
   </div>
+  <!-- end of Post title -->
 
-  <!-- speciality input -->
+  <!-- speciality selector -->
   <div class="row" ng-if='new_person.name && new_person.surname && askPost'>
     <div class="col-lg-8 group">
+      <speciality-selector new-person='new_person'
+                           update-function='updatePost'
+                           specialities='specialities'
+                           context='context'>
+      </speciality-selector>
+      <span class="bar"></span>
       <label>{{ l('person.speciality') }}</label>
-      <speciality-input speciality='new_person_post_speciality'
-                        add-function='setSpeciality'
-                        is-single="true"
-                        ></speciality-input>
-
-      <speciality-list speciality='new_person_post_speciality'
-                       destroy-function='destroySpeciality'
-      ></speciality-list>
     </div>
   </div>
-  <!-- end of speciality input -->
+  <!-- end of speciality selector -->
 
-  <!-- end of Post title -->
   <div class='row add-person-form-actions'>
     <div class="col-lg-1" ng-show='new_person.name' >
       <button ng-click='submitPerson()' class='btn btn-save'>

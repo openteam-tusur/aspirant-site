@@ -1,7 +1,9 @@
 <span ng-click="showInput = !showInput"
       ng-hide='showInput'
-      class='gray-text small orange-line'>
+      class='gray-text small orange-line'
+      ng-class="{'success-highlight': highlight }">
       {{ target }}
+      <span class="error-highlight" ng-show='showError'>Произошла ошибка при сохранении!</span>
 </span>
 <div class='row material-design-form' ng-show="showInput">
   <div class='col-lg-6'>

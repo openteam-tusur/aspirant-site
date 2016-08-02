@@ -6,28 +6,40 @@
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-xs-12'>
-    <people-input context='context'
-                  people='council.people'
-                  ask-post='true'
-                  ></people-input>
+<div class="row">
+  <div class="col-lg-12 devider">
+    <h3 class='inline-header'>{{ l('councils.council_speciality') }}</h3>
+    <span class='link-emulator' ng-click='showSpecialityInput = !showSpecialityInput'>Добавить</span>
+    <speciality-input specialities='council.specialities'
+                      add-function='addSpecialityToCouncil'
+                      ng-show='showSpecialityInput'>
+    </speciality-input>
   </div>
 </div>
 
 <div class='row'>
   <div class='col-xs-12'>
-    <h3>{{ l('councils.council_members') }}</h3>
+    <h3 class='inline-header'>{{ l('councils.council_members') }}</h3>
+    <span class='link-emulator' ng-click='showPeopleInput = !showPeopleInput'>Добавить участника</span>
+    <people-input context='context'
+                  people='council.people'
+                  ask-post='true'
+                  ng-show='showPeopleInput'
+                  specialitites='council.specialities'
+                  ></people-input>
+  </div>
+  <div class="col-xs-12">
     <people-list people='council.people'
                  destroy-with='destroyPost'
                  update-order-function='updatePersonOrder'
+                 specialities='council.specialities'
+                 context='context'
                  >
     </people-list>
   </div>
 </div>
 <div class='row'>
   <div class='col-xs-12'>
-    <speciality-input specialities='council.specialities' add-function='addSpecialityToCouncil'></speciality-input>
     <speciality-list specialities='council.specialities'
                      destroy-function='removeSpecialityFromCouncil'
                      update-order-function='updateSpecialityOrder'

@@ -9,6 +9,7 @@ angular.module('dashboard')
           destroyPersonFunction: '=destroyWith'
           updateOrderFunction: '=updateOrderFunction'
           context: '=context'
+          specialities: "=specialities"
 
         transclude: true
         restrict: 'E'
@@ -27,6 +28,21 @@ angular.module('dashboard')
             person = $scope.people[index]
             $scope.updateOrderFunction person, index
 
+          $scope.orderPeopleCompare = (a, b) ->
+            if (a.fullname < b.fullname)
+              return -1
+            if (a.fullname > b.fullname)
+              return 1
+            return 0
+
+          $scope.peopleAlfavitOrder = ->
+            $scope.people.sort($scope.orderPeopleCompare)
+
+            index = 0
+            for person in $scope.people
+              $scope.updateOrderFunction person, index
+              index++
+
           $scope.sortableOptions = {
             axis: 'y'
             cursor: 'move'
@@ -37,6 +53,7 @@ angular.module('dashboard')
           $scope.updatePost = (post, callback) ->
             params = { post:
                          title: post.title
+                         council_speciality_id: post.council_speciality_id
                      }
             $http
               .patch "manage/posts/#{post.id}", params

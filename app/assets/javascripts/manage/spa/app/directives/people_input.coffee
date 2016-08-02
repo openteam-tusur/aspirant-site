@@ -8,6 +8,7 @@ angular.module('dashboard')
           person:  '=person'
           askPost: '@askPost'
           kind:    '@kind'
+          specialities: '=specialitites'
         transclude: true
         restrict: 'E'
         templateUrl: 'people_input.html'
@@ -29,9 +30,10 @@ angular.module('dashboard')
             for key in ['patronymic', 'surname', 'name']
               u[key] = person[key]
             u.url = "https://directory.tusur.ru/people/#{person.id}"
-            u.work_post    = person.main_post.title
-            u.work_post    = person.main_post.short_title unless u.work_post.length
-            u.work_place   = person.main_post.subdivision.title + ' ТУСУР'
+            if person.main_post
+              u.work_post    = person.main_post.title || ''
+              u.work_post    = person.main_post.short_title unless u.work_post.length
+              u.work_place   = person.main_post.subdivision.title + ' ТУСУР'
             u.directory_id = person.id
 
             $scope.updateDirectorySearch()

@@ -149,3 +149,29 @@
       &:hover
         cursor: pointer
         text-decoration: underline
+
+@keyframes success-fade
+  0%
+    color: #fff
+    opacity: 100
+    background: #33cc33
+
+  100%
+    color: #000
+    background: #fff
+
+@keyframes error-fade
+  0%
+    color: #fff
+    opacity: 100
+    background: red
+
+  100%
+    color: #000
+    background: #fff
+
+.success-highlight
+  +animation(success-fade 0.8s ease-in 1)
+
+.error-highlight
+  +animation(success-fade 0.8s ease-in 1)

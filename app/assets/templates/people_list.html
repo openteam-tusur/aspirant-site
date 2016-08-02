@@ -5,7 +5,7 @@
     <div class='col-lg-4 header-cell'>Место работы, должность</div>
     <div class='col-lg-2 header-cell'>Специальность</div>
     <div class='col-lg-1 header-cell'>Действия</div>
-    <div class='col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort'></span></abbr></div>
+    <div class='col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort' ng-click='peopleAlfavitOrder()'></span></abbr></div>
   </div>
 
   <div ui-sortable='sortableOptions' ng-model='people'>
@@ -28,7 +28,13 @@
 
       <!-- Person speciality-->
       <div class='col-lg-2 content-cell'>
-        <span class='speciality-code orange-line'>Код специальности</span>
+        <span class='speciality-code orange-line'>
+          <speciality-selector person='person'
+                               update-function='updatePost'
+                               specialities='specialities'
+                               context='context'>
+          </speciality-selector>
+        </span>
       </div>
 
       <!-- Person actions -->
