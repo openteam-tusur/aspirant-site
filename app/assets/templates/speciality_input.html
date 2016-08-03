@@ -1,11 +1,6 @@
-<div ng-form='specialityForm'>
-  <div class="row" ng-hide='speciality.id || showCreateSpecialityForm'>
-    <div class="col-xs-12" ng-hide='showSearch || isSingle'>
-      <button ng-click='showSearch = !showSearch' ng-hide='showSearch' class='btn btn-primary'>
-        {{ l('app.buttons.add_speciality') }}
-      </button>
-    </div>
-    <div class="col-xs-6" ng-if='showSearch || isSingle'>
+<div ng-form='specialityForm' class='material-design-form'>
+  <div class="row" ng-hide='speciality.id || showCreateSpecialityForm' ng-if='showSearch || isSingle'>
+    <div class="col-xs-8">
       <angucomplete-alt  id="speciality-angucomplete"
                          placeholder="{{ l('speciality.speciality_search') }}"
                          minlength="1"
@@ -22,20 +17,22 @@
                          text-searching="Идет поиск..."
                        ></angucomplete-alt>
        <br>
-        <button ng-click='hideSpecialityForm()' class='btn btn-danger' ng-hide='isSingle'>
-          {{ l('app.buttons.cancel') }}
-        </button>
+    </div>
+    <div class='col-lg-4'>
+      <button ng-click='hideSpecialityForm()' class='btn btn-cancel' ng-hide='isSingle'>
+        {{ l('app.buttons.cancel') }}
+      </button>
     </div>
   </div>
   <div ng-if='showCreateSpecialityForm' class='speciality-form'>
     <speciality-form  speciality='new_speciality'>
     </speciality-form>
     <div class="row">
-      <div class="col-xs-12 margin-top-10">
-        <button ng-click='createNewSpeciality()' class='btn btn-success'>
+      <div class="col-xs-12 actions">
+        <button ng-click='createNewSpeciality()' class='btn btn-save'>
           {{ l('app.buttons.create_speciality_and_add_to_council') }}
         </button>
-        <button ng-click='hideSpecialityForm()' class='btn btn-danger'>
+        <button ng-click='hideSpecialityForm()' class='btn btn-cancel'>
           {{ l('app.buttons.cancel') }}
         </button>
       </div>

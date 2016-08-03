@@ -123,10 +123,10 @@ ru:
   councils:
     council_with_number: 'Диссертационный совет № '
     number: 'Номер диссертационного совета'
-    executive: 'Ответственный секретарь совета'
+    executive: 'Роль учёного секретаря'
     confirm: 'Вы уверены, что хотите удалить диссертационный совет?'
     council_members: 'Состав диссертационного совета'
-    council_speciality: 'Специальность'
+    council_speciality: 'Специальности'
 
   views:
     pagination:

@@ -7,6 +7,7 @@ angular.module('dashboard')
           addFunction: '=addFunction'
           speciality: '=speciality'
           isSingle: '@isSingle'
+          showSearch: '=showSearch'
         transclude: true
         restrict: 'E'
         templateUrl: 'speciality_input.html'

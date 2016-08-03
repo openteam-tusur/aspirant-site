@@ -9,6 +9,7 @@ angular.module('dashboard')
           askPost: '@askPost'
           kind:    '@kind'
           specialities: '=specialitites'
+          showPeopleInput: '=showPeopleInput'
         transclude: true
         restrict: 'E'
         templateUrl: 'people_input.html'
@@ -79,6 +80,7 @@ angular.module('dashboard')
 
           $scope.hideForm = () ->
             $scope.personNotFound = false
+            $scope.showPeopleInput = false
             $scope.directory_search = null
 
           $scope.requestFormatter = (str) ->

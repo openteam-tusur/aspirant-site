@@ -1,23 +1,30 @@
-<div class='add-person-form' ng-form='peopleInput' ng-class='personNotFound ? "material-design-form new-person" : " "'>
+<div class='add-person-form material-design-form' ng-form='peopleInput' ng-class='personNotFound || new_person.fullname ? "new-person" : " "'>
   <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6" ng-hide='personNotFound'>
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-12" ng-hide='personNotFound'>
       <!-- ready person search -->
-      <div class="search" ng-hide='new_person.fullname'>
-        <angucomplete-alt id="user-angucomplete"
-                          placeholder="Поиск среди участников"
-                          minlength="3"
-                          clear-selected='true'
-                          remote-url='manage/people/search'
-                          remote-url-request-formatter='requestFormatter'
-                          remote-url-response-formatter='searchResponseFormatter'
-                          title-field="fullname"
-                          description-field="email"
-                          search-fields="fullname,email"
-                          selected-object="setPerson"
-                          match-class="highlight"
-                          input-class="form-control form-control-small angucomplete-input"
-                          text-searching="Идет поиск..."
-                          ></angucomplete-alt>
+      <div class="row search" ng-hide='new_person.fullname'>
+        <div class='col-lg-8'>
+          <angucomplete-alt id="user-angucomplete"
+                            placeholder="Поиск среди участников"
+                            minlength="3"
+                            clear-selected='true'
+                            remote-url='manage/people/search'
+                            remote-url-request-formatter='requestFormatter'
+                            remote-url-response-formatter='searchResponseFormatter'
+                            title-field="fullname"
+                            description-field="email"
+                            search-fields="fullname,email"
+                            selected-object="setPerson"
+                            match-class="highlight"
+                            input-class="form-control form-control-small angucomplete-input"
+                            text-searching="Идет поиск..."
+                            ></angucomplete-alt>
+        </div>
+        <div class='col-lg-4'>
+          <button ng-click='showPeopleInput = !showPeopleInput' class='btn btn-cancel' ng-hide='new_person.fullname'>
+            {{ l('app.buttons.cancel') }}
+          </button>
+        </div>
       </div>
 
       <div ng-show='new_person.fullname'>
@@ -49,16 +56,16 @@
             <strong>
               {{ result.full_name }}
             </strong>
+            <br>
             <small ng-if='result.academic_degree'>
-              <br/>
               {{ l('person.academic_degree') }}: {{ result.academic_degree }}
             </small>
             <small ng-if='result.academic_rank'>
               <br/>
               {{ l('person.academic_title') }}: {{ result.academic_rank }}
             </small>
-            <small ng-repeat='post in postsOf(result.posts)'>
-              {{ post }}
+            <small>
+              {{ postsOf(result.posts)[0] }}
             </small>
           </div>
         </li>
@@ -86,15 +93,15 @@
   <!-- end of Post title -->
 
   <!-- speciality selector -->
-  <div class="row" ng-if='new_person.name && new_person.surname && askPost'>
+  <div class="row" ng-show='new_person.name && new_person.surname'>
     <div class="col-lg-8 group">
       <speciality-selector new-person='new_person'
                            update-function='updatePost'
                            specialities='specialities'
-                           context='context'>
+                           context='context'
+                           label-text='l("person.speciality")'>
       </speciality-selector>
       <span class="bar"></span>
-      <label>{{ l('person.speciality') }}</label>
     </div>
   </div>
   <!-- end of speciality selector -->

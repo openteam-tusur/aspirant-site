@@ -1,37 +1,29 @@
-<table class='specialities-items'>
-  <tbody ui-sortable='sortableOptions' ng-model='specialities'>
-    <tr ng-repeat='speciality in specialities' ng-if='specialities.length'>
-      <td class='info'>
-        <strong>
-          {{ speciality.code }}
-        </strong>
-        <br />
-        <small>
-          {{ speciality.title }}
-        </small>
-      </td>
-      <td class='actions'>
-        <span class='handle glyphicon glyphicon-sort' ng-show='specialities.length > 1'></span>
-        <button ng-click='destroyFunction(speciality)' class='btn btn-danger'>
-          {{ l('app.buttons.remove')}}
-        </button>
-      </td>
-    </tr>
-    <tr ng-if='speciality.id'>
-      <td class='info'>
-        <strong>
-          {{ speciality.code }}
-        </strong>
-        <br />
-        <small>
-          {{ speciality.title }}
-        </small>
-      </td>
-      <td class='actions'>
-        <button ng-click='destroyFunction(speciality)' class='btn btn-danger'>
-          {{ l('app.buttons.change') }}
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class='specialities-items alternative-table'>
+  <div class='header'>
+    <div class='col-lg-2 header-cell'>Код</div>
+    <div class='col-lg-8 header-cell'>Название</div>
+    <div class='col-lg-1 header-cell'>Действия</div>
+    <div class='col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort' ng-click=''></span></abbr></div>
+  </div>
+
+  <div ui-sortable='sortableOptions' ng-model='specialities'>
+    <div class='row content-row' ng-repeat='speciality in specialities' ng-if='specialities.length'>
+      <div class='col-lg-2 content-cell'>{{ speciality.code }}</div>
+      <div class='col-lg-8 content-cell'>{{ speciality.title }}</div>
+      <div class='col-lg-1 content-cell actions'>
+        <span class='handle sort-icon' ng-show='specialities.length > 1'></span>
+        <span ng-click='destroyFunction(speciality)' class='glyphicon glyphicon-remove'></span>
+      </div>
+    </div>
+  </div>
+  <div class='row content-row' ng-if='speciality.id'>
+    <div class='col-lg-3 content-cell'>{{ speciality.code }}</div>
+    <div class='col-lg-4 content-cell'>{{ speciality.title }}</div>
+    <div class='col-lg-3 content-cell actions'>
+      <span ng-click='destroyFunction(speciality)' class='glyphicon glyphicon-remove'></span>
+      <span class='handle sort-icon' ng-show='specialities.length > 1'></span>
+    </div>
+  </div>
+  </div>
+
+</div>

@@ -27,6 +27,7 @@ angular.module('dashboard')
             index = ui.item.index()
             person = $scope.people[index]
             $scope.updateOrderFunction person, index
+            $scope.highligthRow = true
 
           $scope.orderPeopleCompare = (a, b) ->
             if (a.fullname < b.fullname)

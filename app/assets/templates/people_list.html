@@ -39,8 +39,8 @@
 
       <!-- Person actions -->
       <div class='col-lg-1 content-cell actions'>
-        <span ng-click='destroyPersonFunction(person, person_type)' class='glyphicon glyphicon-remove'></span>
         <span class='handle sort-icon' ng-show='people.length > 1'></span>
+        <span ng-click='destroyPersonFunction(person, person_type)' class='glyphicon glyphicon-remove'></span>
       </div>
 
       <div ng-if='context && person_type == "opponent" ' class='col-xs-12'>

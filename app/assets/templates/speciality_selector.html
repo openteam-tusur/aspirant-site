@@ -1,23 +1,25 @@
-<span ng-click="showSpecialitySelector = !showSpecialitySelector"
-   ng-hide="showSpecialitySelector"
-   class='orange-line'>
-  <span ng-class="{'success-highlight': highlight }" ng-show="person">
-    {{ person.current_post.council_speciality_id ? currentPersonSpeciality(specialities, person).code : "Изменить"  }}
-  </span>
-</span>
-<div class='row material-design-form' ng-show="showSpecialitySelector || (!newPerson.id && newPerson.name && newPerson.post.title)">
+<div class="row speciality-selector">
+  <div class="col-xs-12">
+    <span ng-click="showSelect()"
+          ng-hide="showSpecialitySelector"
+          class='orange-line'>
+      <span ng-class="{'success-highlight': highlight }"
+            ng-show="person">
+        {{ person.current_post.council_speciality_id ? currentPersonSpeciality(specialities, person).code : "Изменить"  }}
+      </span>
+    </span>
+  </div>
+</div>
+
+<div class='row material-design-form' ng-show="showSpecialitySelector || newPerson">
   <!-- Selector for change person speciality -->
-  <div class="col-lg-12">
+  <div class="col-lg-10">
     <select class="form-control"
             ng-change="person ? updateSpeciality(person.current_post) : setNewPersonSpeciality(newPerson)"
             ng-model="chosenSpeciality"
-            ng-options="speciality as speciality.code for speciality in specialities">
+            ng-options="speciality.code for speciality in specialities"
+            ng-class="{'change-selector' : !newPerson}">
     </select>
-  </div>
-
-  <div class='col-lg-12'>
-    <button ng-click='cancel()' class='btn btn-cancel' ng-show="showSpecialitySelector">
-      {{ l('app.buttons.cancel') }}
-    </button>
+    <label ng-show='newPerson'>{{ labelText }}</label>
   </div>
 </div>
