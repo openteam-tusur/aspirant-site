@@ -10,12 +10,32 @@ angular.module('dashboard')
           updateOrderFunction: '=updateOrderFunction'
           context: '=context'
           specialities: "=specialities"
+          saveEditPerson: '=saveEditPerson'
+          restoreEditPerson: '=restoreEditPerson'
+          changeActivePersonForm: '=changeActivePersonForm'
 
         transclude: true
         restrict: 'E'
         templateUrl: 'people_list.html'
-        controller: ($scope, $http) ->
+        controller: ($scope, $http, $timeout) ->
           $scope.l = localization.l
+
+          $scope.activateEditFormAction = (person) ->
+            $scope.showEditPersonForm = !$scope.showEditPersonForm
+            $scope.setPersonActive(person)
+
+          $scope.saveAction = (person, object) ->
+            $scope.changeActivePersonForm(object)
+            $scope.saveEditPerson(person)
+
+          $scope.cancelAction = (person) ->
+            $scope.restoreEditPerson person
+
+           $scope.showEditPersonForm = ->
+             $scope.activePersonForm == person.id
+
+          $scope.setPersonActive = (person) ->
+            $scope.activePersonForm = person.id
 
           $scope.personDegrees = (person) ->
             result = []
@@ -23,11 +43,15 @@ angular.module('dashboard')
               result.push string if string
             result.join(', ')
 
+          $scope.detectEqualItem = (person) ->
+            return person == $scope.sortPerson
+
           $scope.updateOrder = (_, ui) ->
+            $scope.orderAllItems = false
             index = ui.item.index()
             person = $scope.people[index]
+            $scope.sortPerson = person
             $scope.updateOrderFunction person, index
-            $scope.highligthRow = true
 
           $scope.orderPeopleCompare = (a, b) ->
             if (a.fullname < b.fullname)
@@ -43,6 +67,8 @@ angular.module('dashboard')
             for person in $scope.people
               $scope.updateOrderFunction person, index
               index++
+
+            $scope.orderAllItems = true
 
           $scope.sortableOptions = {
             axis: 'y'
@@ -63,5 +89,11 @@ angular.module('dashboard')
                 callback(true)
               .error (error) ->
                 callback(error)
+
+          $scope.$on 'deactivatedEditForm', ->
+            $scope.activePersonForm = null
+
+          $scope.$on 'updatePerson', ->
+            $scope.activePersonForm = null
       }
     ])

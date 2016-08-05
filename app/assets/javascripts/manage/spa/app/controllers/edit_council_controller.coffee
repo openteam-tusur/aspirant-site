@@ -2,6 +2,9 @@ angular
   .module('dashboard')
   .controller('EditCouncilController', ['$scope', '$http', ($scope, $http) ->
 
+    $scope.changePersonForm = (object) ->
+      $scope.personForm = object
+
     $scope.getCouncil = () ->
       id = $scope.$state.params.councilId
       $http
@@ -55,6 +58,26 @@ angular
         params[key] = value
       $http
         .post "/manage/people/#{person.id}/update_order", params
+
+    $scope.savePerson = (person) ->
+      unless $scope.personForm.$valid                   #show validations error
+        $scope.personForm.$setSubmitted()
+        for _, input of $scope.personForm
+          if input && input.$name
+            input.$setDirty()
+      else
+        params = { person: person }                     #save person
+        $http
+          .patch "manage/people/#{person.id}", params
+          .success (data) ->
+            $scope.$broadcast 'updatePerson'
+
+
+    $scope.restorePerson = (person) ->
+      $http.get "manage/people/#{person.id}"
+           .success (data) ->
+             person = data
+             $scope.$broadcast 'deactivatedEditForm'
 
     $scope.initializer = ()->
       $scope.getCouncil()

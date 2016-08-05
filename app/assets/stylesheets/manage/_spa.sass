@@ -22,7 +22,6 @@
 
   .devider
     border-top: 1px solid #eee
-    padding-bottom: 10px
     margin-top: 15px
     width: 100%
 
@@ -186,6 +185,21 @@
         &:hover
           cursor: move
 
+    .person-name
+      position: relative
+
+      .edit-icon
+        background: asset_url('spa/edit-icon.png')
+        background-repeat: no-repeat
+        width: 20px
+        height: 20px
+        position: absolute
+        top: 4px
+        right: -30px
+
+        &:hover
+          cursor: pointer
+
   .specialities-items
     .content-row
       margin-left: 0
@@ -203,9 +217,12 @@
   .speciality-selector-cancel-btn
     padding: 0
 
-  //Form for adding person
-  .add-person-form
-    &.new-person
+  //Form for add and edit person
+
+  .add-person-form,
+  .edit-person-form
+    &.new-person,
+    &.edit-person
       padding: 20px
       background: #eaf2ff
 
@@ -279,3 +296,40 @@
     margin: 20px 0
     border-bottom: 1px solid #ccc
 
+// Highlights aggregator
+
+@keyframes order-success
+  0%
+    background: #33cc33
+
+  100%
+    background: #fff
+
+@keyframes success-fade
+  0%
+    color: #fff
+    opacity: 100
+    background: #33cc33
+
+  100%
+    color: #000
+    background: #fff
+
+@keyframes error-fade
+  0%
+    color: #fff
+    opacity: 100
+    background: red
+
+  100%
+    color: #000
+    background: #fff
+
+.success-highlight
+  +animation(success-fade 0.8s ease-in 1)
+
+.error-highlight
+  +animation(success-fade 0.8s ease-in 1)
+
+.order-success
+  +animation(order-success 1.2s ease-in 1)

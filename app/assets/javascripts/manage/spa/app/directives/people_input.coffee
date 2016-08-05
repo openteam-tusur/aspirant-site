@@ -10,6 +10,7 @@ angular.module('dashboard')
           kind:    '@kind'
           specialities: '=specialitites'
           showPeopleInput: '=showPeopleInput'
+          editForm: '=editForm'
         transclude: true
         restrict: 'E'
         templateUrl: 'people_input.html'

@@ -1,5 +1,8 @@
 <!-- if used with list -->
-<div ng-if='people.length' class='alternative-table people-list-table'>
+<div ng-if='people.length'
+  class='alternative-table people-list-table'
+  ng-form='personForm'>
+
   <div class='header'>
     <div class='col-lg-4 header-cell'>ФИО, должность в совете</div>
     <div class='col-lg-4 header-cell'>Место работы, должность</div>
@@ -8,11 +11,35 @@
     <div class='col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort' ng-click='peopleAlfavitOrder()'></span></abbr></div>
   </div>
 
-  <div ui-sortable='sortableOptions' ng-model='people'>
-    <div ng-repeat='person in people' class='row content-row person-block'>
+  <div ui-sortable='sortableOptions'
+       ng-model='people'
+       ng-class="{'order-success': orderAllItems}">
+
+    <div ng-repeat='person in people'
+         class='row content-row person-block'
+         ng-class="{'order-success': detectEqualItem(person)}">
+
+      <div class='col-lg-12 edit-person-form content-cell'
+           ng-show='activePersonForm == person.id'
+           ng-class="{'edit-person-form material-design-form edit-person': activePersonForm == person.id}">
+
+        <person-form person='person'
+                     person-not-found='activePersonForm == person.id'
+                     form-object='personForm'>
+        </person-form>
+
+        <button ng-click='saveAction(person, personForm)' ng-show='activePersonForm == person.id '>
+          {{ l('app.buttons.save') }}
+        </button>
+
+        <button ng-click='cancelAction(person)' ng-show='activePersonForm == person.id '>
+          {{ l('app.buttons.cancel') }}
+        </button>
+      </div>
+
       <!-- Person FIO and work post-->
-      <div class='info col-lg-4 content-cell'>
-        <span class='person-name'>{{ person.fullname }}</span>
+      <div class='info col-lg-4 content-cell' ng-show='activePersonForm != person.id'>
+        <span class='person-name'>{{ person.surname }} {{person.name}} {{person.patronymic}}<span class='edit-icon' ng-click='activateEditFormAction(person)'></span></span>
         <br>
         <text-input target='person.current_post.title'
                     update-function='updatePost'
@@ -21,13 +48,13 @@
       </div>
 
       <!-- Work place and work post-->
-      <div class='col-lg-4 content-cell'>
+      <div class='col-lg-4 content-cell' ng-show='activePersonForm != person.id'>
         <span class='work-place'>{{ person.work_place }}</span><br>
         <span class='gray-text small'>{{ person.science_degree }} {{ person.science_degree.length != 0 ? ', ' : ''}} {{ person.work_post }}</span>
       </div>
 
       <!-- Person speciality-->
-      <div class='col-lg-2 content-cell'>
+      <div class='col-lg-2 content-cell' ng-show='activePersonForm != person.id'>
         <span class='speciality-code orange-line'>
           <speciality-selector person='person'
                                update-function='updatePost'
@@ -38,7 +65,7 @@
       </div>
 
       <!-- Person actions -->
-      <div class='col-lg-1 content-cell actions'>
+      <div class='col-lg-1 content-cell actions' ng-show='activePersonForm != person.id'>
         <span class='handle sort-icon' ng-show='people.length > 1'></span>
         <span ng-click='destroyPersonFunction(person, person_type)' class='glyphicon glyphicon-remove'></span>
       </div>

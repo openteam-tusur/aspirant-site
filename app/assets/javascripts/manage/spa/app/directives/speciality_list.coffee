@@ -14,10 +14,15 @@ angular.module('dashboard')
         controller: ($scope, $http, localization) ->
           $scope.l = localization.l
 
+          $scope.detectEqualItem = (speciality) ->
+            return speciality == $scope.sortItem
+
           $scope.updateOrder = (event, ui) ->
+            $scope.orderAllItems = false
             index = ui.item.index()
             speciality = $scope.specialities[index]
             $scope.updateOrderFunction speciality, index
+            $scope.sortItem = speciality
 
           $scope.sortableOptions = {
             axis: 'y'
