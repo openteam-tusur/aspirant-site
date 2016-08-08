@@ -1,7 +1,7 @@
 <div ng-form='specialityForm' class='material-design-form'>
   <div class="row" ng-hide='speciality.id || showCreateSpecialityForm' ng-if='showSearch || isSingle'>
-    <div class="col-xs-8">
-      <angucomplete-alt  id="speciality-angucomplete"
+    <div class="col-sm-10 col-md-10 col-lg-8">
+      <angucomplete-alt  class="speciality-angucomplete"
                          placeholder="{{ l('speciality.speciality_search') }}"
                          minlength="1"
                          clear-selected='true'
@@ -18,7 +18,7 @@
                        ></angucomplete-alt>
        <br>
     </div>
-    <div class='col-lg-4'>
+    <div class='col-sm-2 col-md-2 col-lg-4'>
       <button ng-click='hideSpecialityForm()' class='btn btn-cancel' ng-hide='isSingle'>
         {{ l('app.buttons.cancel') }}
       </button>

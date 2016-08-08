@@ -6,18 +6,18 @@
       <span class="error-highlight" ng-show='showError'>Произошла ошибка при сохранении!</span>
 </span>
 <div class='row material-design-form' ng-show="showInput">
-  <div class='col-lg-6'>
+  <div class='col-md-12 col-lg-6'>
     <input class='form-control'
            type='text'
            ng-model="target">
   </div>
 
-  <div class='col-lg-3'>
+  <div class='col-md-3 col-lg-3 btn-container'>
     <button ng-click='save()' class='btn btn-save'>
       {{ l('app.buttons.save') }}
     </button>
   </div>
-  <div class='col-lg-3'>
+  <div class='col-md-3 col-lg-3 btn-container'>
     <button ng-click='cancel()' class='btn btn-cancel'>
       {{ l('app.buttons.cancel') }}
     </button>

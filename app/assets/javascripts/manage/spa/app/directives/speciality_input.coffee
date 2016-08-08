@@ -24,7 +24,7 @@ angular.module('dashboard')
             }
 
           $scope.searchResponseFormatter = (response_array) ->
-            response_array.push code: $scope.l('app.nothing_found')
+            response_array.push code: $scope.l('speciality.create_new')
             response_array
 
           $scope.addSpeciality = (obj) ->

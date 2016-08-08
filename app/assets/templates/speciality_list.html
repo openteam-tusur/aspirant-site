@@ -1,9 +1,9 @@
 <div class='specialities-items alternative-table'>
   <div class='header'>
-    <div class='col-lg-2 header-cell'>Код</div>
-    <div class='col-lg-8 header-cell'>Название</div>
-    <div class='col-lg-1 header-cell'>Действия</div>
-    <div class='col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort' ng-click='specialitiesAlfavitOrder()'></span></abbr></div>
+    <div class='col-sm-2 col-md-2 col-lg-2 header-cell'>Код</div>
+    <div class='col-sm-7 col-md-8 col-lg-8 header-cell'>Название</div>
+    <div class='col-sm-2 col-md-1 col-lg-1 header-cell'>Действия</div>
+    <div class='col-sm-1 col-md-1 col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort' ng-click='specialitiesAlfavitOrder()'></span></abbr></div>
   </div>
 
   <div ui-sortable='sortableOptions'
@@ -15,10 +15,10 @@
          ng-if='specialities.length'
          ng-class="{'order-success': detectEqualItem(speciality)}">
 
-      <div class='col-lg-2 content-cell'>{{ speciality.code }}</div>
-      <div class='col-lg-8 content-cell'>{{ speciality.title }}</div>
+      <div class='col-sm-2 col-md-2 col-lg-2 content-cell'>{{ speciality.code }}</div>
+      <div class='col-sm-7 col-md-8 col-lg-8 content-cell'>{{ speciality.title }}</div>
 
-      <div class='col-lg-1 content-cell actions'>
+      <div class='col-sm-2 col-md-2 col-lg-1 content-cell actions'>
         <span class='handle sort-icon' ng-show='specialities.length > 1'></span>
         <span ng-click='destroyFunction(speciality)' class='glyphicon glyphicon-remove'></span>
       </div>

@@ -5,60 +5,56 @@
   <form>
   </form>
 
-  <table class='table'>
+  <table class='table councils-list'>
     <thead>
-      <th>
-        {{ l('councils.number') }}
+      <th class='text-left reset-left-padding'>
+        <small>{{ l('councils.number') }}</small>
       </th>
-      <th>
-        {{ l('councils.executive') }}
-      </th>
-      <th>
-        {{ l('app.actions') }}
+      <th class='text-left'>
+        <small>{{ l('councils.executive') }}</small>
       </th>
     </thead>
     <tbody>
-      <tr ng-hide='formToggled'>
-        <td colspan="3">
-          <button ng-click='toggleForm()' class='btn btn-primary'>
+      <tr ng-repeat='council in councils'>
+        <td class='council-number reset-left-padding'>
+          <a ui-sref="council_edit({councilId: council.id})">{{ council.number }}</a>
+        </td>
+        <td class='council-clerk'>
+          <p ng-repeat='clerk in council.clerks'>
+            {{ clerk.fullname }}
+          </p>
+        </td>
+      </tr>
+      <tr ng-hide='formToggled' class='material-design-form'>
+        <td colspan="3" class="no-bottom-border reset-left-padding">
+          <button ng-click='toggleForm()' class='btn btn-add'>
             {{ l('app.buttons.add') }}
           </button>
         </td>
       </tr>
       <tr ng-if='formToggled'>
-        <td>
+        <td class="no-bottom-border reset-left-padding">
           <input type="text"
                  placeholder="{{ l('councils.number') }}"
                  ng-model='new_council.number'
                  class='form-control form-control-small'
                 >
         </td>
-        <td></td>
-        <td>
-          <button ng-show='new_council.number.length > 0'
-                  ng-click='submitCouncil()'
-                  class='btn btn-success'
-                  >
-            {{ l('app.buttons.save') }}
-          </button>
-        </td>
-      </tr>
-      <tr ng-repeat='council in councils'>
-        <td>
-          {{ council.number }}
-        </td>
-        <td class='actions'>
-          <p ng-repeat='clerk in council.clerks'>
-            {{ clerk.fullname }}
-          </p>
-        </td>
-        <td class='actions councils-actions'>
-          <a ui-sref="council_edit({councilId: council.id})" class='no-hover-text-decoration'>
-            <span class='glyphicon glyphicon-pencil'/>
-          </a>
-          <span class='glyphicon glyphicon-remove'
-                ng-click='removeCouncil(council)'
-          />
+        <td class='no-bottom-border'>
+          <div class='material-design-form'>
+            <button ng-show='new_council.number.length > 0'
+                    ng-click='submitCouncil()'
+                    class='btn btn-save'
+                    >
+              {{ l('app.buttons.save') }}
+            </button>
+            <button ng-show='formToggled'
+                    ng-click='toggleForm()'
+                    class='btn btn-cancel'
+                    >
+              {{ l('app.buttons.cancel') }}
+            </button>
+          </div>
         </td>
       </tr>
     </tbody>

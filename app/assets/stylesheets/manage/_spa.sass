@@ -12,6 +12,15 @@
     border: 1px dashed red
     +custom_transition
 
+  .breadcrumbs
+    margin-top: 5px
+
+    li
+      margin-left: -10px
+
+    .glyphicon
+      font-size: 12px
+
   h3
     clear: both
 
@@ -168,8 +177,6 @@
       .speciality-code
         font-size: 18px
 
-      .person-name
-        white-space: nowrap
 
   .people-list-table,
   .specialities-items
@@ -187,15 +194,18 @@
 
     .person-name
       position: relative
+      white-space: nowrap
+
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+        white-space: normal
 
       .edit-icon
         background: asset_url('spa/edit-icon.png')
         background-repeat: no-repeat
         width: 20px
         height: 20px
-        position: absolute
-        top: 4px
-        right: -30px
+        display: inline-block
+        margin-bottom: -5px
 
         &:hover
           cursor: pointer
@@ -259,7 +269,7 @@
       margin-top: 5px
 
   .edit-person-form
-    .btn
+    .btn-save
       margin-left: 15px
 
   //Advert Forms
@@ -299,6 +309,41 @@
   .reviewer-file
     margin: 20px 0
     border-bottom: 1px solid #ccc
+
+  // Councils list
+  .council-number,
+  .cluncil-clerk
+    font-size: 16px
+
+  // Angucomplete-people
+  .user-angucomplete,
+  .speciality-angucomplete
+    .angucomplete-dropdown
+      .angucomplete-row
+        padding: 5px 0 3px 10px
+
+        &:last-child
+          &:before
+            content: " "
+            display: block
+            width: 98%
+            height: 1px
+            background: #ccc
+
+          &:hover
+            background: #fff
+            cursor: default
+
+          .angucomplete-title
+            background: #005caf
+            color: #fff
+            margin: 10px 0px
+            width: 230px
+            padding: 8px 20px
+            +border-radius(5px)
+
+            &:hover
+              cursor: pointer
 
 // Highlights aggregator
 

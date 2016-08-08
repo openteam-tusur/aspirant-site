@@ -1,10 +1,10 @@
 <div class='add-person-form material-design-form' ng-form='peopleInput' ng-class='personNotFound || new_person.fullname ? "new-person" : " "'>
   <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-12" ng-hide='personNotFound'>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-hide='personNotFound'>
       <!-- ready person search -->
       <div class="row search" ng-hide='new_person.fullname'>
-        <div class='col-lg-8'>
-          <angucomplete-alt id="user-angucomplete"
+        <div class='col-sm-8 col-md-8 col-lg-8'>
+          <angucomplete-alt class="user-angucomplete"
                             placeholder="Поиск среди участников"
                             minlength="3"
                             clear-selected='true'
@@ -20,7 +20,7 @@
                             text-searching="Идет поиск..."
                             ></angucomplete-alt>
         </div>
-        <div class='col-lg-4'>
+        <div class='col-sm-4 col-md-4 col-lg-4'>
           <button ng-click='showPeopleInput = !showPeopleInput' class='btn btn-cancel' ng-hide='new_person.fullname'>
             {{ l('app.buttons.cancel') }}
           </button>
@@ -46,7 +46,7 @@
                  >
     </person-form>
     <!-- Directory results -->
-    <div class="col-xs-12 col-sm-4 col-md-5 col-lg-4 search-person-block"  ng-if='personNotFound'>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 search-person-block"  ng-if='personNotFound'>
       <ul>
         <li ng-repeat='result in directory_search'
             ng-click='fillPerson(result)'
@@ -78,7 +78,7 @@
   <div class='clearfix'></div>
   <br>
   <div class="row" ng-if='new_person.name && new_person.surname && askPost'>
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 group">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 group">
       <input ng-model='new_person.post.title'
              type="text"
              name='post_title'
@@ -94,7 +94,7 @@
 
   <!-- speciality selector -->
   <div class="row" ng-show='new_person.name && new_person.surname'>
-    <div class="col-lg-8 group">
+    <div class="col-sm-12 col-md-8 col-lg-8 group">
       <speciality-selector new-person='new_person'
                            update-function='updatePost'
                            specialities='specialities'
@@ -107,17 +107,17 @@
   <!-- end of speciality selector -->
 
   <div class='row add-person-form-actions'>
-    <div class="col-lg-1" ng-show='new_person.name' >
+    <div class="col-sm-1 col-md-1 col-lg-1 btn-container" ng-show='new_person.name' >
       <button ng-click='submitPerson()' class='btn btn-save'>
         {{ l('app.buttons.save') }}
       </button>
     </div>
-    <div class='col-lg-1'>
+    <div class='col-sm-1 col-md-1 col-lg-1 btn-container'>
       <button ng-click='cleanPerson(); hideForm()' class='btn btn-cancel' ng-show='personNotFound || new_person.name'>
         {{ l('app.buttons.cancel') }}
       </button>
     </div>
-    <div class='col-lg-1 btn-clean-wrapper'>
+    <div class='col-sm-1 col-md-1 col-lg-1 btn-container btn-clean-wrapper'>
       <a ng-click='cleanPerson()' ng-show='personNotFound || new_person.name' class='btn-clean'>
         {{ l('app.buttons.clean') }}
       </a>

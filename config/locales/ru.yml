@@ -75,6 +75,7 @@ ru:
     code_placeholder:        'Введите код специальности'
     speciality_search:       'Поиск специальностей'
     title_placeholder:       'Введите название специальности'
+    create_new:              'Создать специальность'
 
   advert:
     title:                'Тема диссертации'

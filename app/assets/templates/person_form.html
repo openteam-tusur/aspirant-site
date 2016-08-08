@@ -1,7 +1,7 @@
-<div class="col-xs-12 col-sm-8 col-md-7 col-lg-8 person-form" ng-if='personNotFound'>
+<div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 person-form" ng-if='personNotFound'>
   {{ personForm | json}}
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 group">
       <!-- Фамилия -->
       <input type="text"
              name='surname'
@@ -17,7 +17,7 @@
         {{ l('forms.field-invalid') }}
       </span>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 group">
       <!-- Имя -->
       <input type="text"
              name='name'
@@ -33,7 +33,7 @@
         {{ l('forms.field-invalid')}}
       </span>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 group">
       <!-- Отчество -->
       <input type="text"
              ng-model='new_person.patronymic'
@@ -44,7 +44,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 group">
       <!-- Ученая степень -->
       <select ng-model='science.science_degree'
               ng-change='copyToPerson("science_degree")'
@@ -62,7 +62,7 @@
         {{ l('forms.field-invalid')}}
       </span>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 group">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 group">
       <!-- Ученое звание -->
       <select ng-model='science.science_title'
               ng-options='title.value for title in science_dictionaries.science_titles track by title.value'
@@ -83,7 +83,7 @@
 
     <div class='clearfix'></div>
     <!-- Ссылка на страницу пользователя -->
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 group not-required">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 group not-required">
       <input ng-model='new_person.url'
              type="text"
              name='person_url'
@@ -93,7 +93,7 @@
     </div>
 
     <!-- Место работы пользователя -->
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-8 group not-required">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 group not-required">
       <input ng-model='new_person.work_place'
              type="text"
              name='person_workplace'
@@ -103,7 +103,7 @@
     </div>
 
     <!-- Должность пользователя -->
-    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 group not-required">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 group not-required">
       <input ng-model='new_person.work_post'
              type="text"
              name='person_work_title'

@@ -28,6 +28,7 @@ angular
 
     $scope.toggleForm = () ->
       $scope.formToggled = !$scope.formToggled
+      $scope.new_council.number = null
 
     $scope.resetCouncil = () ->
       $scope.new_council = {}
