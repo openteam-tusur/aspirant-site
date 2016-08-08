@@ -24,6 +24,23 @@ angular.module('dashboard')
             $scope.updateOrderFunction speciality, index
             $scope.sortItem = speciality
 
+          $scope.orderSpecialitiesCompare = (a, b) ->
+            if (a.title < b.title)
+              return -1
+            if (a.title > b.title)
+              return 1
+            return 0
+
+          $scope.specialitiesAlfavitOrder = ->
+            $scope.specialities.sort($scope.orderSpecialitiesCompare)
+
+            index = 0
+            for speciality in $scope.specialities
+              $scope.updateOrderFunction speciality, index
+              index++
+
+            $scope.orderAllItems = true
+
           $scope.sortableOptions = {
             axis: 'y'
             cursor: 'move'

@@ -28,11 +28,16 @@
                      form-object='personForm'>
         </person-form>
 
-        <button ng-click='saveAction(person, personForm)' ng-show='activePersonForm == person.id '>
+        <div class='clearfix'></div>
+        <button ng-click='saveAction(person, personForm)'
+                ng-show='activePersonForm == person.id '
+                class='btn btn-save'>
           {{ l('app.buttons.save') }}
         </button>
 
-        <button ng-click='cancelAction(person)' ng-show='activePersonForm == person.id '>
+        <button ng-click='cancelAction(person)'
+                ng-show='activePersonForm == person.id '
+                class='btn btn-cancel'>
           {{ l('app.buttons.cancel') }}
         </button>
       </div>

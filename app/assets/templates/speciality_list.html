@@ -3,22 +3,29 @@
     <div class='col-lg-2 header-cell'>Код</div>
     <div class='col-lg-8 header-cell'>Название</div>
     <div class='col-lg-1 header-cell'>Действия</div>
-    <div class='col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort' ng-click=''></span></abbr></div>
+    <div class='col-lg-1 header-cell'><abbr title='Отсортировать по алфавиту'><span class='alfavit-sort' ng-click='specialitiesAlfavitOrder()'></span></abbr></div>
   </div>
 
-  <div ui-sortable='sortableOptions' ng-model='specialities'>
+  <div ui-sortable='sortableOptions'
+       ng-model='specialities'
+       ng-class="{'order-success': orderAllItems}">
+
     <div class='row content-row'
          ng-repeat='speciality in specialities'
          ng-if='specialities.length'
          ng-class="{'order-success': detectEqualItem(speciality)}">
+
       <div class='col-lg-2 content-cell'>{{ speciality.code }}</div>
       <div class='col-lg-8 content-cell'>{{ speciality.title }}</div>
+
       <div class='col-lg-1 content-cell actions'>
         <span class='handle sort-icon' ng-show='specialities.length > 1'></span>
         <span ng-click='destroyFunction(speciality)' class='glyphicon glyphicon-remove'></span>
       </div>
+
     </div>
   </div>
+
   <div class='row content-row' ng-if='speciality.id'>
     <div class='col-lg-3 content-cell'>{{ speciality.code }}</div>
     <div class='col-lg-4 content-cell'>{{ speciality.title }}</div>
