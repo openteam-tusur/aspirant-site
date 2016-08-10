@@ -1,0 +1,196 @@
+<% content_for :page_title, @content.part_title if @content.present? && %w[NewsItemPart YoutubeItemPart].include?(@content.type) %>
+
+<% cache_unless request.host.match(Settings['app.nocache_host'].to_s),
+                request.fullpath.to_s.parameterize('_').gsub('-', '_'),
+                expires_in: 5.minutes do %>
+
+  <div class='inner-page-wrapper<%= right_side_present? ? ' with-right-bg' : nil  %>'>
+    <div class='container'>
+      <div class='row adverts'>
+        <div class='<%= right_side_present? ? 'col-lg-9 col-md-9 col-sm-8 col-xs-12' : 'col-xs-12' %> left-side'>
+          <%= render_partial_for_region @breadcrumbs if @breadcrumbs.present? %>
+
+          <% if @advert.present? %>
+            <p><span class='gray-text'>Соискатель учёной степени к.т.н.: </span><%= @advert.applicant.fullname if @advert.applicant.present? %></p>
+            <p><span class='gray-text'>Название диссертации: </span><%= @advert.applicant.fullname %></p>
+
+            <% if @advert.council_speciality.present? %>
+              <p><span class='gray-text'>Специальность:</span>
+                <%= "#{@advert.council_speciality.code} - #{@advert.council_speciality.title}" %>
+              </p>
+            <% end %>
+
+            <% if @advert.dissertation_council.present? %>
+              <p><span class='gray-text'>Диссертационный совет:</span>
+                <%= @advert.dissertation_council.number %>
+              </p>
+            <% end %>
+
+            <% if @advert.mentor.present? %>
+              <p><span class='gray-text'>Научный руководитель: </span>
+                <%= @advert.mentor %>
+              </p>
+            <% end %>
+
+            <p><span class='gray-text'>Дата размещения диссертации: </span><%= "#{@advert.placement_date}г." %></p>
+            <p><span class='gray-text'>Дата защиты: </span> Дата защиты(уточнить)</p>
+
+            <!-- Advert Files -->
+            <% if @advert.file_copies_data.present? %>
+              <div class='devider'></div>
+              <div class='row advert-files'>
+                <div class='col-lg-9 gray-text text-left'>Название</div>
+                <div class='col-lg-3 gray-text text-left'>Дата размещения</div>
+
+                <% file_copies = @advert.file_copies_data %>
+                <% file_copies.each do |title_document, document| %>
+                  <% if document.present? && !['conclusion', 'review'].include?(title_document) %>
+                    <div class='col-lg-9 content-cell'>
+                      <%= link_to I18n.t("advert.files.#{title_document}"), document.file.url(:original, false) %>
+                    </div>
+                    <div class='col-lg-3 content-cell'>
+                      <%= "#{document.placement_date}г." %>
+                    </div>
+                  <% else %>
+                    <div class="col-lg-9">
+                      <%= I18n.t("advert.files.#{title_document}") %>
+                      <ul class='default'>
+                        <% if document.present? %>
+                          <% document.each do |item| %>
+                            <li><%= link_to item.file_file_name, item.file.url(:original, false) %></li>
+                          <% end %>
+                        <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <!-- Organization -->
+            <% if @advert.organization_review.present? || @advert.organization_publication.present? %>
+              <div class='devider'></div>
+              <div class='row'>
+                <div class='col-lg-12'>
+                  <h2>Ведущая организация</h2>
+                  <p><%= @advert.organization_name %></p>
+                </div>
+                <div class='col-lg-12'>
+                  <ul class='default'>
+                    <li class='content-cell'>
+                      <%= link_to 'Отзыв организации', @advert.organization_review.file.url(:original, false) if @advert.organization_review.present? %>
+                    </li>
+                    <li class='content-cell'>
+                      <%= link_to 'Сведения/Публикации', @advert.organization_publication.file.url(:original, false) if @advert.organization_publication.present? %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+
+            <% if @advert.opponents.present? %>
+              <div class='row'>
+                <div class='col-lg-12'>
+                  <h2>Официальные оппоненты</h2>
+                  <table class='opponent-table font-size-14'>
+                    <thead class='gray-bg light'>
+                      <tr>
+                        <th>Ф.И.О</th>
+                        <th>Ученая степень</th>
+                        <th>Ученое звание</th>
+                        <th>Место работы</th>
+                        <th>Должность</th>
+                        <th>Отзыв</th>
+                        <th>Сведения/Публикации</th>
+                        <th>Дата размещения</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @advert.opponents.each do |opponent| %>
+                        <% review, publication = opponent.opponent_files(@advert) if opponent.opponent_files(@advert).present? %>
+                        <tr>
+                          <td>
+                            <%= opponent.surname %><br>
+                            <%= opponent.name %><br>
+                            <%= opponent.patronymic %>
+                          </td>
+                          <td><%= opponent.science_degree %></td>
+                          <td><%= opponent.science_title %></td>
+                          <td><%= opponent.work_place %></td>
+                          <td><%= opponent.work_post %></td>
+                          <td><%= link_to 'Cкачать', review.file.url(:original, false) if review.present? %></td>
+                          <td><%= link_to 'Cкачать', publication.file.url(:original, false) if publication.present? %></td>
+                          <td>Дата размещения (уточнить)</td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            <% end %>
+
+            <% if @advert.reviewers.present? %>
+              <div class='row'>
+                <div class='col-lg-12'>
+                  <h2>Отзывы на автореферат</h2>
+                  <table class='font-size-14'>
+                    <thead class='gray-bg light'>
+                      <tr>
+                        <th>Ф.И.О</th>
+                        <th>Ученая степень</th>
+                        <th>Ученое звание</th>
+                        <th>Место работы</th>
+                        <th>Должность</th>
+                        <th>Отзыв</th>
+                        <th>Дата размещения</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @advert.reviewers.each do |reviewer| %>
+                        <tr>
+                          <td><%= reviewer.fullname %></td>
+                          <td><%= reviewer.science_degree %></td>
+                          <td><%= reviewer.science_title %></td>
+                          <td><%= reviewer.work_place %></td>
+                          <td><%= reviewer.work_post %></td>
+                          <td>
+                            <%= link_to 'Cкачать', reviewer.reviewer_files(@advert).first.file.url(:original, false) if reviewer.reviewer_files(@advert).present? %>
+                          </td>
+                          <td>Дата размещения (уточнить)</td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
+        </div>
+
+        <% if right_side_present? %>
+          <div class='col-lg-3 col-md-3 col-sm-4 col-xs-12 right-side'>
+            <% if (@right_navigation_without_title.present? || @right_navigation_with_title.present?) && @content.present? &&
+                  (@content.type == 'NewsListPart' || @content.type == 'NewsItemPart' || @content.type == 'EventsListPart') %>
+              <%= render partial: 'regions/inner_right_navigation_with_archive_part' %>
+            <% else %>
+              <%= render_partial_for_region(@right_navigation_with_title, 'inner_right_with_title') if @right_navigation_with_title.present? %>
+              <%= render_partial_for_region(@right_navigation_without_title, 'inner_right_without_title') if @right_navigation_without_title.present? && @right_navigation_with_title.blank? %>
+            <% end %>
+
+            <%= render_partial_for_region(@right_links, 'inner_right_links') if @right_links.present? %>
+            <%= render_partial_for_region(@right_contacts, 'inner_right_contacts') if @right_contacts.present? %>
+            <%= render_partial_for_region(@right_documents, 'inner_right_documents') if @right_documents.present? %>
+            <%= render_partial_for_region(@right_advert, 'inner_right_advert') if @right_advert.present? %>
+            <%= render_partial_for_region(@right_html_part, 'inner_right_html_part') if @right_html_part.present? %>
+            <%= render_partial_for_region(@right_news_part, 'inner_right_news_part') if @right_news_part.present? %>
+            <%= render_partial_for_region(@right_events, 'inner_right_events') if @right_events.present? %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
+

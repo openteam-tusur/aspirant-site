@@ -8,7 +8,7 @@ angular.module('dashboard')
           person:  '=person'
           askPost: '@askPost'
           kind:    '@kind'
-          specialities: '=specialitites'
+          specialities: '=specialities'
           showPeopleInput: '=showPeopleInput'
           editForm: '=editForm'
         transclude: true

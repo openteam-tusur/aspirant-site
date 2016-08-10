@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   end
 
   get 'ru/dissertatsionnye-sovety', to: 'dissertation_councils#index', as: :dissertion_councils
+  get '/ru/ob-yavleniya-o-zaschitah-dissertatsiy', to: 'adverts#index', as: :adverts
+  get '/ru/ob-yavleniya-o-zaschitah-dissertatsiy(/:id)', to: 'adverts#show', as: :advert
 
   root to: 'application#index'
 

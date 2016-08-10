@@ -12,6 +12,7 @@
       <people-input context='applicant_context || contextFor("applicant")'
                     person='advert.applicant'
                     ng-hide='advert.applicant.id'
+                    specialities='specialities'
                     ></people-input>
 
       </people-input>
@@ -317,6 +318,8 @@
     <div class="col-xs-12">
       <people-input context='opponent_context || contextFor("opponent")'
                     people='advert.opponents'
+                    specialities='specialities'
+                    show-people-input='showPeopleInput'
                     >
       </people-input>
     </div>
@@ -325,6 +328,11 @@
                    person-type='opponent'
                    context='opponent_context || contextFor("opponent")'
                    destroy-with='destroyPost'
+                   update-order-function='updatePersonOrder'
+                   specialities='council.specialities'
+                   save-edit-person='savePerson'
+                   restore-edit-person='restorePerson'
+                   change-active-person-form='changePersonForm'
                    >
       </people-list>
     </div>
@@ -339,12 +347,18 @@
     <div class="col-xs-12">
       <people-input context='reviewer_context || contextFor("reviewer")'
                     people='advert.reviewers'
+                    specialities='specialities'
+                    show-people-input='showPeopleInput'
                     >
       </people-input>
       <people-list people='advert.reviewers'
                    person-type='reviewer'
                    context='reviewer_context || contextFor("reviewer")'
                    destroy-with='destroyPost'
+                   specialities='council.specialities'
+                   save-edit-person='savePerson'
+                   restore-edit-person='restorePerson'
+                   change-active-person-form='changePersonForm'
                    >
       </people-list>
     </div>

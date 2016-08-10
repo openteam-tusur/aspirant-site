@@ -1,0 +1,69 @@
+<% content_for :page_title, @content.part_title if @content.present? && %w[NewsItemPart YoutubeItemPart].include?(@content.type) %>
+
+<% cache_unless request.host.match(Settings['app.nocache_host'].to_s),
+                request.fullpath.to_s.parameterize('_').gsub('-', '_'),
+                expires_in: 5.minutes do %>
+
+  <div class='inner-page-wrapper<%= right_side_present? ? ' with-right-bg' : nil  %>'>
+    <div class='container'>
+      <div class='row'>
+        <div class='<%= right_side_present? ? 'col-lg-9 col-md-9 col-sm-8 col-xs-12' : 'col-xs-12' %> left-side'>
+          <%= render_partial_for_region @breadcrumbs if @breadcrumbs.present? %>
+
+          <% if @adverts.present? %>
+            <table class='adverts'>
+              <thead class='gray-bg adverts-table'>
+                <tr>
+                  <th class='fio'>ФИО соискателя</th>
+                  <th class='dk'>Д/К</th>
+                  <th class='theme'>Тема диссертации</th>
+                  <th class='speciality'>Специальность</th>
+                  <th class='publication-date'>Дата размещения</th>
+                  <th class='protection-date'>Дата защиты</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @adverts.each do |advert| %>
+                  <tr>
+                    <td><%= link_to advert.applicant.fullname, advert.applicant.url if advert.applicant.present? %></td>
+                    <td><%= advert.applicant.science_degree_abbr if advert.applicant.present? %></td>
+                    <td><%= link_to advert.title, advert_path(advert) if advert.title.present? %></td>
+                    <td><%= advert.council_speciality.title if advert.council_speciality.present? %></td>
+                    <td><%= advert.placement_date %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          <% else %>
+            <p>В данный момент объявления отсутствуют</p>
+          <% end %>
+
+        </div>
+
+        <% if right_side_present? %>
+          <div class='col-lg-3 col-md-3 col-sm-4 col-xs-12 right-side'>
+            <% if (@right_navigation_without_title.present? || @right_navigation_with_title.present?) && @content.present? &&
+                  (@content.type == 'NewsListPart' || @content.type == 'NewsItemPart' || @content.type == 'EventsListPart') %>
+              <%= render partial: 'regions/inner_right_navigation_with_archive_part' %>
+            <% else %>
+              <%= render_partial_for_region(@right_navigation_with_title, 'inner_right_with_title') if @right_navigation_with_title.present? %>
+              <%= render_partial_for_region(@right_navigation_without_title, 'inner_right_without_title') if @right_navigation_without_title.present? && @right_navigation_with_title.blank? %>
+            <% end %>
+
+            <%= render_partial_for_region(@right_links, 'inner_right_links') if @right_links.present? %>
+            <%= render_partial_for_region(@right_contacts, 'inner_right_contacts') if @right_contacts.present? %>
+            <%= render_partial_for_region(@right_documents, 'inner_right_documents') if @right_documents.present? %>
+            <%= render_partial_for_region(@right_advert, 'inner_right_advert') if @right_advert.present? %>
+            <%= render_partial_for_region(@right_html_part, 'inner_right_html_part') if @right_html_part.present? %>
+            <%= render_partial_for_region(@right_news_part, 'inner_right_news_part') if @right_news_part.present? %>
+            <%= render_partial_for_region(@right_events, 'inner_right_events') if @right_events.present? %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
+

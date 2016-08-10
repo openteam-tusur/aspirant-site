@@ -37,6 +37,8 @@ class Advert < ActiveRecord::Base
 
   before_create :set_current_date
 
+  scope :publicated, -> { where(aasm_state: 'publicated') }
+
   include AASM
 
   aasm whiny_transitions: false do
@@ -50,6 +52,16 @@ class Advert < ActiveRecord::Base
     event :unpublish do
       transitions from: :publicated, to: :draft
     end
+  end
+
+  def file_copies_data
+    file_copies = {}
+    %w(dissertation synopsis protocol
+       council_conclusion review conclusion).each do |key|
+         file_copies[key] = send(key) if send(key).present?
+    end
+
+    file_copies
   end
 
   private

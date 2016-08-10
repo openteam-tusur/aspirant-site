@@ -112,8 +112,44 @@ angular
       $scope.advert[key] = $scope[key]['value']
       $scope.updateField key
 
+    $scope.getSpecialities = () ->
+      $http
+        .get 'manage/council_specialities'
+        .success (data) ->
+          $scope.specialities = data
+
     $scope.initializer = () ->
       $scope.getAdvert()
 
+    $scope.changePersonForm = (object) ->
+      $scope.personForm = object
+
+    $scope.updatePersonOrder = (person, index) ->
+      params = { index: index }
+      for key, value of $scope.context
+        params[key] = value
+      $http
+        .post "/manage/people/#{person.id}/update_order", params
+
+    $scope.savePerson = (person) ->
+      unless $scope.personForm.$valid                   #show validations error
+        $scope.personForm.$setSubmitted()
+        for _, input of $scope.personForm
+          if input && input.$name
+            input.$setDirty()
+      else
+        params = { person: person }                     #save person
+        $http
+          .patch "manage/people/#{person.id}", params
+          .success (data) ->
+            $scope.$broadcast 'updatePerson'
+
+    $scope.restorePerson = (person) ->
+      $http.get "manage/people/#{person.id}"
+           .success (data) ->
+             person = data
+             $scope.$broadcast 'deactivatedEditForm'
+
+    $scope.getSpecialities()
     $scope.initializer()
     ])
