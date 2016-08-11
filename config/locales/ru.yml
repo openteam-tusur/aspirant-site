@@ -78,6 +78,7 @@ ru:
     create_new:              'Создать специальность'
 
   advert:
+    dk:                   'Д/К'
     title:                'Тема диссертации'
     place:                'Место проведения защиты'
     mentor:               'Научный руководитель'
@@ -90,6 +91,7 @@ ru:
     reviewer_review:      'Отзывы на автореферат'
     placement_date:       'Дата размещения'
     publication_date:     'Дата публикации'
+    protection_date:      'Дата защиты'
     organization_name:    'Ведущая организация'
     dissertation_council: 'Диссертационный совет'
     files:

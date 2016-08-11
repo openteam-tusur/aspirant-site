@@ -28,7 +28,7 @@
 
             <% if @advert.mentor.present? %>
               <p><span class='gray-text'>Научный руководитель: </span>
-                <%= @advert.mentor %>
+                <%= @advert.mentor.fullname %>
               </p>
             <% end %>
 
@@ -154,7 +154,9 @@
                           <td><%= reviewer.work_place %></td>
                           <td><%= reviewer.work_post %></td>
                           <td>
-                            <%= link_to 'Cкачать', reviewer.reviewer_files(@advert).first.file.url(:original, false) if reviewer.reviewer_files(@advert).present? %>
+                            <% if reviewer.reviewer_files(@advert).first.present? %>
+                              <%= link_to 'Cкачать', reviewer.reviewer_files(@advert).first.file.url(:original, false) %>
+                            <% end %>
                           </td>
                           <td>Дата размещения (уточнить)</td>
                         </tr>

@@ -130,24 +130,18 @@
 
 <!-- if used with one person -->
 <div class="row" ng-if='person'>
-  <div class="col-xs-5">
+  <div class="col-lg-6">
     <p>
-      <strong>
-        {{ person.fullname }}
-      </strong>
+      <strong>{{ person.fullname }}</strong>
       <br>
-      <small>
-        {{ person.current_post.title }}
-      </small>
-      <br />
-      <small>
-        {{ personDegrees(person) }}
-      </small>
+      <span class='font-size-14'>
+        {{ personDegrees(person) }} {{ person.work_place ? ', ' : ''  }} {{ person.work_place }}
+      </span>
     </p>
   </div>
-  <div class='col-xs-7'>
-    <button ng-click='destroyPersonFunction(person, person_type)' class='btn btn-danger'>
-      {{ l('app.buttons.remove')}}
+  <div class='col-lg-6'>
+    <span ng-click='destroyPersonFunction(person, person_type)'
+          class='glyphicon glyphicon-remove'>
     </button>
   </div>
 </div>

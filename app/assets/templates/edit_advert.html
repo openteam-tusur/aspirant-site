@@ -1,7 +1,7 @@
 <h3>
   {{ l('app.advert_edit') }}
 </h3>
-<div ng-form='advertForm' novalidate>
+<div ng-form='advertForm' class='edit-advert-form' novalidate>
 
   <!-- applicant input -->
   <div class="row advert-add-person-form">
@@ -10,7 +10,9 @@
         <h3 class='inline-header'>{{ l('advert.applicant') }} </h3>
         <span class='link-emulator'
           ng-click="changeBlockName('applicant')"
-          ng-show="blockName != 'applicant'">
+          ng-show="blockName != 'applicant'"
+          ng-hide='advert.applicant.id'
+          >
           Добавить
         </span>
       </div>
@@ -18,7 +20,7 @@
     <div class="col-xs-12">
       <people-input context='applicant_context || contextFor("applicant")'
                     person='advert.applicant'
-                    ng-show="blockName == 'applicant' && !dvert.applicant.id"
+                    ng-show="blockName == 'applicant' && !advert.applicant.id"
                     specialities='specialities'
                     block-name-value='blockName'
                     ></people-input>
@@ -63,6 +65,9 @@
     <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'title'">
       Идет сохранение...
     </div>
+    <div class='col-lg-3 success-state' ng-if="showPreloader == 'title' && showSuccessState">
+      <span class='glyphicon glyphicon-ok'><span class='text'>Сохранено</span></span>
+    </div>
   </div>
 
   <!-- science_degree -->
@@ -93,6 +98,9 @@
     <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'science_degree'">
       Идет сохранение...
     </div>
+    <div class='col-lg-3 success-state' ng-if="showPreloader == 'science_degree' && showSuccessState">
+      <span class='glyphicon glyphicon-ok'><span class='text'>Сохранено</span></span>
+    </div>
   </div>
   <!-- end science degree -->
 
@@ -112,6 +120,9 @@
     </div>
     <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'publication_date'">
       Идет сохранение...
+    </div>
+    <div class='col-lg-3 success-state' ng-if="showPreloader == 'publication_date' && showSuccessState">
+      <span class='glyphicon glyphicon-ok'><span class='text'>Сохранено</span></span>
     </div>
   </div>
   <!-- end of publication date -->
@@ -133,11 +144,13 @@
     <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'placement_date'">
       Идет сохранение...
     </div>
+    <div class='col-lg-3 success-state' ng-if="showPreloader == 'placement_date' && showSuccessState">
+      <span class='glyphicon glyphicon-ok'><span class='text'>Сохранено</span></span>
+    </div>
   </div>
   <!-- end of publication date -->
 
   <!-- place of dissertation defense -->
-  <br>
   <div class="row material-design-form">
     <div class='col-xs-12'>
       <div class='devider'>
@@ -161,6 +174,9 @@
     </div>
     <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'place'">
       Идет сохранение...
+    </div>
+    <div class='col-lg-3 success-state' ng-if="showPreloader == 'place' && showSuccessState">
+      <span class='glyphicon glyphicon-ok'><span class='text'>Сохранено</span></span>
     </div>
   </div>
   <!-- end place of dissertation defense -->
@@ -252,6 +268,12 @@
     <div class="col-xs-12 title">
       <div class='devider'>
         <h3 class='inline-header'>{{ l('advert.organization_name') }}</h3>
+        <span class='preloader' ng-if="isLoading() && showPreloader == 'organization_name'">
+          Идет сохранение...
+        </span>
+        <span class='success-state' ng-if="showPreloader == 'organization_name' && showSuccessState">
+          <span class='glyphicon glyphicon-ok'><span class='text'>Сохранено</span></span>
+        </span>
       </div>
       <textarea  ng-model='advert.organization_name'
                  placeholder='{{ l("advert.organization_name") }}'
@@ -359,6 +381,7 @@
                    save-edit-person='savePerson'
                    restore-edit-person='restorePerson'
                    change-active-person-form='changePersonForm'
+                   hide-sort-icons='true'
                    >
       </people-list>
     </div>
@@ -366,7 +389,6 @@
   <!-- end of reviewers -->
 
   <!-- mentor input -->
-  <br>
   <div class="row advert-add-person-form">
     <div class="col-xs-12">
       <div class='devider'>
@@ -421,6 +443,12 @@
         <abbr title="{{ l('forms.field-invalid')}}" class="required">*</abbr>
       </label>
     </div>
+    <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'dissertation_council_id'">
+      Идет сохранение...
+    </div>
+    <div class='col-lg-3 success-state' ng-if="showPreloader == 'dissertation_council_id' && showSuccessState">
+      <span class='glyphicon glyphicon-ok'><span class='text'>Сохранено</span></span>
+    </div>
   </div>
   <!-- end of dissertation council select -->
 
@@ -446,7 +474,7 @@
         <speciality-list speciality='advert.council_speciality'
                          destroy-function='destroySpeciality'
                          hide-alfavit-sort='true'
-                         ng-show='advert.council_speciality'
+                         ng-hide='advert.council_speciality.length == 0 || !advert.council_speciality'
         ></speciality-list>
     </div>
   </div>

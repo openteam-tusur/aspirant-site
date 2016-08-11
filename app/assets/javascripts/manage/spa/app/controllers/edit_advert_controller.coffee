@@ -1,6 +1,6 @@
 angular
   .module('dashboard')
-  .controller('EditAdvertController', ['$scope', '$http', 'science', ($scope, $http, science) ->
+  .controller('EditAdvertController', ['$timeout', '$scope', '$http', 'science', ($timeout, $scope, $http, science) ->
     $scope.url = '/manage/announcements/'
     $scope.science = science
 
@@ -59,11 +59,20 @@ angular
             "#{field}": $scope.advert[field]
         }
 
+        $scope.$watch($scope.isLoading, (e) ->
+          if e
+            $scope.showSuccessState = false
+        )
+
         $scope.showPreloader = field
         $http
           .patch "#{$scope.url}/#{$scope.advert.id}", params
           .success (data) ->
             $scope.stored_advert[field] = data[field]
+            $scope.showSuccessState = true
+            $timeout ->
+              $scope.showSuccessState = false
+            , 2000
 
     $scope.fieldChanged = (field) ->
       return false unless $scope.advert && $scope.stored_advert

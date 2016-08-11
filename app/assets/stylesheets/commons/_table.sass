@@ -33,15 +33,24 @@ table
   width: 100%
   margin-bottom: 10px
 
+  .reset-left-padding
+    padding-left: 0
+
+  .bottom-border
+    border-bottom: 2px solid #d3d3d3
+
+  .reset-top-border
+    border-top: 0
+
+  .reset-bottom-border
+    border-bottom: 0
+
   thead
     th, td
       color: #808080
       text-align: center
       border-top: 1px solid #d3d3d3
       padding: 8px 10px
-
-      &.reset-left-padding
-        padding-left: 0
 
     &.gray-bg
       background: #e7e7e7
@@ -73,6 +82,9 @@ table
 
       &.reset-left-padding
         padding-left: 0
+
+      &:last-child
+        @extend .reset-bottom-border
 
     .text-center
       th

@@ -1,54 +1,43 @@
 <h3>
   {{ l("app.adverts") }}
 </h3>
-<table class='table'>
-  <thead>
-    <th>
-      {{ l('advert.applicant') }}
-    </th>
-    <th>
-      {{ l('advert.title') }}
-    </th>
-    <th>
-      {{ l('advert.publication_date') }}
-    </th>
-    <th>
-      {{ l('advert.actions') }}
-    </th>
+<div class='row margin-bottom-10'>
+  <div class='col-lg-6 filters'>
+    <input type='text' placeholder='Поиск по диссертационному совету'
+           ng-model='searchText'
+           class='form-control form-control-small'
+           >
+  </div>
+  <div class='col-lg-6 material-design-form text-right'>
+    <button ng-click="addAdvert()" class='btn btn-add'>
+      {{ l('app.buttons.add_advert') }}
+    </button>
+  </div>
+</div>
+<table class='adverts'>
+  <thead class='font-size-14'>
+    <th class='text-left bottom-border reset-top-border'>{{ l('advert.dissertation_council') }}</th>
+    <th class='text-left bottom-border reset-top-border'>{{ l('advert.applicant') }}</th>
+    <th class='text-left bottom-border reset-top-border'>{{ l('advert.dk') }}</th>
+    <th class='text-left bottom-border reset-top-border'>{{ l('advert.title') }}</th>
+    <th class='text-left bottom-border reset-top-border'>{{ l('advert.speciality') }}</th>
+    <th class='text-left bottom-border reset-top-border'>{{ l('advert.placement_date') }}</th>
+    <th class='text-left bottom-border reset-top-border'>{{ l('advert.protection_date') }}</th>
   </thead>
-  <tbody>
-    <tr>
-      <td colspan='4'>
-        <button ng-click="addAdvert()" class='btn btn-primary'>
-          {{ l('app.buttons.add_advert') }}
-        </button>
-      </td>
-    </tr>
-    <tr ng-repeat='advert in adverts'>
-      <td>
-        {{ advert.applicant.fullname }}
-      </td>
-      <td>
-        {{ advert.title }}
-      </td>
-      <td>
-        {{ advert.publication_date }}
-      </td>
-      <td>
-        <button ng-click='destroyAdvert(advert)' class='btn btn-danger'>
-          {{ l('app.buttons.remove')}}
-        </button>
-        <button ui-sref="advert_edit({advertId: advert.id})" class='btn btn-warning'>
-          {{ l('app.buttons.edit')}}
-        </button>
-        <button ng-click="changeState(advert, 'publish')" ng-if="resolveChangeStateVisibility(advert, 'draft')" class='btn btn-success'>
-          {{ l('app.buttons.publish') }}
-        </button>
 
-        <button ng-click="changeState(advert, 'unpublish')" ng-if="resolveChangeStateVisibility(advert, 'publicated')" class='btn btn-warning'>
-          {{ l('app.buttons.unpublish') }}
-        </button>
+  <tbody>
+    <tr ng-repeat='advert in adverts | filter: searchText '>
+      <td class='reset-bottom-border'>
+        <a ui-sref="council_edit({councilId: advert.dissertation_council.id})">
+          {{ advert.dissertation_council.number }}
+        </a>
       </td>
+      <td class='reset-bottom-border'><a ui-sref="advert_edit({advertId: advert.id})">{{ advert.applicant.fullname }}</a></td>
+      <td class='reset-bottom-border'>{{ advert.applicant.science_degree }}</td>
+      <td class='reset-bottom-border'>{{ advert.title }}</td>
+      <td class='reset-bottom-border'>{{ advert.council_speciality.code }}</td>
+      <td class='reset-bottom-border'>{{ advert.placement_date }}</td>
+      <td class='reset-bottom-border'>{{ advert.publication_date }}</td>
     </tr>
   </tbody>
 </table>

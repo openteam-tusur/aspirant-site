@@ -7,6 +7,7 @@ angular
           .get $scope.url
           .success (data) ->
             $scope.adverts = data
+            console.log $scope.adverts
 
       $scope.addAdvert = ()->
         $http
