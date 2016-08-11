@@ -4,6 +4,14 @@ angular
     $scope.url = '/manage/announcements/'
     $scope.science = science
 
+    $scope.blockName = null
+
+    $scope.changeBlockName = (name) ->
+      $scope.blockName = name
+
+    $scope.isLoading = () ->
+      return $http.pendingRequests.length > 0
+
     $scope.changeState = (transition) ->
       $http
         .post "#{$scope.url}#{$scope.advert.id}/#{transition}"
@@ -50,6 +58,8 @@ angular
           advert:
             "#{field}": $scope.advert[field]
         }
+
+        $scope.showPreloader = field
         $http
           .patch "#{$scope.url}/#{$scope.advert.id}", params
           .success (data) ->

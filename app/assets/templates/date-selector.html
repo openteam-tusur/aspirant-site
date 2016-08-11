@@ -1,2 +1,11 @@
-<label>{{ label || 'Дата'}} <abbr title="обязательное поле" class='required'>*</abbr></label>
-<input ng-model='innerDate' ng-model-options='{ debounce: 1000 }' ng-change='updateTarget()' class='form-control js-date-picker'></input>
+<input ng-model='innerDate'
+       ng-model-options='{ debounce: 1000 }'
+       ng-change='updateTarget()'
+       class='form-control js-date-picker'>
+</input>
+
+<span class="bar"></span>
+<label>
+  {{ label || 'Дата'}}
+  <abbr title="{{ l('forms.field-invalid')}}" class="required">*</abbr>
+</label>

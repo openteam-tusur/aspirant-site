@@ -9,7 +9,7 @@ angular.module('dashboard')
           askPost: '@askPost'
           kind:    '@kind'
           specialities: '=specialities'
-          showPeopleInput: '=showPeopleInput'
+          blockNameValue: '=blockNameValue'
           editForm: '=editForm'
         transclude: true
         restrict: 'E'
@@ -81,8 +81,10 @@ angular.module('dashboard')
 
           $scope.hideForm = () ->
             $scope.personNotFound = false
-            $scope.showPeopleInput = false
             $scope.directory_search = null
+
+          $scope.hideNamedBlock = () ->
+            $scope.blockNameValue = null
 
           $scope.requestFormatter = (str) ->
             q: str, ids: ($scope.people || []).map((p) -> p.id )        # ||[] decision is for one person case

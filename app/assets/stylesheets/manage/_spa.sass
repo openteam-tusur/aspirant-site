@@ -30,6 +30,10 @@
       display: inline-block
       margin-right: 20px
 
+  // Margin classes
+  .margin-top-10
+    margin-top: 10px
+
   .devider
     border-top: 1px solid #eee
     margin-top: 15px
@@ -145,6 +149,9 @@
         &:last-child
           padding: 3px
 
+        &.empty-cell
+          height: 35px
+
     .alfavit-sort
       background: asset_url('spa/alfavit-sort.png')
       background-repeat: no-repeat
@@ -178,7 +185,6 @@
       .speciality-code
         font-size: 18px
 
-
   .people-list-table,
   .specialities-items
     .actions
@@ -210,6 +216,12 @@
 
         &:hover
           cursor: pointer
+
+  .people-list-table
+    .opponents,
+    .reviewers
+      &:last-child
+        padding-bottom: 10px
 
   .specialities-items
     .content-row
@@ -272,44 +284,6 @@
   .edit-person-form
     .btn-save
       margin-left: 15px
-
-  //Advert Forms
-  .advert-add-person-form
-    margin-top: 10px
-    margin-bottom: 10px
-
-    .people-list
-      margin-top: 15px
-
-      .opponent-review
-        margin: 10px 0
-
-      .actions
-        vertical-align: top
-
-      .info
-        margin-bottom: 20px
-
-      .publication
-        border-bottom: 1px solid #ccc
-        margin-bottom: 10px
-
-  .file-uploads,
-  .leading-organization,
-  .people-list
-    .well
-      width: 97.6%
-      margin-left: 15px
-      padding-top: 25px
-      padding-bottom: 5px
-
-  .leading-organization
-    .title
-      margin-bottom: 10px
-
-  .reviewer-file
-    margin: 20px 0
-    border-bottom: 1px solid #ccc
 
   // Councils list
   .council-number,
@@ -383,3 +357,42 @@
 
 .order-success
   +animation(order-success 1.2s ease-in 1)
+
+
+// Preloader
+.preloader
+  background: asset_url('spa/preloader.gif')
+  background-size: 22px
+  background-repeat: no-repeat
+  padding-left: 30px
+  color: #3a6dc6
+
+// Upload files block
+.file-uploads
+  .file-block
+    background: #eaf2ff
+    margin-left: 15px
+    padding-left: 15px
+    padding-top: 15px
+    width: 97.6%
+    border-bottom: 1px solid #c5e0fe
+
+    &:last-child
+      border-bottom: 0
+
+    &.bottom-border-line
+      border-bottom: 1px solid #c5e0fe
+
+    .file-name,
+    .file-date
+      margin-left: -15px
+
+    .file-date
+      margin-top: 30px
+
+      &.group
+        input
+          &.ng-not-empty
+            ~ label
+              top: -25px
+              left: -5px

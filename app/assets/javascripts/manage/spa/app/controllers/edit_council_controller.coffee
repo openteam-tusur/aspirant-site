@@ -2,6 +2,11 @@ angular
   .module('dashboard')
   .controller('EditCouncilController', ['$scope', '$http', ($scope, $http) ->
 
+    $scope.blockName = null
+
+    $scope.changeBlockName = (name) ->
+      $scope.blockName = name
+
     $scope.changePersonForm = (object) ->
       $scope.personForm = object
 

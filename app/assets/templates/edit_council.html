@@ -41,16 +41,18 @@
   <div class='col-xs-12'>
     <div class='devider'>
       <h3 class='inline-header'>{{ l('councils.council_members') }}</h3>
-      <span class='link-emulator' ng-click='showPeopleInput = !showPeopleInput' ng-show='!showPeopleInput'>
+      <span class='link-emulator'
+            ng-click="changeBlockName('council-people')"
+            ng-show="blockName != 'council-people'">
         Добавить участника
       </span>
     </div>
     <people-input context='context'
                   people='council.people'
                   ask-post='true'
-                  ng-show='showPeopleInput'
+                  ng-show="blockName == 'council-people'"
                   specialities='council.specialities'
-                  show-people-input='showPeopleInput'
+                  block-name-value='blockName'
                   ></people-input>
   </div>
   <div class="col-xs-12">

@@ -7,6 +7,7 @@ angular.module('dashboard')
           specialities:  '=specialities'
           destroyFunction: '=destroyFunction'
           updateOrderFunction: '=updateOrderFunction'
+          hideAlfavitSort: '=hideAlfavitSort'
 
         transclude: true
         restrict: 'E'

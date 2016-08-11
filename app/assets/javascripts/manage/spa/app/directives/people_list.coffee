@@ -13,6 +13,7 @@ angular.module('dashboard')
           saveEditPerson: '=saveEditPerson'
           restoreEditPerson: '=restoreEditPerson'
           changeActivePersonForm: '=changeActivePersonForm'
+          hideSortIcons: '=hideSortIcons'
 
         transclude: true
         restrict: 'E'

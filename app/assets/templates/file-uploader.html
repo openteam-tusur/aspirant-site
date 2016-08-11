@@ -1,4 +1,4 @@
-<div class="row">
+<div class="material-design-form">
   <div class="col-xs-12">
     <form name='form'>
       <input type="file"
@@ -18,14 +18,12 @@
              name='file'
              ng-if="need('single')"
              />
-      <button class='btn btn-primary fake-upload-button' ng-show='showUploadButton()'>
+      <button class='btn btn-add-file fake-upload-button' ng-show='showUploadButton()'>
         {{ l("file.choose")}}
       </button>
       <ul>
         <li ng-repeat="item in uploader.queue">
-          <strong>
-            {{ l('file.name')}}:
-          </strong>
+          {{ l('file.name')}}:
           <span>{{ item.file.name }}</span>
           <div ng-show="uploader.isHTML5 && item.progress != 0">
             <div class="progress" style="margin-bottom: 0;">
@@ -36,11 +34,16 @@
       </ul>
     </form>
   </div>
-  <div class="col-xs-12">
-    <ul>
-      <li ng-repeat='file in allFiles()'>
-        <strong>{{ fileNameOf(file) }}</strong>
-        <small>({{ sizeOf(file) }})</small>
+  <div class="col-lg-6 material-design-form">
+    <div ng-repeat='file in allFiles()'>
+      <div class='file-name'>
+        {{ fileNameOf(file) }}
+        ({{ sizeOf(file) }})
+        <span class='glyphicon glyphicon-remove'
+              ng-click='destroyFile(file)'>
+        </span>
+      </div>
+      <div class='file-date group'>
         <date-selector label="{{ l('advert.publication_date') }}"
                        target='file.placement_date'
                        update-function='updatePlacementDate'
@@ -48,10 +51,7 @@
                        parent-object='file'
                        ></date-selector>
 
-        <button ng-click='destroyFile(file)' class='btn btn-danger file-uploader-btn'>
-          {{ l('file.remove') }}
-        </button>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </div>

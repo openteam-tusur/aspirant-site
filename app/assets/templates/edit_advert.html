@@ -2,17 +2,25 @@
   {{ l('app.advert_edit') }}
 </h3>
 <div ng-form='advertForm' novalidate>
-   <!-- applicant input -->
+
+  <!-- applicant input -->
   <div class="row advert-add-person-form">
     <div class="col-xs-12">
-      <br>
-      <legend> {{ l('advert.applicant') }} </legend>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.applicant') }} </h3>
+        <span class='link-emulator'
+          ng-click="changeBlockName('applicant')"
+          ng-show="blockName != 'applicant'">
+          Добавить
+        </span>
+      </div>
     </div>
     <div class="col-xs-12">
       <people-input context='applicant_context || contextFor("applicant")'
                     person='advert.applicant'
-                    ng-hide='advert.applicant.id'
+                    ng-show="blockName == 'applicant' && !dvert.applicant.id"
                     specialities='specialities'
+                    block-name-value='blockName'
                     ></people-input>
 
       </people-input>
@@ -25,13 +33,16 @@
                    ></people-list>
     </div>
   </div>
-
   <!-- end of applicant input -->
-  <div class="row">
+
+  <!-- dissertation theme -->
+  <div class="row material-design-form">
     <div class="col-xs-12">
-      <legend> {{ l('advert.title') }} </legend>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.title') }} </h3>
+      </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 group">
       <input type="text"
              ng-model='advert.title'
              placeholder='{{advert.title}}'
@@ -41,157 +52,127 @@
              ng-change='updateField("title")'
              required
             >
-
+      <span class="bar"></span>
+      <label>{{ l('advert.title') }}
+        <abbr title="{{ l('forms.field-invalid')}}" class="required">*</abbr>
+      </label>
       <span ng-show='advertForm.title.$invalid && advertForm.title.$dirty' class='invalid-message'>
         {{ l('forms.field-invalid')}}
       </span>
     </div>
+    <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'title'">
+      Идет сохранение...
+    </div>
   </div>
 
-  <div class="row">
+  <!-- science_degree -->
+  <div class="row material-design-form">
     <div class="col-xs-12">
-      <legend> {{ l('advert.science_degree') }} </legend>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.science_degree') }}</h3>
+      </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 group">
       <select ng-options='degree.value for degree in science.science_degrees track by degree.value'
               ng-model='science_degree'
               placeholder='{{advert.science_degree}}'
               name='title'
-              class='form-control form-control-small'
+              class='form-control'
               ng-model-options='{ debounce: 1000 }'
               ng-change='copyFrom("science_degree")'
               required
-            >
-
+              ></select>
+      <span class="bar"></span>
+      <label>{{ l('advert.science_degree') }}
+        <abbr title="{{ l('forms.field-invalid')}}" class="required">*</abbr>
+      </label>
       <span ng-show='advertForm.title.$invalid && advertForm.title.$dirty' class='invalid-message'>
         {{ l('forms.field-invalid')}}
       </span>
     </div>
-  </div>
-
-  <!-- mentor input -->
-  <br>
-  <div class="row advert-add-person-form">
-    <div class="col-xs-12">
-      <legend> {{ l('advert.mentor') }} </legend>
-    </div>
-    <div class="col-xs-12">
-      <people-input context='mentor_context || contextFor("mentor")'
-                    person='advert.mentor'
-                    ng-hide='advert.mentor.id'
-                    ></people-input>
-
-      </people-input>
-    </div>
-    <div class='col-xs-12'>
-      <people-list person='advert.mentor'
-                   person_type='mentor'
-                   destroy-with='destroyPost'
-                   ng-if='advert.mentor.id'
-                   >
-      </people-list>
+    <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'science_degree'">
+      Идет сохранение...
     </div>
   </div>
-  <!-- end of applicant input -->
-
-  <!-- speciality input -->
-  <div class="row">
-    <div class="col-xs-12">
-      <legend> {{ l('advert.speciality') }} </legend>
-    </div>
-    <div class="col-xs-12">
-      <speciality-input speciality='advert.council_speciality'
-                        add-function='addSpeciality'
-                        is-single='true'
-
-                        ></speciality-input>
-
-      <speciality-list speciality='advert.council_speciality'
-                       destroy-function='destroySpeciality'
-      ></speciality-list>
-    </div>
-  </div>
-  <!-- end of speciality input -->
-
-  <!-- dissertation council select -->
-  <div class="row">
-    <div class="col-xs-12">
-      <legend> {{ l('advert.dissertation_council') }} </legend>
-    </div>
-    <div class="col-lg-6">
-      <select ng-model='advert.dissertation_council'
-              ng-options='council.number for council in avalaibleCouncils track by council.id'
-              ng-change='updateDissertationCouncil()'
-              class='form-control'
-              required
-              >
-              </select>
-    </div>
-  </div>
-  <!-- end of dissertation council select -->
+  <!-- end science degree -->
 
   <!-- publication date -->
-  <br>
-  <div class="row">
-    <div class="col-xs-12">
-      <legend> {{ l('advert.publication_date') }} </legend>
+  <div class="row material-design-form">
+    <div class='col-xs-12'>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.publication_date') }}</h3>
+      </div>
     </div>
-    <div class="col-lg-6" ng-if='advert.id'>
+    <div class="col-lg-6 group" ng-if='advert.id'>
       <date-selector label="{{ l('advert.publication_date') }}"
                      target='advert.publication_date'
                      update-function='updateField'
                      field-name='publication_date'
                      ></date-selector>
     </div>
+    <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'publication_date'">
+      Идет сохранение...
+    </div>
   </div>
   <!-- end of publication date -->
 
   <!-- placement date -->
-  <br>
-  <div class="row">
-    <div class="col-xs-12">
-      <legend> {{ l('advert.placement_date') }} </legend>
+  <div class="row material-design-form">
+    <div class='col-xs-12'>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.placement_date') }}</h3>
+      </div>
     </div>
-    <div class="col-lg-6" ng-if='advert.id'>
+    <div class="col-lg-6 group" ng-if='advert.id'>
       <date-selector label="{{ l('advert.placement_date') }}"
                      target='advert.placement_date'
                      update-function='updateField'
                      field-name='placement_date'
                      ></date-selector>
     </div>
+    <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'placement_date'">
+      Идет сохранение...
+    </div>
   </div>
   <!-- end of publication date -->
 
   <!-- place of dissertation defense -->
   <br>
-  <div class="row">
-    <div class="col-xs-12">
-      <legend> {{ l('advert.place')}} </legend>
+  <div class="row material-design-form">
+    <div class='col-xs-12'>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.place')}}</h3>
+      </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 group">
       <input type="text"
              ng-model='advert.place'
-             placeholder='{{ l("advert.place") }}'
              name='place'
              class='form-control form-control-small'
              ng-model-options='{ debounce: 1000 }'
              ng-change='updateField("place")'
              required
             >
+      <span class="bar"></span>
+      <label>{{ l("advert.place") }}</label>
       <span ng-show='advertForm.place.$invalid && advertForm.place.$dirty'>
         {{ l('forms.field-invalid') }}
       </span>
+    </div>
+    <div class='col-lg-3 preloader' ng-if="isLoading() && showPreloader == 'place'">
+      Идет сохранение...
     </div>
   </div>
   <!-- end place of dissertation defense -->
 
   <!-- file upload -->
-  <br>
-  <div class="row file-uploads" ng-if='advert.id'>
-    <div class="col-xs-12">
-      <legend> {{ l('advert.files_upload') }} </legend>
+  <div class="row file-uploads material-design-form" ng-if='advert.id'>
+    <div class='col-xs-12'>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.files_upload') }}</h3>
+      </div>
     </div>
-    <div class="col-xs-12 well">
+    <div class="col-xs-12 file-block">
       <label>
         {{ l('advert.files.dissertation') }}
       </label>
@@ -203,7 +184,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12 well">
+    <div class="col-xs-12 file-block">
       <label>
         {{ l('advert.files.synopsis') }}
       </label>
@@ -215,7 +196,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12 well">
+    <div class="col-xs-12 file-block">
       <label>
         {{ l('advert.files.conclusion') }}
       </label>
@@ -227,7 +208,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12 well">
+    <div class="col-xs-12 file-block">
       <label>
         {{ l('advert.files.review') }}
       </label>
@@ -239,7 +220,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12 well">
+    <div class="col-xs-12 file-block">
       <label>
         {{ l('advert.files.protocol') }}
       </label>
@@ -251,7 +232,7 @@
                      >
       </file-uploader>
     </div>
-    <div class="col-xs-12 well">
+    <div class="col-xs-12 file-block">
       <label>
         {{ l('advert.files.council_conclusion') }}
       </label>
@@ -267,9 +248,11 @@
   <!-- end of file upload -->
 
   <!-- leading organization -->
-  <div class="row leading-organization" ng-if='advert.id'>
+  <div class="row leading-organization file-uploads" ng-if='advert.id'>
     <div class="col-xs-12 title">
-      <legend> {{ l('advert.organization_name') }} </legend>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.organization_name') }}</h3>
+      </div>
       <textarea  ng-model='advert.organization_name'
                  placeholder='{{ l("advert.organization_name") }}'
                  name='organization_name'
@@ -283,7 +266,7 @@
         {{ l('forms.field-invalid') }}
       </span>
     </div>
-    <div class="col-xs-12 well">
+    <div class="col-xs-12 file-block margin-top-10">
       <label>
         {{ l('advert.files.organization_review') }}
       </label>
@@ -295,7 +278,7 @@
                >
       </file-uploader>
     </div>
-    <div class="col-xs-12 well">
+    <div class="col-xs-12 file-block">
       <label>
         {{ l('advert.files.organization_publication') }}
       </label>
@@ -313,13 +296,21 @@
   <!-- opponents -->
   <div class="row advert-add-person-form">
     <div class="col-xs-12">
-      <legend> {{ l('advert.opponents') }} </legend>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.opponents') }}</h3>
+        <span class='link-emulator'
+          ng-click="changeBlockName('opponents')"
+          ng-show="blockName != 'opponents'">
+          Добавить
+        </span>
+      </div>
     </div>
     <div class="col-xs-12">
       <people-input context='opponent_context || contextFor("opponent")'
                     people='advert.opponents'
                     specialities='specialities'
-                    show-people-input='showPeopleInput'
+                    block-name-value='blockName'
+                    ng-show="blockName == 'opponents'"
                     >
       </people-input>
     </div>
@@ -333,6 +324,7 @@
                    save-edit-person='savePerson'
                    restore-edit-person='restorePerson'
                    change-active-person-form='changePersonForm'
+                   hide-sort-icons='true'
                    >
       </people-list>
     </div>
@@ -342,13 +334,21 @@
   <!-- reviewers -->
   <div class="row">
     <div class="col-xs-12">
-      <legend> {{ l('advert.reviewer_review') }} </legend>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.reviewer_review') }}</h3>
+        <span class='link-emulator'
+              ng-click="changeBlockName('reviewers')"
+              ng-show="blockName != 'reviewers'">
+          Добавить
+        </span>
+      </div>
     </div>
     <div class="col-xs-12">
       <people-input context='reviewer_context || contextFor("reviewer")'
                     people='advert.reviewers'
                     specialities='specialities'
-                    show-people-input='showPeopleInput'
+                    block-name-value='blockName'
+                    ng-show="blockName == 'reviewers'"
                     >
       </people-input>
       <people-list people='advert.reviewers'
@@ -365,12 +365,107 @@
   </div>
   <!-- end of reviewers -->
 
-  <button ng-click="changeState('publish')" ng-if="resolveChangeStateVisibility('draft')" class='btn btn-success'>
-    {{ l('app.buttons.publish') }}
-  </button>
+  <!-- mentor input -->
+  <br>
+  <div class="row advert-add-person-form">
+    <div class="col-xs-12">
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.mentor') }}</h3>
+        <span class='link-emulator'
+          ng-click="changeBlockName('mentor')"
+          ng-show="blockName != 'mentor'"
+          data='advert.mentor'>
+          Добавить
+        </span>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <people-input context='mentor_context || contextFor("mentor")'
+                    person='advert.mentor'
+                    ng-hide="blockName != 'mentor' || advert.mentor.id"
+                    specialities='specialities'
+                    ng-show="blockName == 'mentor'"
+                    block-name-value='blockName'
+                    ></people-input>
 
-  <button ng-click="changeState('unpublish')" ng-if="resolveChangeStateVisibility('publicated')" class='btn btn-warning'>
-    {{ l('app.buttons.unpublish') }}
-  </button>
+      </people-input>
+    </div>
+    <div class='col-xs-12'>
+      <people-list person='advert.mentor'
+                   person_type='mentor'
+                   destroy-with='destroyPost'
+                   ng-if='advert.mentor.id'
+                   >
+      </people-list>
+    </div>
+  </div>
+  <!-- end of applicant input -->
+
+  <!-- dissertation council select -->
+  <div class="row material-design-form">
+    <div class="col-xs-12">
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.dissertation_council') }}</h3>
+      </div>
+    </div>
+    <div class="col-lg-6 group">
+      <select ng-model='advert.dissertation_council'
+              ng-options='council.number for council in avalaibleCouncils track by council.id'
+              ng-change='updateDissertationCouncil()'
+              class='form-control'
+              required
+              >
+              </select>
+      <span class="bar"></span>
+      <label>{{ l('advert.dissertation_council') }}
+        <abbr title="{{ l('forms.field-invalid')}}" class="required">*</abbr>
+      </label>
+    </div>
+  </div>
+  <!-- end of dissertation council select -->
+
+  <!-- speciality input -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('advert.speciality') }}</h3>
+        <span class='link-emulator'
+              ng-click='showSpecialityInput = !showSpecialityInput'
+              ng-hide='showSpecialityInput'>
+              Добавить
+        </span>
+      </div>
+        <speciality-input speciality='advert.council_speciality'
+                          add-function='addSpeciality'
+                          is-single='true'
+                          show-search='showSpecialityInput'
+                          ng-show='showSpecialityInput'
+                          >
+        </speciality-input>
+
+        <speciality-list speciality='advert.council_speciality'
+                         destroy-function='destroySpeciality'
+                         hide-alfavit-sort='true'
+                         ng-show='advert.council_speciality'
+        ></speciality-list>
+    </div>
+  </div>
+  <!-- end of speciality input -->
+
+  <div class='row material-design-form margin-top-10'>
+    <div class='col-xs-12'>
+      <button ng-click="changeState('publish')"
+              ng-if="resolveChangeStateVisibility('draft')"
+              class='btn btn-save'>
+        {{ l('app.buttons.publish') }}
+      </button>
+
+      <button ng-click="changeState('unpublish')"
+              ng-if="resolveChangeStateVisibility('publicated')"
+              class='btn btn-cancel'>
+        {{ l('app.buttons.unpublish') }}
+      </button>
+    </div>
+  </div/
 
 </div>
