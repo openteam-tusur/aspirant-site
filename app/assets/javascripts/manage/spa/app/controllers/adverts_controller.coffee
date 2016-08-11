@@ -1,7 +1,7 @@
 angular
   .module('dashboard')
   .controller('AdvertsController', ['$scope', '$http', '$state', ($scope, $http, $state) ->
-      $scope.url  = "manage/announcements/"
+      $scope.url  = "manage/announcements"
       $scope.getAdverts = ()->
         $http
           .get $scope.url
