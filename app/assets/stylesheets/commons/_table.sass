@@ -239,9 +239,46 @@ table
               width: 5px
               height: 18px
 
-              &:before
-                display: block
-                content: ', '
+            &:first-child
+              padding-top: 10px
+
+            &:last-child
+              padding-bottom: 10px
+
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+    &.middle-responsive
+      thead
+        display: none
+
+        th, td
+          display: block
+          text-align: left
+          border: 0
+
+        tr
+          th, td
+            padding-top: 0
+            padding-bottom: 0
+
+            &:last-child
+              padding-bottom: 10px
+
+      tbody
+        th, td
+          display: block
+          text-align: left
+          border: 0
+
+        tr
+          td
+            padding-top: 0
+            padding-bottom: 0
+
+            br
+              +inline-block
+              content: ''
+              width: 5px
+              height: 18px
 
             &:first-child
               padding-top: 10px

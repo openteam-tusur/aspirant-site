@@ -34,6 +34,7 @@ ul
         &:first-child
           padding-top: 10px
 
+// Adverts
 .adverts
   .content-cell
     margin-top: 3px
@@ -56,3 +57,82 @@ ul
       &.publication-date,
       &.protection-date
         width: 20%
+
+  =responsive-titles
+    .fullname
+      &:before
+        content: 'ФИО: '
+        color: #818181
+
+    .science-degree
+      &:before
+        content: 'Ученая степень: '
+        color: #818181
+
+    .science-title
+      &:before
+        content: 'Ученое звание: '
+        color: #818181
+
+    .work-place
+      &:before
+        content: 'Место работы: '
+        color: #818181
+
+    .work-post
+      &:before
+        content: 'Должность: '
+        color: #818181
+
+    .review-file
+      &:before
+        content: 'Отзыв: '
+        color: #818181
+
+    .publication-file
+      &:before
+        content: 'Сведения/Публикации: '
+        color: #818181
+
+    .publication-date
+      &:before
+        content: 'Дата публикации: '
+        color: #818181
+
+    tbody
+      tr
+        td
+          padding: 0
+          margin: 2px 0
+
+          &:last-child
+            padding-bottom: 0
+
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+    .opponents-table,
+    .reviewers-table
+      +responsive-titles
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+    .opponents-table,
+    .reviewers-table
+      +responsive-titles
+
+  @media (max-width: $screen-xs-max)
+    .opponents-table,
+    .reviewers-table
+      +responsive-titles
+
+    tbody
+      tr
+        margin: 10px 0
+
+        &:first-child
+          display: block
+
+        td
+          margin: 2px 0
+
+
+
+
