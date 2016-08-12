@@ -17,6 +17,9 @@ angular.module('dashboard')
         controller: ($scope, localization) ->
           $scope.l = localization.l
 
+          $scope.isLoading = () ->
+            return $http.pendingRequests.length > 0
+
           for key in ['new_person', 'science']
             $scope[key] = {}
 
@@ -66,14 +69,20 @@ angular.module('dashboard')
                   $scope.cleanPerson()
                   $scope.hideForm()
 
+          $scope.directorySearchTrigger = () ->
+            $scope.directorySearch = !$scope.directorySearch
+
           $scope.updateDirectorySearch = () ->
             query = []
             for key in ['name', 'surname', 'patronymic']
               query.push $scope.new_person[key]
             query = query.join(' ')
+
+            $scope.directorySearchTrigger()
             $http
               .get '/manage/people/directory_search', params: { term: query }
               .success (data) ->
+                $scope.directorySearchTrigger()
                 $scope.directory_search = data
 
           $scope.postsOf = (result) ->

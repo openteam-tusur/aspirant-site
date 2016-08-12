@@ -8,7 +8,6 @@
   $('a').each (index, item) ->
     return if $(this).hasClass('icon')
     return unless $(this).attr('href')
-    return unless $(this).attr('href').has(/^http/)
     extention = $(this).attr('href').split('.').last().toLowerCase()
     $(this).addClass('icon').addClass(extention) if mime.indexOf(extention) >= 0
     return

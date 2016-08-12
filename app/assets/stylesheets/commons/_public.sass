@@ -18,6 +18,22 @@ ul
   width: 100%
   margin: 10px 0
 
+// Councils List on Public
+.councils-list-public
+  @media (max-width: $screen-xs-max)
+    tr
+      border-bottom: 1px solid #e3e3e3
+
+      &:last-child
+        border-bottom: 0
+
+      td
+        &:last-child
+          padding-bottom: 20px
+
+        &:first-child
+          padding-top: 10px
+
 .adverts
   .content-cell
     margin-top: 3px

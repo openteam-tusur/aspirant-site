@@ -83,8 +83,6 @@ table
       &.reset-left-padding
         padding-left: 0
 
-      &:last-child
-        @extend .reset-bottom-border
 
     .text-center
       th
@@ -138,6 +136,12 @@ table
       font-weight: normal
   p
     margin-bottom: 0
+
+  &.without-border
+    tr
+      &:last-child
+        td
+          @extend .reset-bottom-border
 
 
   @media (max-width: $screen-xs-max)

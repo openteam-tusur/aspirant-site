@@ -45,6 +45,9 @@
                  form-object= 'peopleInput'
                  >
     </person-form>
+    <div class='col-lg-4 preloader' ng-if='directory_search.length == 0 && isLoading()'>
+      Идет поиск сотрудника...
+    </div>
     <!-- Directory results -->
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 search-person-block"  ng-if='personNotFound'>
       <ul>

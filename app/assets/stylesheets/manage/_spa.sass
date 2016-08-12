@@ -374,17 +374,32 @@
 
 // Preloader
 .preloader
-  background: asset_url('spa/preloader.gif')
-  background-size: 22px
+  background: asset_url('spa/smart-preloader.svg')
+  background-size: 25px
   background-repeat: no-repeat
   padding-left: 30px
+  height: 30px
   color: #3a6dc6
 
-.glyphicon-ok
-  color: green
+.success-state
+  .glyphicon
+    &.glyphicon-ok
+      color: green
+      font-size: 16px
 
-  .text
-    margin-left: 10px
+      .text
+        margin-left: 5px
+        font-family: 'PTsans'
+
+.no-search-result
+  .glyphicon
+    &.glyphicon-list-alt
+      color: red
+      font-size: 16px
+
+      .text
+        margin-left: 5px
+        font-family: 'PTsans'
 
 // Upload files block
 .file-uploads

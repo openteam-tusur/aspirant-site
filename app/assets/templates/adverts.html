@@ -14,7 +14,7 @@
     </button>
   </div>
 </div>
-<table class='adverts'>
+<table class='adverts without-border'>
   <thead class='font-size-14'>
     <th class='text-left bottom-border reset-top-border'>{{ l('advert.dissertation_council') }}</th>
     <th class='text-left bottom-border reset-top-border'>{{ l('advert.applicant') }}</th>
@@ -27,17 +27,17 @@
 
   <tbody>
     <tr ng-repeat='advert in adverts | filter: searchText '>
-      <td class='reset-bottom-border'>
+      <td>
         <a ui-sref="council_edit({councilId: advert.dissertation_council.id})">
           {{ advert.dissertation_council.number }}
         </a>
       </td>
-      <td class='reset-bottom-border'><a ui-sref="advert_edit({advertId: advert.id})">{{ advert.applicant.fullname }}</a></td>
-      <td class='reset-bottom-border'>{{ advert.applicant.science_degree }}</td>
-      <td class='reset-bottom-border'>{{ advert.title }}</td>
-      <td class='reset-bottom-border'>{{ advert.council_speciality.code }}</td>
-      <td class='reset-bottom-border'>{{ advert.placement_date }}</td>
-      <td class='reset-bottom-border'>{{ advert.publication_date }}</td>
+      <td><a ui-sref="advert_edit({advertId: advert.id})">{{ advert.applicant.fullname }}</a></td>
+      <td>{{ advert.applicant.science_degree }}</td>
+      <td>{{ advert.title }}</td>
+      <td>{{ advert.council_speciality.code }}</td>
+      <td>{{ advert.placement_date }}</td>
+      <td>{{ advert.publication_date }}</td>
     </tr>
   </tbody>
 </table>
