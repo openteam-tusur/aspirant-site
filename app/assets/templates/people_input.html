@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-hide='personNotFound'>
       <!-- ready person search -->
       <div class="row search" ng-hide='new_person.fullname'>
-        <div class='col-sm-8 col-md-8 col-lg-8'>
+        <div class='col-xs-9 col-sm-8 col-md-8 col-lg-8'>
           <angucomplete-alt class="user-angucomplete"
                             placeholder="Поиск среди участников"
                             minlength="3"
@@ -20,7 +20,7 @@
                             text-searching="Идет поиск..."
                             ></angucomplete-alt>
         </div>
-        <div class='col-sm-4 col-md-4 col-lg-4'>
+        <div class='col-xs-3 col-sm-4 col-md-4 col-lg-4'>
           <button ng-click='hideNamedBlock()' class='btn btn-cancel' ng-hide='new_person.fullname'>
             {{ l('app.buttons.cancel') }}
           </button>
@@ -110,17 +110,17 @@
   <!-- end of speciality selector -->
 
   <div class='row add-person-form-actions'>
-    <div class="col-sm-1 col-md-1 col-lg-1 btn-container" ng-show='new_person.name' >
+    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 btn-container" ng-show='new_person.name' >
       <button ng-click='submitPerson()' class='btn btn-save'>
         {{ l('app.buttons.save') }}
       </button>
     </div>
-    <div class='col-sm-1 col-md-1 col-lg-1 btn-container'>
+    <div class='col-xs-2 col-sm-1 col-md-1 col-lg-1 btn-container'>
       <button ng-click='cleanPerson(); hideForm()' class='btn btn-cancel' ng-show='personNotFound || new_person.name'>
         {{ l('app.buttons.cancel') }}
       </button>
     </div>
-    <div class='col-sm-1 col-md-1 col-lg-1 btn-container btn-clean-wrapper'>
+    <div class='col-xs-2 col-sm-1 col-md-1 col-lg-1 btn-container btn-clean-wrapper'>
       <a ng-click='cleanPerson()' ng-show='personNotFound || new_person.name' class='btn-clean'>
         {{ l('app.buttons.clean') }}
       </a>

@@ -24,6 +24,7 @@ angular
 
     $scope.getAdvert = () ->
       id = $scope.$state.params.advertId
+      $scope.$emit 'Load'
 
       $http
         .get "#{$scope.url}#{id}"
@@ -34,6 +35,7 @@ angular
           angular.copy data, $scope.stored_advert                 #object for changes detection
           $scope.science.getScienceDictionaries $scope.callbackForScienceDegree
           $scope.getAvalaibleCouncils()
+          $scope.$emit 'Unload'
         .error -> $scope.$state.go 'dashboard'
 
     $scope.contextFor = (string) ->

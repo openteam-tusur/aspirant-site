@@ -236,10 +236,23 @@
       &:last-child
         padding-bottom: 10px
 
+    @media (max-width: $screen-xs-max)
+      .content-cell
+        border-bottom: 1px solid #e7e7e7
+
+        &.actions
+          padding: 5px
+          background: #e7e7e7
+
   .specialities-items
     .content-row
       margin-left: 0
       margin-right: 0
+
+      @media (max-width: $screen-xs-max)
+        .actions
+          .sort-icon
+            margin-bottom: 20px
 
   .ui-sortable-helper
     background: #fff
@@ -374,7 +387,7 @@
 
 // Preloader
 .preloader
-  background: asset_url('spa/smart-preloader.svg')
+  background: asset_url('spa/smart-preloader.gif')
   background-size: 25px
   background-repeat: no-repeat
   padding-left: 30px

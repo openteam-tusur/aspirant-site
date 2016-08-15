@@ -4,6 +4,7 @@ angular
 
     $scope.$state = $state
 
+
     $scope.getDictionary = (dictionary, callback) ->
       $http
         .get "manage/angular/get_#{dictionary}"
@@ -16,5 +17,13 @@ angular
     localization.getLocalization()
     $scope.localization = localization
     $scope.l = localization.l
+
+    $scope.$on('Load', ->
+      $scope.loadStatus = true
+    )
+
+    $scope.$on('Unload', ->
+      $scope.loadStatus = false
+    )
 
     ])

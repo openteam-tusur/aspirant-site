@@ -1,4 +1,5 @@
-<div class='permissions'>
+<ng-include src="'load_status.html'"></ng-include>
+<div class='permissions' ng-show='!loadStatus'>
   <h3>
     {{ l('app.permissions') }}
   </h3>

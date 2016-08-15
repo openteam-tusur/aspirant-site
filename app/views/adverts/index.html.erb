@@ -10,6 +10,8 @@
         <div class='<%= right_side_present? ? 'col-lg-9 col-md-9 col-sm-8 col-xs-12' : 'col-xs-12' %> left-side'>
           <%= render_partial_for_region @breadcrumbs if @breadcrumbs.present? %>
 
+          <h1>Объявления о защитах диссертаций</h1>
+
           <% if @adverts.present? %>
             <table class='adverts adverts-table small-responsive middle-responsive'>
               <thead class='gray-bg '>

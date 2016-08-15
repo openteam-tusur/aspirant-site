@@ -10,7 +10,12 @@
         <div class='<%= right_side_present? ? 'col-lg-9 col-md-9 col-sm-8 col-xs-12' : 'col-xs-12' %> left-side'>
           <%= render_partial_for_region @breadcrumbs if @breadcrumbs.present? %>
 
+
           <% if @advert.present? %>
+            <% if @advert.title.present? %>
+              <h1>Размещена диссертация &laquo;<%= @advert.title %>&raquo;</h1>
+            <% end %>
+
             <p><span class='gray-text'>Соискатель учёной степени к.т.н.: </span><%= @advert.applicant.fullname if @advert.applicant.present? %></p>
             <p><span class='gray-text'>Название диссертации: </span><%= @advert.title %></p>
 

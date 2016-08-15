@@ -3,6 +3,7 @@ angular
   .controller('PermissionsController', ['$scope', '$http', ($scope, $http) ->
 
     $scope.getPermissions = ()->
+      $scope.$emit 'Load'
       $http
         .get '/manage/permissions'
         .success (data) ->
@@ -11,6 +12,7 @@ angular
             permission.localized = $scope.l("permissions.#{permission.role}")
           $scope.availableRoles    = data.available_roles
           $scope.availableContexts = data.available_contexts
+          $scope.$emit 'Unload'
 
     $scope.removePermission = (permission) ->
       $http

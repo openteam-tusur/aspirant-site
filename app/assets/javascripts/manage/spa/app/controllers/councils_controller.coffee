@@ -3,10 +3,12 @@ angular
   .controller('CouncilsController', ['$scope', '$http', ($scope, $http) ->
 
     $scope.getCouncils = () ->
+      $scope.$emit 'Load'
       $http
         .get '/manage/dissertation_councils'
         .success (data) ->
           $scope.councils = data.councils
+          $scope.$emit 'Unload'
 
     $scope.submitCouncil = () ->
       council = $scope.new_council

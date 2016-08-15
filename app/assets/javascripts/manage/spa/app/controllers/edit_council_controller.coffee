@@ -11,10 +11,12 @@ angular
       $scope.personForm = object
 
     $scope.getCouncil = () ->
+      $scope.$emit 'Load'
       id = $scope.$state.params.councilId
       $http
         .get "manage/dissertation_councils/#{id}"
           .success (data) ->
+            $scope.$emit 'Unload'
             $scope.council = data
           .error -> $scope.$state.go 'dashboard'
 

@@ -1,7 +1,13 @@
 <h3>
   {{ l('app.advert_edit') }}
 </h3>
-<div ng-form='advertForm' class='edit-advert-form' novalidate>
+
+<ng-include src="'load_status.html'"></ng-include>
+
+<div ng-form='advertForm'
+     class='edit-advert-form'
+     ng-show='!loadStatus'
+     novalidate>
 
   <!-- applicant input -->
   <div class="row advert-add-person-form">

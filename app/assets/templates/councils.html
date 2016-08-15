@@ -1,4 +1,5 @@
-<div class='councils-data'>
+<ng-include src="'load_status.html'"></ng-include>
+<div class='councils-data' ng-show='!loadStatus'>
   <h3>
     {{ l('app.councils') }}
   </h3>

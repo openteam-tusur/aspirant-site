@@ -6,65 +6,70 @@
   </div>
 </div>
 
-<!-- council clerks-->
-<div class='row'>
-  <div class="col-xs-12">
-    <div class='devider no-line'>
-      <h3 class='inline-header'>{{ l('councils.executive') }}</h3>
-    </div>
-      <ul class="clerks">
-        <li ng-repeat='clerk in council.clerks'>{{ clerk.fullname }}, <a href="mailto:{{ clerk.email }}">{{clerk.email}}</a></li>
-      </ul>
-  </div>
-</div>
 
-<!-- Add speciality for council-->
-<div class="row">
-  <div class="col-lg-12">
-    <div class='devider'>
-      <h3 class='inline-header'>{{ l('councils.council_speciality') }}</h3>
-      <span class='link-emulator' ng-click='showSpecialityInput = !showSpecialityInput' ng-hide='showSpecialityInput'>Добавить</span>
-    </div>
-    <speciality-input specialities='council.specialities'
-                      add-function='addSpecialityToCouncil'
-                      show-search='showSpecialityInput'>
-    </speciality-input>
-    <speciality-list specialities='council.specialities'
-                     destroy-function='removeSpecialityFromCouncil'
-                     update-order-function='updateSpecialityOrder'
-                     ></speciality-list>
-  </div>
-</div>
+<ng-include src="'load_status.html'"></ng-include>
 
-<!-- Add peoples for council-->
-<div class='row'>
-  <div class='col-xs-12'>
-    <div class='devider'>
-      <h3 class='inline-header'>{{ l('councils.council_members') }}</h3>
-      <span class='link-emulator'
-            ng-click="changeBlockName('council-people')"
-            ng-show="blockName != 'council-people'">
-        Добавить участника
-      </span>
+<div class='edit-council-wrapper' ng-show='!loadStatus'>
+  <!-- council clerks-->
+  <div class='row'>
+    <div class="col-xs-12">
+      <div class='devider no-line'>
+        <h3 class='inline-header'>{{ l('councils.executive') }}</h3>
+      </div>
+        <ul class="clerks">
+          <li ng-repeat='clerk in council.clerks'>{{ clerk.fullname }}, <a href="mailto:{{ clerk.email }}">{{clerk.email}}</a></li>
+        </ul>
     </div>
-    <people-input context='context'
-                  people='council.people'
-                  ask-post='true'
-                  ng-show="blockName == 'council-people'"
-                  specialities='council.specialities'
-                  block-name-value='blockName'
-                  ></people-input>
   </div>
-  <div class="col-xs-12">
-    <people-list people='council.people'
-                 destroy-with='destroyPost'
-                 update-order-function='updatePersonOrder'
-                 specialities='council.specialities'
-                 context='context'
-                 save-edit-person='savePerson'
-                 restore-edit-person='restorePerson'
-                 change-active-person-form='changePersonForm'
-                 >
-    </people-list>
+
+  <!-- Add speciality for council-->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('councils.council_speciality') }}</h3>
+        <span class='link-emulator' ng-click='showSpecialityInput = !showSpecialityInput' ng-hide='showSpecialityInput'>Добавить</span>
+      </div>
+      <speciality-input specialities='council.specialities'
+                        add-function='addSpecialityToCouncil'
+                        show-search='showSpecialityInput'>
+      </speciality-input>
+      <speciality-list specialities='council.specialities'
+                       destroy-function='removeSpecialityFromCouncil'
+                       update-order-function='updateSpecialityOrder'
+                       ></speciality-list>
+    </div>
+  </div>
+
+  <!-- Add peoples for council-->
+  <div class='row'>
+    <div class='col-xs-12'>
+      <div class='devider'>
+        <h3 class='inline-header'>{{ l('councils.council_members') }}</h3>
+        <span class='link-emulator'
+              ng-click="changeBlockName('council-people')"
+              ng-show="blockName != 'council-people'">
+          Добавить участника
+        </span>
+      </div>
+      <people-input context='context'
+                    people='council.people'
+                    ask-post='true'
+                    ng-show="blockName == 'council-people'"
+                    specialities='council.specialities'
+                    block-name-value='blockName'
+                    ></people-input>
+    </div>
+    <div class="col-xs-12">
+      <people-list people='council.people'
+                   destroy-with='destroyPost'
+                   update-order-function='updatePersonOrder'
+                   specialities='council.specialities'
+                   context='context'
+                   save-edit-person='savePerson'
+                   restore-edit-person='restorePerson'
+                   change-active-person-form='changePersonForm'
+                   >
+      </people-list>
+    </div>
   </div>
 </div>
