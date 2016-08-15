@@ -11,10 +11,10 @@
           <%= render_partial_for_region @breadcrumbs if @breadcrumbs.present? %>
 
           <% if @adverts.present? %>
-            <table class='adverts'>
-              <thead class='gray-bg adverts-table'>
+            <table class='adverts adverts-table small-responsive middle-responsive'>
+              <thead class='gray-bg '>
                 <tr>
-                  <th class='fio'>ФИО соискателя</th>
+                  <th class='fullname'>ФИО соискателя</th>
                   <th class='dk'>Д/К</th>
                   <th class='theme'>Тема диссертации</th>
                   <th class='speciality'>Специальность</th>
@@ -25,12 +25,12 @@
               <tbody>
                 <% @adverts.each do |advert| %>
                   <tr>
-                    <td><%= link_to advert.applicant.fullname, advert.applicant.url if advert.applicant.present? %></td>
-                    <td><%= advert.applicant.science_degree_abbr if advert.applicant.present? %></td>
-                    <td><%= link_to advert.title, advert_path(advert) if advert.title.present? %></td>
-                    <td><%= advert.council_speciality.title if advert.council_speciality.present? %></td>
-                    <td><%= advert.placement_date %></td>
-                    <td></td>
+                    <td class='fullname'><%= link_to advert.applicant.fullname, advert.applicant.url if advert.applicant.present? %></td>
+                    <td class='dk'><%= advert.applicant.science_degree_abbr if advert.applicant.present? %></td>
+                    <td class='theme'><%= link_to advert.title, advert_path(advert) if advert.title.present? %></td>
+                    <td class='speciality'><%= advert.council_speciality.title if advert.council_speciality.present? %></td>
+                    <td class='publication-date'><%= advert.placement_date %></td>
+                    <td class='protection-date'></td>
                   </tr>
                 <% end %>
               </tbody>

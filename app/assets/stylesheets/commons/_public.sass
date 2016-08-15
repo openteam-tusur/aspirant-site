@@ -40,11 +40,12 @@ ul
     margin-top: 3px
     margin-bottom: 3px
 
-  .adverts-table
+  // list adverts on index action
+  &.adverts-table
     th
       width: 25%
 
-      &.fio
+      &.fullname
         width: 15%
 
       &.dk
@@ -58,46 +59,96 @@ ul
       &.protection-date
         width: 20%
 
+    =responsive-commons
+      $gray-text: #818181
+
+      thead
+        display: none
+
+      td
+        &.fullname
+          &:before
+            content: 'ФИО соискателя: '
+            color: $gray-text
+
+        &.dk
+          &:before
+            content: 'Д/К: '
+            color: $gray-text
+
+        &.theme
+          &:before
+            content: 'Тема диссертации: '
+            color: $gray-text
+
+        &.speciality
+          &:before
+            content: 'Специальность: '
+            color: $gray-text
+
+        &.publication-date
+          &:before
+            content: 'Дата размещения: '
+            color: $gray-text
+
+        &.protection-date
+          &:before
+            content: 'Дата защиты: '
+            color: $gray-text
+
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+      +responsive-commons
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+      +responsive-commons
+
+    @media (max-width: $screen-xs-max)
+      +responsive-commons
+
+
+  // View of advert
   =responsive-titles
+    $text-color: #818181
+
     .fullname
       &:before
         content: 'ФИО: '
-        color: #818181
+        color: $text-color
 
     .science-degree
       &:before
         content: 'Ученая степень: '
-        color: #818181
+        color: $text-color
 
     .science-title
       &:before
         content: 'Ученое звание: '
-        color: #818181
+        color: $text-color
 
     .work-place
       &:before
         content: 'Место работы: '
-        color: #818181
+        color: $text-color
 
     .work-post
       &:before
         content: 'Должность: '
-        color: #818181
+        color: $text-color
 
     .review-file
       &:before
         content: 'Отзыв: '
-        color: #818181
+        color: $text-color
 
     .publication-file
       &:before
         content: 'Сведения/Публикации: '
-        color: #818181
+        color: $text-color
 
     .publication-date
       &:before
         content: 'Дата публикации: '
-        color: #818181
+        color: $text-color
 
     tbody
       tr
@@ -132,7 +183,3 @@ ul
 
         td
           margin: 2px 0
-
-
-
-
