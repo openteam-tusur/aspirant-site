@@ -135,7 +135,7 @@
 
 <!-- if used with one person -->
 <div class="row" ng-if='person'>
-  <div class="col-lg-6">
+  <div class="col-xs-10 col-sm-8 col-md-6 col-lg-6">
     <p>
       <strong>{{ person.fullname }}</strong>
       <br>
@@ -144,7 +144,7 @@
       </span>
     </p>
   </div>
-  <div class='col-lg-6'>
+  <div class='col-xs-2 col-sm-4 col-md-6 col-lg-6'>
     <span ng-click='destroyPersonFunction(person, person_type)'
           class='glyphicon glyphicon-remove'>
     </button>

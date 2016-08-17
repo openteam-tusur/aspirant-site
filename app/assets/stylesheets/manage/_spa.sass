@@ -151,6 +151,66 @@
     .devider
       margin-top: 0
 
+  // Responsive Adverts list in manage
+  .adverts
+    =adverts-titles
+      $text-color: #808080
+
+      .council-number
+        &:before
+          content: 'Диссертационный совет: '
+          color: $text-color
+
+      .applicant-fullname
+        &:before
+          content: 'Соискатель: '
+          color: $text-color
+
+      .applicant-science-degree
+        &:before
+          content: 'Д/К: '
+          color: $text-color
+
+      .advert-title
+        &:before
+          content: 'Тема диссертации: '
+          color: $text-color
+
+      .advert-speciality-code
+        &:before
+          content: 'Специальность диссертации: '
+          color: $text-color
+
+      .advert-placement-date
+        &:before
+          content: 'Дата размещения: '
+          color: $text-color
+
+      .advert-publication-date
+        &:before
+          content: 'Дата защиты: '
+          color: $text-color
+
+      thead
+        display: none
+
+    &.list
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+        +adverts-titles
+
+      @media (max-width: $screen-xs-max)
+        +adverts-titles
+        tbody
+          td
+            &:first-child
+              margin-top: 10px
+
+            &:last-child
+              margin-bottom: 10px
+
+        .opponents
+          margin-top: 10px
+
   // People list
   .people-list-table,
   .specialities-items
@@ -347,7 +407,6 @@
               cursor: pointer
 
 // Highlights aggregator
-
 @keyframes order-success
   0%
     background: #33cc33
@@ -383,7 +442,6 @@
 
 .order-success
   +animation(order-success 1.2s ease-in 1)
-
 
 // Preloader
 .preloader

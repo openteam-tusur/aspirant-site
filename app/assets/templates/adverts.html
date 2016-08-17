@@ -4,19 +4,19 @@
   {{ l("app.adverts") }}
 </h3>
 <div class='row margin-bottom-10'>
-  <div class='col-lg-6 filters'>
+  <div class='col-xs-12 col-sm-8 col-md-6 col-lg-6 filters'>
     <input type='text' placeholder='Поиск по диссертационному совету'
            ng-model='searchText'
            class='form-control form-control-small'
            >
   </div>
-  <div class='col-lg-6 material-design-form text-right'>
+  <div class='col-xs-12 col-sm-4 col-md-6 col-lg-6 material-design-form text-right'>
     <button ng-click="addAdvert()" class='btn btn-add'>
       {{ l('app.buttons.add_advert') }}
     </button>
   </div>
 </div>
-<table class='adverts without-border'>
+<table class='adverts list without-border small-responsive'>
   <thead class='font-size-14'>
     <th class='text-left bottom-border reset-top-border'>{{ l('advert.dissertation_council') }}</th>
     <th class='text-left bottom-border reset-top-border'>{{ l('advert.applicant') }}</th>
@@ -29,17 +29,31 @@
 
   <tbody>
     <tr ng-repeat='advert in adverts | filter: searchText '>
-      <td>
+      <td class='council-number'>
         <a ui-sref="council_edit({councilId: advert.dissertation_council.id})">
           {{ advert.dissertation_council.number }}
         </a>
       </td>
-      <td><a ui-sref="advert_edit({advertId: advert.id})">{{ advert.applicant.fullname }}</a></td>
-      <td>{{ advert.applicant.science_degree }}</td>
-      <td>{{ advert.title }}</td>
-      <td>{{ advert.council_speciality.code }}</td>
-      <td>{{ advert.placement_date }}</td>
-      <td>{{ advert.publication_date }}</td>
+      <td class='applicant-fullname'>
+        <a ui-sref="advert_edit({advertId: advert.id})">
+          {{ advert.applicant.fullname }}
+        </a>
+      </td>
+      <td class='applicant-science-degree'>
+        {{ advert.applicant.science_degree }}
+      </td>
+      <td class='advert-title'>
+        {{ advert.title }}
+      </td>
+      <td class='council-speciality-code'>
+        {{ advert.council_speciality.code }}
+      </td>
+      <td class='advert-placement-date'>
+        {{ advert.placement_date }}
+      </td>
+      <td class='advert-publication-date'>
+        {{ advert.publication_date }}
+      </td>
     </tr>
   </tbody>
 </table>
