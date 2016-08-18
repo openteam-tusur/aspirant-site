@@ -259,7 +259,9 @@
         font-size: 18px
 
   .people-list-table,
-  .specialities-items
+  .specialities-items,
+  .people-index,
+  .specialities-index
     .actions
       .sort-icon
         background: asset_url('spa/sort-icon.png')
@@ -272,7 +274,8 @@
         &:hover
           cursor: move
 
-    .person-name
+    .person-name,
+    .speciality-title
       position: relative
       white-space: nowrap
 
@@ -290,11 +293,19 @@
         &:hover
           cursor: pointer
 
+  .people-index
+    .person-name
+      margin: 5px 0
+
   .people-list-table
     .opponents,
     .reviewers
       &:last-child
         padding-bottom: 10px
+
+      .file-block
+        width: 100%
+        margin-left: 0
 
     @media (max-width: $screen-xs-max)
       .content-cell
@@ -318,20 +329,19 @@
     background: #fff
     +box-shadow(0px 0px 18px -5px rgba(0,0,0,0.75))
 
-  .speciality-form
-    label,
-    .actions
-      margin-top: 10px
-
   .speciality-selector-cancel-btn
     padding: 0
 
   //Form for add and edit person
 
   .add-person-form,
-  .edit-person-form
+  .edit-person-form,
+  .add-speciality-form,
+  .edit-speciality-form
     &.new-person,
-    &.edit-person
+    &.edit-person,
+    &.new-speciality,
+    &.edit-speciality
       padding: 20px
       background: #eaf2ff
 
@@ -366,6 +376,14 @@
 
     .add-person-form-actions
       margin-top: 5px
+
+  .add-speciality-form
+    .btn-cancel
+      margin-left: -15px
+
+    &.new-speciality
+      .btn-cancel
+        margin-left: 0
 
   .edit-person-form
     .btn-save
@@ -487,6 +505,11 @@
 
     &.bottom-border-line
       border-bottom: 1px solid #c5e0fe
+
+    input
+      &.light-blue-bg
+        background: #eaf2ff
+        +border-radius(0)
 
     .file-name,
     .file-date

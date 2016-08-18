@@ -1,5 +1,5 @@
-<div class='people-index' ng-form='personForm'>
-  <div class="row">
+<div class='row people-index' ng-form='personForm'>
+  <div class="col-xs-12">
     <ul uib-pagination
         total-items="total_pages"
         ng-model="page"
@@ -10,7 +10,7 @@
         >
     </ul>
   </div>
-  <div class="row">
+  <div class="col-xs-12 margin-bottom-10">
     <input type="text"
            ng-model='q'
            ng-model-options='{ debounce: 500 }'
@@ -20,22 +20,34 @@
            placeholder="{{ l('search_placeholder')}}"
           >
   </div>
-  <div class="row" ng-repeat='person in people'>
-    <div class="col-xs-12">
-      <strong ng-show='!(activePersonForm == person.id)'>{{ person.fullname }}</strong>
-      <button ng-click='setPersonActive(person)'
-              ng-show='!activePersonForm'
-              >
-        {{l('app.buttons.edit')}}
-      </button>
+  <div class="col-xs-12" ng-repeat='person in people'>
+    <div class='person-name'>
+      <span ng-show='!(activePersonForm == person.id)'>
+        {{ person.fullname }}
+      </span>
+      <span class='edit-icon'
+            ng-click='setPersonActive(person)'
+            ng-show='!activePersonForm'>
+      </span>
+    </div>
+    <div class='col-xs-12 edit-person-form content-cell'
+         ng-show='activePersonForm == person.id'
+         ng-class="{'edit-person-form material-design-form edit-person': activePersonForm == person.id}">
+
       <person-form person='person'
                    person-not-found='activePersonForm == person.id'
                    form-object='personForm'>
       </person-form>
-      <button ng-click='savePerson(person)' ng-show=' activePersonForm == person.id '>
-        {{ l('app.buttons.save') }}
+
+      <div class='clearfix'></div>
+      <button ng-click='savePerson(person)'
+              ng-show='activePersonForm == person.id'
+              class='btn btn-save'>
+      {{ l('app.buttons.save') }}
       </button>
-      <button ng-click='restorePerson(person)' ng-show=' activePersonForm == person.id '>
+      <button ng-click='restorePerson(person)'
+              ng-show='activePersonForm == person.id'
+              class='btn btn-cancel'>
         {{ l('app.buttons.cancel') }}
       </button>
     </div>

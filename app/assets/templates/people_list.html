@@ -6,7 +6,9 @@
   <div class='header hidden-xs'>
     <div class='col-sm-4 col-md-4 col-lg-4 header-cell'>ФИО, должность в совете</div>
     <div class='col-sm-4 col-md-4 col-lg-4 header-cell'>Место работы, должность</div>
-    <div class='col-sm-3 col-md-2 col-lg-2 header-cell'>Специальность</div>
+    <div class='col-sm-3 col-md-2 col-lg-2 header-cell empty-cell'>
+      <span ng-hide='hideSortIcons'>Специальность</span>
+    </div>
     <div class='col-sm-1 col-md-1 col-lg-1 header-cell hidden-sm'>Действия</div>
     <div class='col-sm-1 col-md-1 col-lg-1 header-cell empty-cell'>
       <abbr title='Отсортировать по алфавиту' ng-hide='hideSortIcons'>

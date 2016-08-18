@@ -1,4 +1,6 @@
-<div ng-form='specialityForm' class='material-design-form'>
+<div ng-form='specialityForm'
+     class='add-speciality-form material-design-form'
+     ng-class="{'new-speciality': showCreateSpecialityForm}">
   <div class="row" ng-hide='speciality.id || showCreateSpecialityForm' ng-if='showSearch || isSingle'>
     <div class="col-xs-9 col-sm-10 col-md-10 col-lg-8">
       <angucomplete-alt  class="speciality-angucomplete"

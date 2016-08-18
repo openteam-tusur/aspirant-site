@@ -1,5 +1,5 @@
-<div class='specialities-index' ng-form='specialitesForm'>
-  <div class="row">
+<div class='row specialities-index' ng-form='specialitesForm'>
+  <div class="col-xs-12 margin-bottom-10">
     <input type="text"
            ng-model='searchQuery'
            autofocus='true'
@@ -8,19 +8,27 @@
            placeholder="{{ l('search_placeholder')}}"
           >
   </div>
-  <div class="row" ng-repeat='speciality in specialities | filter:searchQuery '>
-    <div class="col-xs-12">
-      <strong ng-show='!(activeSpeciality == speciality.id)'>{{ speciality.code }}: {{ speciality.title }}</strong>
-      <button ng-click='setSpecialityActive(speciality)'
-              ng-show='!activeSpecialityForm' >
-        {{l('app.buttons.edit')}}
-      </button>
-      <speciality-form speciality='speciality' ng-show='activeSpecialityForm == speciality.id'>
+  <div class="col-xs-12" ng-repeat='speciality in specialities | filter:searchQuery '>
+    <div class='speciality-title'>
+      <span ng-show='!(activeSpeciality == speciality.id)'>{{ speciality.code }}: {{ speciality.title }}</span>
+      <span class='edit-icon'
+            ng-click='setSpecialityActive(speciality)'
+            ng-show='!activeSpecialityForm'>
+      </span>
+    </div>
+    <div class='edit-speciality-form material-design-form'
+         ng-class="{'edit-speciality': activeSpecialityForm == speciality.id}">
+      <speciality-form speciality='speciality'
+                       ng-show='activeSpecialityForm == speciality.id'>
       </speciality-form>
-      <button ng-click='saveSpeciality(speciality)' ng-show=' activeSpecialityForm == speciality.id '>
+      <button ng-click='saveSpeciality(speciality)'
+              ng-show='activeSpecialityForm == speciality.id'
+              class='btn btn-save'>
         {{ l('app.buttons.save') }}
       </button>
-      <button ng-click='restoreSpeciality(speciality)' ng-show=' activeSpecialityForm == speciality.id '>
+      <button ng-click='restoreSpeciality(speciality)'
+              ng-show='activeSpecialityForm == speciality.id'
+              class='btn btn-cancel'>
         {{ l('app.buttons.cancel') }}
       </button>
     </div>
