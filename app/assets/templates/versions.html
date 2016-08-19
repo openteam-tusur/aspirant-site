@@ -1,0 +1,25 @@
+<h1>История изменений</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Пользователь</th>
+      <th>Действие</th>
+      <th>Действие</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='version in itemVersions'>
+      <td>{{ version.created_at }}</td>
+      <td>{{ version.whodunnit.fullname }}</td>
+      <td>{{ l('paper_trail.events.update') }}</td>
+      <td>
+        <ul>
+          <li ng-repeat='(item, change) in getItemChanges(version.changes)'>
+            {{item}}: <strong>{{ change }}</strong>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

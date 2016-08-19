@@ -4,7 +4,7 @@ angular
 
     $scope.getSpecialities = () ->
       $http
-        .get 'manage/council_specialities'
+        .get '/manage/council_specialities'
         .success (data) ->
           $scope.specialities = data
 
@@ -13,13 +13,13 @@ angular
 
     $scope.restoreSpeciality = (speciality) ->
       $http
-        .get "manage/council_specialities/#{speciality.id}"
+        .get "/manage/council_specialities/#{speciality.id}"
         .success $scope.specialityCallBack
 
     $scope.saveSpeciality = (speciality) ->
       params = {speciality: speciality}
       $http
-        .patch "manage/council_specialities/#{speciality.id}", params
+        .patch "/manage/council_specialities/#{speciality.id}", params
         .success $scope.specialityCallBack
 
     $scope.specialityCallBack = (data) ->

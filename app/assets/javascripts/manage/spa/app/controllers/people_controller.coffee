@@ -36,13 +36,13 @@ angular
       else
         params = { person: person }                     #save person
         $http
-          .patch "manage/people/#{person.id}", params
+          .patch "/manage/people/#{person.id}", params
           .success (data) ->
             person = data
             $scope.activePersonForm = null
 
     $scope.restorePerson = (person) ->
-      $http.get "manage/people/#{person.id}"
+      $http.get "/manage/people/#{person.id}"
            .success (data) ->
              person = data
              $scope.activePersonForm = null

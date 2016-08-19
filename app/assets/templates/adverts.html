@@ -54,6 +54,9 @@
       <td class='advert-publication-date'>
         {{ advert.publication_date }}
       </td>
+      <td>
+        <a ui-sref="versions({item_type: 'advert', item_id: advert.id})">{{ l('app.versions') }}</a>
+      </td>
     </tr>
   </tbody>
 </table>

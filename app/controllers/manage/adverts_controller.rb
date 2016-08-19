@@ -24,6 +24,11 @@ class Manage::AdvertsController < Manage::ApplicationController
     render json: { state: @advert.aasm_state }
   end
 
+  def versions
+    @versions = @advert.versions
+    render partial: 'manage/angular/versions', locals: { versions: @versions }
+  end
+
   def create
     council = current_user.available_contexts.sample()
     @advert.dissertation_council = council

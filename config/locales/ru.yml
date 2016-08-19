@@ -31,6 +31,7 @@ ru:
     nothing_found: 'Ничего не найдено'
     advert_edit: 'Редактирование объявления'
     specialities: 'Управление списком специальностей'
+    versions: 'История изменений'
     buttons:
       next:                                 '>>'
       previous:                             '<<'
@@ -86,6 +87,7 @@ ru:
     opponents:            'Оппоненты'
     applicant:            'Соискатель'
     speciality:           'Специальность диссертации'
+    updated_at:           'Дата обновления'
     files_upload:         'Загрузка файлов'
     science_degree:       'Претендует на степень'
     reviewer_review:      'Отзывы на автореферат'
@@ -106,6 +108,10 @@ ru:
       council_conclusion:       'Заключение диссертационного совета'
       organization_review:      'Отзыв организации'
       organization_publication: 'Сведения/публикации организации'
+
+  paper_trail:
+    events:
+      update: 'Обновление данных'
 
 
   forms:

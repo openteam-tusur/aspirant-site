@@ -1,4 +1,5 @@
 class Advert < ActiveRecord::Base
+  has_paper_trail
   belongs_to :council_speciality
   belongs_to :dissertation_council
 

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     resources :adverts, path: :announcements, only: [:index, :show, :create, :update, :destroy] do
       member do
+        get  :versions
         post :publish
         post :unpublish
       end
