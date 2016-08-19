@@ -14,7 +14,7 @@ angular
       $scope.$emit 'Load'
       id = $scope.$state.params.councilId
       $http
-        .get "manage/dissertation_councils/#{id}"
+        .get "/manage/dissertation_councils/#{id}"
           .success (data) ->
             $scope.$emit 'Unload'
             $scope.council = data
@@ -38,7 +38,7 @@ angular
       params = { speciality: speciality }
       params.council_id = $scope.council.id
       $http
-        .post "manage/council_specialities", params
+        .post "/manage/council_specialities", params
       .success (data) ->
         $scope.council.specialities.push data
         success_callback()
@@ -46,7 +46,7 @@ angular
     $scope.removeSpecialityFromCouncil = (speciality) ->
       params = { council_id: $scope.council.id }
       $http
-        .post "manage/council_specialities/#{speciality.id}/remove_from_council", params
+        .post "/manage/council_specialities/#{speciality.id}/remove_from_council", params
         .success (data) ->
           if data
             $scope.removeElementFrom $scope.council.specialities, speciality
@@ -75,13 +75,13 @@ angular
       else
         params = { person: person }                     #save person
         $http
-          .patch "manage/people/#{person.id}", params
+          .patch "/manage/people/#{person.id}", params
           .success (data) ->
             $scope.$broadcast 'updatePerson'
 
 
     $scope.restorePerson = (person) ->
-      $http.get "manage/people/#{person.id}"
+      $http.get "/manage/people/#{person.id}"
            .success (data) ->
              person = data
              $scope.$broadcast 'deactivatedEditForm'

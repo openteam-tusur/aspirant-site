@@ -89,7 +89,7 @@ angular
       else
         params = { speciality: speciality }
         $http
-          .post "manage/council_specialities", params
+          .post "/manage/council_specialities", params
           .success (data) -> $scope.addSpeciality(data, callback)
 
     $scope.destroySpeciality = () ->
@@ -135,7 +135,7 @@ angular
 
     $scope.getSpecialities = () ->
       $http
-        .get 'manage/council_specialities'
+        .get '/manage/council_specialities'
         .success (data) ->
           $scope.specialities = data
 
@@ -161,12 +161,12 @@ angular
       else
         params = { person: person }                     #save person
         $http
-          .patch "manage/people/#{person.id}", params
+          .patch "/manage/people/#{person.id}", params
           .success (data) ->
             $scope.$broadcast 'updatePerson'
 
     $scope.restorePerson = (person) ->
-      $http.get "manage/people/#{person.id}"
+      $http.get "/manage/people/#{person.id}"
            .success (data) ->
              person = data
              $scope.$broadcast 'deactivatedEditForm'

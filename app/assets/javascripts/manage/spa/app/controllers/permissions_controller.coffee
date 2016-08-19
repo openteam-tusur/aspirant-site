@@ -39,7 +39,7 @@ angular
         permission.context_type = user.context.type
 
       $http
-        .post 'manage/permissions', permission
+        .post '/manage/permissions', permission
         .success (data) ->
           data.localized = $scope.l("permissions.#{data.role}")
           $scope.permissions.unshift data

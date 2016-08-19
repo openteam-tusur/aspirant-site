@@ -280,6 +280,10 @@ GEM
       unicorn
       whenever
     options (2.3.2)
+    paper_trail (5.2.0)
+      activerecord (>= 3.0, < 6.0)
+      activesupport (>= 3.0, < 6.0)
+      request_store (~> 1.1)
     paperclip (4.3.6)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -372,6 +376,7 @@ GEM
     redis-session-store (0.8.0)
       actionpack (>= 3, < 5)
       redis
+    request_store (1.3.1)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -535,6 +540,7 @@ DEPENDENCIES
   nokogiri
   non-stupid-digest-assets
   openteam-capistrano (~> 1.0.11)
+  paper_trail
   paperclip
   pg
   postman-client!

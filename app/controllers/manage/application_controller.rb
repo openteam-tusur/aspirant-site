@@ -1,4 +1,5 @@
 class Manage::ApplicationController < ActionController::Base
+  before_filter :set_paper_trail_whodunnit
   layout 'manage'
 
   rescue_from CanCan::AccessDenied do |exception|

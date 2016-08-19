@@ -7,7 +7,7 @@ angular
 
     $scope.getDictionary = (dictionary, callback) ->
       $http
-        .get "manage/angular/get_#{dictionary}"
+        .get "/manage/angular/get_#{dictionary}"
         .success callback
 
     $scope.removeElementFrom = (array, element) ->

@@ -64,6 +64,13 @@ angular
         resolve: {}
         })
 
+      .state('versions', {
+        url: '/:item_type/:item_id/versions'
+        templateUrl: 'versions.html'
+        controller: 'VersionsController'
+        resolve: {}
+        })
+
     $urlRouterProvider.otherwise 'dashboard'
     ])
 
