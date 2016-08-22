@@ -14,7 +14,8 @@ angular
         resultObject = {}
         changesObject.forEach (item, i, arr) ->
           for key of item
-            resultObject[key] = "#{item[key][0]} -> #{item[key][1]}"
+            resultObject[key]  = "#{item[key][0] || 'Не указано'}"
+            resultObject[key] += " -> #{item[key][1]}" if item[key][1]
 
         return resultObject
 

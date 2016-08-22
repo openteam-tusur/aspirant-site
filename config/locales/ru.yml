@@ -86,7 +86,9 @@ ru:
     actions:              'Действия'
     opponents:            'Оппоненты'
     applicant:            'Соискатель'
+    aasm_state:           'Статус объявления'
     speciality:           'Специальность диссертации'
+    created_at:           'Дата создания'
     updated_at:           'Дата обновления'
     files_upload:         'Загрузка файлов'
     science_degree:       'Претендует на степень'
@@ -110,9 +112,14 @@ ru:
       organization_publication: 'Сведения/публикации организации'
 
   paper_trail:
-    events:
-      update: 'Обновление данных'
+    advert:
+      events:
+        create:   'Создание'
+        update:   'Изменение'
 
+    aasm_state:
+      draft:      'Черновик'
+      publicated: 'Опубликовано'
 
   forms:
     field-invalid: 'Поле обязательно для заполнения'

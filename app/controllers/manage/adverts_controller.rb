@@ -25,7 +25,7 @@ class Manage::AdvertsController < Manage::ApplicationController
   end
 
   def versions
-    @versions = @advert.versions
+    @versions = @advert.versions.sort_by{ |a| a[:id] }.reverse
     render partial: 'manage/angular/versions', locals: { versions: @versions }
   end
 
