@@ -8,15 +8,14 @@ json.array! versions do |version|
     json.fullname user.fullname
   end
 
-  json.changes version.changeset.except(:updated_at) do |item|
-    if item.first == 'dissertation_council_id'
-      council_numbers = []
-      council_numbers << DissertationCouncil.find(item.last.first).number
-      council_numbers << DissertationCouncil.find(item.last.last).number
-
-      json.set! I18n.t("advert.dissertation_council"), council_numbers
-    else
-      json.set! I18n.t("advert.#{item.first}"), item.second
+  json.changes version.changeset.except(:created_at, :updated_at, :id) do |item|
+    case item.first
+      when 'dissertation_council_id'
+        json.set! I18n.t("advert.dissertation_council"), set_council_numbers(item)
+      when 'aasm_state'
+        json.set! I18n.t("advert.aasm_state"), set_aasm_states(item)
+      else
+        json.set! I18n.t("advert.#{item.first}"), item.second
     end
   end
 

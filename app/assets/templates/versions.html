@@ -12,7 +12,7 @@
     <tr ng-repeat='version in itemVersions'>
       <td>{{ version.created_at }}</td>
       <td>{{ version.whodunnit.fullname }}</td>
-      <td>{{ l('paper_trail.events.update') }}</td>
+      <td>{{ l('paper_trail.advert.events.' + version.event) }}</td>
       <td>
         <ul>
           <li ng-repeat='(item, change) in getItemChanges(version.changes)'>
