@@ -1,4 +1,5 @@
 class FileCopy < ActiveRecord::Base
+  has_paper_trail
   extend Enumerize
 
   belongs_to :context, polymorphic: true

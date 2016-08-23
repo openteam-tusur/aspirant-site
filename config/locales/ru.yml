@@ -86,7 +86,6 @@ ru:
     actions:              'Действия'
     opponents:            'Оппоненты'
     applicant:            'Соискатель'
-    aasm_state:           'Статус объявления'
     speciality:           'Специальность диссертации'
     created_at:           'Дата создания'
     updated_at:           'Дата обновления'
@@ -112,14 +111,29 @@ ru:
       organization_publication: 'Сведения/публикации организации'
 
   paper_trail:
+    title:                'Тема диссертации'
+    kind:                 'Тип документа'
+    place:                'Место проведения защиты'
+    person:               'Сотрудник'
+    person_id:            'Сотрудник'
+    file_file_name:       'Название файла'
+    science_degree:       'Претендует на степень'
+    placement_date:       'Дата размещения'
+    protection_date:      'Дата защиты'
+    organization_name:    'Ведущая организация'
+    publication_date:     'Дата публикации'
+    dissertation_council: 'Диссертационный совет'
+    file_copy:
+      create:             'Загрузил файл'
+      destroy:            'Удалил файл'
+      update:             'Обновил данные файла'
     advert:
-      events:
-        create:   'Создание'
-        update:   'Изменение'
-
+      create:             'Создал объявление'
+      update:             'Изменил поле'
     aasm_state:
-      draft:      'Черновик'
-      publicated: 'Опубликовано'
+      state:              'Статус'
+      draft:              'Черновик'
+      publicated:         'Опубликовано'
 
   forms:
     field-invalid: 'Поле обязательно для заполнения'

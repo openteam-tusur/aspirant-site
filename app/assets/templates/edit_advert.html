@@ -401,8 +401,7 @@
         <h3 class='inline-header'>{{ l('advert.mentor') }}</h3>
         <span class='link-emulator'
           ng-click="changeBlockName('mentor')"
-          ng-show="blockName != 'mentor'"
-          ng-hide='advert.mentor'
+          ng-show="blockName != 'mentor' || !advert.mentor"
           data='advert.mentor'>
           Добавить
         </span>
