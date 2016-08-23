@@ -65,6 +65,10 @@ class Advert < ActiveRecord::Base
     file_copies
   end
 
+  def file_copy_versions
+    PaperTrail::Version.where_object(context_id: id) + PaperTrail::Version.where_object_changes(context_id: id)
+  end
+
   private
 
   def set_current_date

@@ -25,8 +25,8 @@ class Manage::AdvertsController < Manage::ApplicationController
   end
 
   def versions
-    @versions = @advert.versions.sort_by{ |a| a[:id] }.reverse
-    render partial: 'manage/angular/versions', locals: { versions: @versions }
+    @versions = @advert.versions + @advert.file_copy_versions
+    render partial: 'manage/angular/versions', locals: { versions: @versions.sort_by{ |v| v[:id] }.reverse }
   end
 
   def create
