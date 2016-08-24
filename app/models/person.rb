@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  has_paper_trail
   has_many :posts, dependent: :destroy
   has_many :councils, through: :posts, source: :context, source_type: 'DissertationCouncil'
 

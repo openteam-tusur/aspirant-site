@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  has_paper_trail
   include RankedModel
 
   ranks :row_order, with_same: [:context_id, :context_type]

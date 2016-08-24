@@ -12,10 +12,13 @@ angular
 
       $scope.getItemChanges = (changesObject) ->
         resultObject = {}
-        changesObject.forEach (item, i, arr) ->
-          for key of item
-            resultObject[key]  = "#{item[key][0] || 'Не указано'}"
-            resultObject[key] += " -> #{item[key][1]}" if item[key][1]
+        if Object.keys(changesObject).length != 0
+          for key of changesObject
+            first_state = changesObject[key][0] || ''
+            second_state = "#{changesObject[key][1] || ''}"
+            resultObject[key] = if first_state then "#{first_state}" else 'Не указано'
+            resultObject[key] += " -> " if second_state
+            resultObject[key] += second_state
 
         return resultObject
 
