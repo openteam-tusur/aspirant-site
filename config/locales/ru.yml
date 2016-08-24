@@ -78,7 +78,7 @@ ru:
     title_placeholder:       'Введите название специальности'
     create_new:              'Создать специальность'
 
-  advert:
+  advert: &paper_trail_advert
     dk:                   'Д/К'
     title:                'Тема диссертации'
     place:                'Место проведения защиты'
@@ -97,7 +97,7 @@ ru:
     protection_date:      'Дата защиты'
     organization_name:    'Ведущая организация'
     dissertation_council: 'Диссертационный совет'
-    files:
+    files: &paper_trail_files
       review:                   'Отзыв научного руководителя'
       synopsis:                 'Автореферат'
       protocol:                 'Протокол принятия к защите'
@@ -111,18 +111,16 @@ ru:
       organization_publication: 'Сведения/публикации организации'
 
   paper_trail:
-    title:                'Тема диссертации'
+    <<: *paper_trail_advert
+    <<: *paper_trail_files
     kind:                 'Тип документа'
-    place:                'Место проведения защиты'
-    person:               'Сотрудник'
     person_id:            'Сотрудник'
-    file_file_name:       'Название файла'
-    science_degree:       'Претендует на степень'
-    placement_date:       'Дата размещения'
-    protection_date:      'Дата защиты'
-    organization_name:    'Ведущая организация'
-    publication_date:     'Дата публикации'
-    dissertation_council: 'Диссертационный совет'
+    person_type:          'Роль сотрудника'
+    aasm_state:           'Статус'
+    reviewer:             'Отзывы Сотрудника'
+    opponent:             'Оппонент'
+    council_speciality_id:    'Специальность'
+    dissertation_council_id:  'Диссертационный совет'
     file_copy:
       create:             'Загрузил файл'
       destroy:            'Удалил файл'
@@ -130,8 +128,10 @@ ru:
     advert:
       create:             'Создал объявление'
       update:             'Изменил поле'
-    aasm_state:
-      state:              'Статус'
+    post:
+      create:             'Добавил новый пост'
+      destroy:            'Удалил пост'
+    state:
       draft:              'Черновик'
       publicated:         'Опубликовано'
 

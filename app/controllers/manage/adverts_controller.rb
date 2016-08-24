@@ -48,7 +48,7 @@ class Manage::AdvertsController < Manage::ApplicationController
     params.require(:advert)
           .permit %w(
                       organization_name science_degree title council_speciality_id
-                      dissertation_council_id publication_date place
+                      dissertation_council_id publication_date placement_date place
                     ).map(&:to_sym)
   end
 end
