@@ -10,11 +10,11 @@
            class='form-control form-control-small'
            >
   </div>
-  <table class='table'>
+  <table class='table material-design-form'>
     <tr ng-hide='showAddPermissionsForm'>
       <td colspan="5" class='actions'>
         <span ng-click='toggleForm()'>
-          <span class='btn btn-success'>Добавить права</span>
+          <span class='btn btn-add'>Добавить права</span>
         </span>
       </td>
     </tr>
@@ -57,7 +57,7 @@
         <td colspan='4'>
           <button ng-click='submitPermission()'
                   ng-show='validatePermission()'
-                  class='btn btn-success'
+                  class='btn btn-add'
                   >
             {{ l("app.buttons.add_permission") }}
           </button>
@@ -79,7 +79,7 @@
       </td>
       <td>
         <button ng-click=' removePermission(permission) '
-                class='btn btn-danger'
+                class='btn btn-cancel'
                >
           {{ l('app.buttons.remove_permission') }}
         </button>
