@@ -18,7 +18,7 @@ angular
 
       $scope.destroyAdvert = (advert) ->
         $http
-          .delete "#{$scope.url}#{advert.id}"
+          .delete "#{$scope.url}/#{advert.id}"
           .success (data) ->
             if data
               $scope.removeElementFrom $scope.adverts, advert

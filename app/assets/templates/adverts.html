@@ -57,6 +57,11 @@
       <td>
         <a ui-sref="versions({item_type: 'advert', item_id: advert.id})">{{ l('app.versions') }}</a>
       </td>
+      <td ng-if="advert.aasm_state == 'draft'">
+        <span ng-click='destroyAdvert(advert)'
+              class='glyphicon glyphicon-remove'
+        ></span>
+      </td>
     </tr>
   </tbody>
 </table>
