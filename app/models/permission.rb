@@ -5,8 +5,9 @@ class Permission < ActiveRecord::Base
 
   attr_accessor :name
 
-  validates_uniqueness_of :role, :scope => :user_id,
-    :message => 'У пользователя не может быть несколько одинаковых ролей'
+  validates_uniqueness_of :role, scope: :user_id,
+    message: 'У пользователя не может быть несколько одинаковых ролей',
+    unless: ->{ role == 'clerk' }
 
   def self.localized_available_roles
     available_roles.map do |role|

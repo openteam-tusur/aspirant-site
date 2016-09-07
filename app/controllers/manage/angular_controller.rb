@@ -31,4 +31,7 @@ class Manage::AngularController < Manage::ApplicationController
       }
     end
   end
+
+  def get_current_user_info
+  end
 end

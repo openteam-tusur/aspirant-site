@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     get 'users/search', to: 'users#search', as: :users_search
 
     %w(get_permissions get_locale_hash get_enumerize_values
-      get_science_degrees_and_titles).each do |route|
+      get_science_degrees_and_titles get_current_user_info).each do |route|
         get %Q(angular/#{route}), to: %Q(angular##{route})
     end
 

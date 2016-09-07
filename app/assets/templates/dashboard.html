@@ -5,16 +5,16 @@
   <li>
     <a href="#councils">{{ l('app.councils') }}</a>
   </li>
-  <li>
+  <li ng-if='userIs("admin")'>
     <a href="#permissions">{{ l('app.permissions') }}</a>
   </li>
   <li>
     <a href="#adverts">{{ l('app.adverts') }}</a>
   </li>
-  <li>
+  <li ng-if='userIs("admin")'>
     <a ui-sref="people({})">{{ l('app.people') }}</a>
   </li>
-  <li>
+  <li ng-if='userIs("admin")'>
     <a ui-sref="specialities({})">{{ l('app.specialities') }}</a>
   </li>
 </ul>
