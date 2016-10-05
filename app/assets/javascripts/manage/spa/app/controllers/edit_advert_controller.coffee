@@ -1,10 +1,15 @@
 angular
   .module('dashboard')
-  .controller('EditAdvertController', ['$timeout', '$scope', '$http', 'science', ($timeout, $scope, $http, science) ->
+  .controller('EditAdvertController', ['$timeout', '$scope', '$http', 'science', 'localization', ($timeout, $scope, $http, science, localization) ->
     $scope.url = '/manage/announcements/'
+    $scope.l = localization.l
     $scope.science = science
-
     $scope.blockName = null
+
+    $scope.setDefaultValues = ->
+      unless $scope.advert.place
+        $scope.advert.place = $scope.l("advert.default_place")
+        $scope.updateField("place")
 
     $scope.changeBlockName = (name) ->
       $scope.blockName = name
@@ -173,4 +178,8 @@ angular
 
     $scope.getSpecialities()
     $scope.initializer()
+
+    $timeout ->
+      $scope.setDefaultValues()
+    , 1000
     ])
