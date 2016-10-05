@@ -36,8 +36,7 @@ angular.module('dashboard')
               u[key] = person[key]
             u.url = "https://directory.tusur.ru/people/#{person.id}"
             if person.main_post
-              u.work_post    = person.main_post.title || ''
-              u.work_post    = person.main_post.short_title unless u.work_post.length
+              u.work_post    = person.main_post.short_title || ''
               u.work_place   = person.main_post.subdivision.title + ' ТУСУР'
             u.directory_id = person.id
 
