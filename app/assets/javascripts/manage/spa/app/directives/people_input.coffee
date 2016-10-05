@@ -38,6 +38,8 @@ angular.module('dashboard')
             if person.main_post
               u.work_post    = person.main_post.short_title || ''
               u.work_place   = person.main_post.subdivision.title + ' ТУСУР'
+              u.post ||= {}
+              u.post.title ||= {}
             u.directory_id = person.id
 
             $scope.updateDirectorySearch()
