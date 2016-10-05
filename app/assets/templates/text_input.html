@@ -2,7 +2,7 @@
       ng-hide='showInput'
       class='gray-text small orange-line'
       ng-class="{'success-highlight': highlight }">
-      {{ target }}
+      {{ target.length ? target : "Указать должность в совете" }}
       <span class="error-highlight" ng-show='showError'>Произошла ошибка при сохранении!</span>
 </span>
 <div class='row material-design-form' ng-show="showInput">
