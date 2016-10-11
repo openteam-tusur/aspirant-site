@@ -333,7 +333,6 @@ GEM
     rails-assets-chosen (1.4.2)
       rails-assets-jquery (>= 1.4.4)
     rails-assets-galleria (1.4.2)
-    rails-assets-highcharts (4.1.9)
     rails-assets-jcarousel (0.3.4)
       rails-assets-jquery (>= 1.7)
     rails-assets-jquery (2.1.4)
@@ -474,16 +473,23 @@ GEM
       activesupport
       i18n
     truncate_html (0.9.3)
-    tusur_header (0.2.6)
+    tusur_cdn (0.1.1)
+      activesupport
+      configliere
+      hashie
+      redis
+      rest-client
+    tusur_header (0.2.9)
       bootstrap-sass
       coffee-rails
       compass-rails
       configliere
       jquery-rails
-      rails (~> 4.0)
+      rails (>= 4.0, < 6.0)
       rest-client
       sass-rails (>= 3.2)
       stop_ie (>= 0.1.5)
+      tusur_cdn
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -560,7 +566,6 @@ DEPENDENCIES
   rails-assets-bootstrap-datepicker!
   rails-assets-chosen!
   rails-assets-galleria!
-  rails-assets-highcharts!
   rails-assets-jcarousel!
   rails-assets-jquery-animatenumber!
   rails-assets-jquery-touchswipe!
@@ -573,7 +578,7 @@ DEPENDENCIES
   ranked-model
   recaptcha
   redis-session-store
-  rest-client
+  rest-client (~> 1.8.0)
   rest-client-components
   rspec-rails
   russian
@@ -589,7 +594,7 @@ DEPENDENCIES
   sunspot_rails
   time_diff
   truncate_html
-  tusur_header
+  tusur_header (~> 0.2.9)
   uglifier
   unicorn
   whenever

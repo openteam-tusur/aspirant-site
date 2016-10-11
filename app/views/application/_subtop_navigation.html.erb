@@ -1,0 +1,37 @@
+<div class='container-fluid subtop-header'>
+  <div class='container'>
+    <div class='header'>
+      <div class='row'>
+
+        <div class='col-lg-8 col-md-8 col-sm-7 col-xs-12'>
+          <div class='logotype'>
+            <div class='image-wrapper'>
+              <%= link_to '/', :class => 'image' do %>
+                <%= image_tag 'logotype.png', class: 'img-responsive' %>
+              <% end %>
+            </div>
+            <div class='site-name-wrapper visible-lg'>
+              <%= link_to I18n.t('app.title').html_safe, I18n.locale == :ru ? '/' : "/#{I18n.locale}", :class => 'site-name' %>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-lg-4 col-md-4 col-sm-5 col-xs-12'>
+          <div class="search search-block pull-right">
+            <%= simple_form_for :search, url: "/#{I18n.locale}/search", method: :get do |f| %>
+              <%= f.input :q, label: false,
+                input_html: {
+                name: 'parts_params[search][q]',
+                value: params.try(:[], :parts_params).try(:[], :search).try(:[], :q),
+                placeholder: 'Поиск...'
+              } %>
+              <div class='form-actions'>
+                <%= link_to '', '#', onclick: '$(this).closest("form").submit(); return false;' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

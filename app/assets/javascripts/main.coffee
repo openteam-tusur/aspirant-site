@@ -8,7 +8,6 @@ $ ->
   init_tooltip() if $('.js-tooltip').length
   init_collapse() if $('.collapsed-items-wrapper').length || $('.js-client-collapser').length || $('.js-simple-collapser').length
   init_landing() if $('.navigation_images').length
-  init_overlay() if $('.js-init-overlay').length
   init_photo_album() if $('.js-galleria').length
   init_map() if $('#js-contacts-map').length
   init_image_menu() if $('.js-image-menu').length

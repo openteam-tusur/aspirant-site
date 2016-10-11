@@ -1,0 +1,228 @@
+=input-placeholder($color: #fff)
+  &::-webkit-input-placeholder
+    color: $color
+  &:-moz-placeholder
+    color: $color
+  &::-moz-placeholder //for newer versions of Firefox
+    color: $color
+  &:-ms-input-placeholder
+    color: $color
+  &:input-placeholder
+    color: $color
+
+.tusur-cdn-header-subtop
+  background-color: #fff
+  border-bottom: 1px solid #005baa
+
+  .logotype
+    +clearfix
+    margin-top: 15px
+    margin-bottom: 15px
+
+    .image-wrapper
+      float: left
+      display: block
+
+      @media (max-width: $screen-xs-max)
+
+        margin-right: 45px
+
+    .site-name-wrapper
+      float: left
+      display: block
+      height: 33px
+      line-height: 33px
+      border-left: 2px solid #0f51b2
+      margin-left: 15px
+      padding-left: 15px
+
+      .site-name
+        color: #0066cc
+        font-size: 16px
+        font-family: 'PT Sans', sans-serif
+
+  .subtop-header
+
+    .header
+      .logotype
+        +clearfix
+        margin: 15px 0 15px 0
+
+        .image-wrapper
+          padding: 0
+
+      .search-block
+        clear: right
+        margin: 13px 0 0 0
+
+        .simple_form
+          +inline-block
+
+          .form-group
+            +inline-block
+            margin: 0 0 0 0
+
+            input
+              width: 180px
+              color: inherit
+              +border-radius(0)
+              border: 1px solid #008ecc
+              +box-shadow(none)
+              height: 30px
+              outline: none
+              padding: 3px 12px
+              +input-placeholder(#888)
+
+          .form-actions
+            +inline-block
+            margin: 0 0 0 -5px
+
+            a
+              display: block
+              border: 0
+              width: 30px
+              height: 30px
+              background: #0390c8 image_url('magnifier.png') no-repeat center center
+
+    @media (max-width: $screen-xs-max)
+
+      .header
+        margin-left: -15px
+        margin-right: -15px
+
+        .search-block
+
+          float: left !important
+          margin: 0 -15px 10px 0
+
+.tusur-cdn-header-menu
+
+  background-color: #005bae
+
+  .nav-pills
+    line-height: 1.4
+
+    li + li
+      margin-left: 0
+
+    > li
+      a
+        color: #fff
+        font-size: 16px
+        font-family: 'PT Sans', sans-serif
+        +border-radius(0)
+
+        &:hover,
+        &:active,
+        &:focus
+          color: inherit
+          background-color: #fff
+
+      &.active
+        > a
+          background-color: #0390c8
+
+          &:hover,
+          &:active,
+          &:focus
+            color: inherit
+            background-color: #fff
+
+      > ul
+        +border-radius(0)
+        border: 0
+        background-color: #fff
+        +box-shadow(0 6px 12px rgba(0, 0, 0, 0.175))
+        margin: 0
+        padding: 0
+
+        > li
+
+          a
+            color: inherit
+            padding: 5px 15px
+
+            &:hover,
+            &:active,
+            &:focus
+              color: #fff
+              background-color: #0390c8
+
+          &.active a
+            color: #fff
+            background-color: #0390c8
+
+          > ul
+            display: none
+
+      &:hover
+        > a
+          color: inherit
+          background-color: #fff
+
+        > ul
+          display: block
+
+          a.active
+            color: #fff
+            background-color: #0390c8
+
+  @media (max-width: $screen-xs-max)
+
+    background-color: transparent
+
+    .container
+      margin-right: 0
+      margin-left: 0
+      padding-left: 0
+      padding-right: 0
+
+      .row
+        margin-left: 0
+        margin-right: 0
+
+        .col-xs-12
+          float: none
+          width: auto
+          padding-left: 0
+          padding-right: 0
+
+          .nav-pills
+            display: none
+            position: absolute
+            right: 15px
+            top: -50px
+            background-color: #fff
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175)
+            z-index: 99
+
+            &:hover,
+            &:focus
+              display: block
+
+            > li
+              float: none
+
+              > a
+                font-size: 14px
+                color: inherit
+                padding: 8px 10px
+
+              &.active a
+                background-color: transparent
+
+          .tusur-cdn-header-menu-toggler
+            position: absolute
+            display: block
+            width: 24px
+            height: 24px
+            line-height: 24px
+            font-size: 26px
+            right: 15px
+            top: -87px
+            z-index: 99
+
+            &:hover,
+            &:focus
+              + .nav-pills
+                display: block

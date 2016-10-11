@@ -26,7 +26,5 @@
 //= require photoalbum
 //= require white_galleria
 //= require youtube_iframe
-//= require highcharts
-//= require highcharts/modules/data
 //= require mobile
 //= require main

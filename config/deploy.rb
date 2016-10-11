@@ -1,7 +1,10 @@
 require 'openteam/capistrano/deploy'
 
 append :linked_dirs, 'tmp/rack-cache'
+
 set :bundle_binstubs, -> { shared_path.join('bin')  }
+
+set :db_remote_clean, true
 
 namespace :sitemap do
   desc 'Create symlink from shared sitemaps to public'
