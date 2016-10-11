@@ -6,8 +6,8 @@ gem 'angular_rails_csrf'
 gem 'angularjs-file-upload-rails', '~> 2.2.0'
 gem 'annotate'
 gem 'attribute_normalizer'
-gem 'auth_client', :git => 'https://github.com/openteam-tusur/auth_client'
-gem 'auth_redis_user_connector', :git => 'https://github.com/openteam-tusur/auth_redis_user_connector'
+gem 'auth_client', git: 'https://github.com/openteam-tusur/auth_client'
+gem 'auth_redis_user_connector', git: 'https://github.com/openteam-tusur/auth_redis_user_connector'
 gem 'auto_html'
 gem 'awesome_print'
 gem 'bootstrap-sass'
@@ -31,16 +31,17 @@ gem 'mechanize'
 gem 'ngannotate-rails'
 gem 'nokogiri'
 gem 'non-stupid-digest-assets'
+gem 'openteam-commons', '~> 0.3.3'
 gem 'paper_trail'
 gem 'paperclip'
 gem 'pg'
-gem 'postman-client', :github => 'openteam-tusur/postman-client'
-gem 'progress_bar', :require => false
+gem 'postman-client', git: 'https://github.com/openteam-tusur/postman-client'
+gem 'progress_bar', require: false
 gem 'rack-cache'
 gem 'rack-utf8_sanitizer'
 gem 'rails', '~> 4.2.0'
 gem 'ranked-model'
-gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'recaptcha', require: 'recaptcha/rails'
 gem 'redis-session-store'
 gem 'rest-client'
 gem 'rest-client-components'
@@ -49,13 +50,13 @@ gem 'sass-rails'
 gem 'sidekiq'
 gem 'simple-navigation'
 gem 'simple_form'
-gem 'sinatra', :require => nil
+gem 'sinatra', require: nil
 gem 'sitemap_generator'
 gem 'stop_ie'
 gem 'sunspot_rails'
 gem 'time_diff'
 gem 'truncate_html'
-gem 'tusur_header', '>= 0.2.6'
+gem 'tusur_header'
 gem 'uglifier'
 gem 'whenever'
 gem 'yajl-ruby', require: 'yajl'
@@ -86,11 +87,11 @@ end
 
 group :development do
   gem 'ryba'
-  gem 'brakeman', :require => false
+  gem 'brakeman', require: false
   gem 'capistrano-auth-subscriber'
   gem 'foreman'
   gem 'letter_opener'
-  gem 'openteam-capistrano', '~> 1.0.11'
+  gem 'openteam-capistrano', '~> 1.0.16'
   gem 'quiet_assets' #, :require => false
 end
 

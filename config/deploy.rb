@@ -27,3 +27,7 @@ namespace :cache do
 
   #after 'deploy', 'cache:clear'
 end
+
+set :slackistrano,
+  channel: (Settings['slack.channel'] rescue ''),
+  webhook: (Settings['slack.webhook'] rescue '')

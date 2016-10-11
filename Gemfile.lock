@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/openteam-tusur/postman-client.git
-  revision: dbec4c8971d6a647a1caba4939e8c5debe5f1bd8
-  specs:
-    postman-client (0.0.1)
-      rest-client
-
-GIT
   remote: https://github.com/openteam-tusur/auth_client
   revision: 6c8b820338746c7dc902d9b98188e0007801f0cc
   specs:
@@ -24,26 +17,33 @@ GIT
       hiredis
       redis
 
+GIT
+  remote: https://github.com/openteam-tusur/postman-client
+  revision: dbec4c8971d6a647a1caba4939e8c5debe5f1bd8
+  specs:
+    postman-client (0.0.1)
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
     aasm (4.10.0)
-    actionmailer (4.2.6)
-      actionpack (= 4.2.6)
-      actionview (= 4.2.6)
-      activejob (= 4.2.6)
+    actionmailer (4.2.7.1)
+      actionpack (= 4.2.7.1)
+      actionview (= 4.2.7.1)
+      activejob (= 4.2.7.1)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.5)
-    actionpack (4.2.6)
-      actionview (= 4.2.6)
-      activesupport (= 4.2.6)
+    actionpack (4.2.7.1)
+      actionview (= 4.2.7.1)
+      activesupport (= 4.2.7.1)
       rack (~> 1.6)
       rack-test (~> 0.6.2)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (4.2.6)
-      activesupport (= 4.2.6)
+    actionview (4.2.7.1)
+      activesupport (= 4.2.7.1)
       builder (~> 3.1)
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
@@ -51,26 +51,26 @@ GEM
     active_attr (0.8.5)
       activemodel (>= 3.0.2, < 5.0)
       activesupport (>= 3.0.2, < 5.0)
-    activejob (4.2.6)
-      activesupport (= 4.2.6)
+    activejob (4.2.7.1)
+      activesupport (= 4.2.7.1)
       globalid (>= 0.3.0)
-    activemodel (4.2.6)
-      activesupport (= 4.2.6)
+    activemodel (4.2.7.1)
+      activesupport (= 4.2.7.1)
       builder (~> 3.1)
-    activerecord (4.2.6)
-      activemodel (= 4.2.6)
-      activesupport (= 4.2.6)
+    activerecord (4.2.7.1)
+      activemodel (= 4.2.7.1)
+      activesupport (= 4.2.7.1)
       arel (~> 6.0)
-    activesupport (4.2.6)
+    activesupport (4.2.7.1)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    airbrake (3.1.17)
-      builder
-      multi_json
+    airbrake (5.5.0)
+      airbrake-ruby (~> 1.5)
+    airbrake-ruby (1.5.0)
     airbrussh (1.0.1)
       sshkit (>= 1.6.1, != 1.7.0)
     amq-protocol (1.9.2)
@@ -123,13 +123,13 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-auth-subscriber (0.0.1)
       capistrano (~> 3.1)
-    capistrano-bundler (1.1.4)
+    capistrano-bundler (1.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
     capistrano-db-tasks (0.4)
       capistrano (>= 3.0.0)
     capistrano-harrow (0.4.0)
-    capistrano-rails (1.1.6)
+    capistrano-rails (1.1.8)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rvm (0.1.2)
@@ -202,7 +202,7 @@ GEM
       activerecord (>= 4.0.0)
     geoip (1.6.1)
     gilenson (1.2.2)
-    globalid (0.3.6)
+    globalid (0.3.7)
       activesupport (>= 4.1.0)
     gravtastic (3.2.6)
     haml (4.0.7)
@@ -246,11 +246,11 @@ GEM
       nokogiri (~> 1.6)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
-    mime-types (2.99.1)
+    mime-types (2.99.3)
     mimemagic (0.3.0)
-    mini_portile2 (2.0.0)
-    minitest (5.8.4)
-    multi_json (1.11.3)
+    mini_portile2 (2.1.0)
+    minitest (5.9.1)
+    multi_json (1.12.1)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
@@ -260,20 +260,21 @@ GEM
     ngannotate-rails (1.2.2)
       execjs
       rails (>= 3.1)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.8.1)
+      mini_portile2 (~> 2.1.0)
     non-stupid-digest-assets (1.0.6)
       sprockets (>= 2.0)
     ntlm-http (0.1.1)
-    openteam-capistrano (1.0.12)
-      airbrake (~> 3.1.16)
-      capistrano (~> 3.1)
-      capistrano-db-tasks (~> 0.3)
-      capistrano-rails (~> 1.1)
+    openteam-capistrano (1.0.16)
+      airbrake
+      capistrano (~> 3.5.0)
+      capistrano-db-tasks
+      capistrano-rails
       capistrano-rvm
       capistrano-sidekiq
       capistrano3-unicorn
-    openteam-commons (0.2.4)
+      slackistrano (~> 3.1.0)
+    openteam-commons (0.3.3.3)
       airbrake
       configliere
       rails
@@ -306,16 +307,16 @@ GEM
       rack (>= 1.0)
     rack-utf8_sanitizer (1.3.2)
       rack (>= 1.0, < 3.0)
-    rails (4.2.6)
-      actionmailer (= 4.2.6)
-      actionpack (= 4.2.6)
-      actionview (= 4.2.6)
-      activejob (= 4.2.6)
-      activemodel (= 4.2.6)
-      activerecord (= 4.2.6)
-      activesupport (= 4.2.6)
+    rails (4.2.7.1)
+      actionmailer (= 4.2.7.1)
+      actionpack (= 4.2.7.1)
+      actionview (= 4.2.7.1)
+      activejob (= 4.2.7.1)
+      activemodel (= 4.2.7.1)
+      activerecord (= 4.2.7.1)
+      activesupport (= 4.2.7.1)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.2.6)
+      railties (= 4.2.7.1)
       sprockets-rails
     rails-assets-angucomplete-alt (2.2.0)
       rails-assets-angular (>= 1.4.0)
@@ -357,13 +358,13 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    railties (4.2.6)
-      actionpack (= 4.2.6)
-      activesupport (= 4.2.6)
+    railties (4.2.7.1)
+      actionpack (= 4.2.7.1)
+      activesupport (= 4.2.7.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.15.0)
-    rake (11.1.2)
+    raindrops (0.17.0)
+    rake (11.3.0)
     ranked-model (0.4.0)
       activerecord (>= 3.1.12)
     rb-fsevent (0.9.6)
@@ -436,6 +437,8 @@ GEM
       tilt (>= 1.3, < 3)
     sitemap_generator (5.1.0)
       builder
+    slackistrano (3.1.0)
+      capistrano (>= 3.5.0)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -489,12 +492,11 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
-    unicorn (5.0.1)
+    unicorn (5.1.0)
       kgio (~> 2.6)
-      rack
       raindrops (~> 0.7)
     webrobots (0.1.2)
-    whenever (0.9.4)
+    whenever (0.9.7)
       chronic (>= 0.6.3)
     yajl-ruby (1.2.1)
     yt (0.25.12)
@@ -539,7 +541,8 @@ DEPENDENCIES
   ngannotate-rails
   nokogiri
   non-stupid-digest-assets
-  openteam-capistrano (~> 1.0.11)
+  openteam-capistrano (~> 1.0.16)
+  openteam-commons (~> 0.3.3)
   paper_trail
   paperclip
   pg
@@ -586,7 +589,7 @@ DEPENDENCIES
   sunspot_rails
   time_diff
   truncate_html
-  tusur_header (>= 0.2.6)
+  tusur_header
   uglifier
   unicorn
   whenever
@@ -594,4 +597,4 @@ DEPENDENCIES
   yt
 
 BUNDLED WITH
-   1.12.5
+   1.13.1
