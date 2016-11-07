@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/openteam-tusur/auth_client
-  revision: 6c8b820338746c7dc902d9b98188e0007801f0cc
+  revision: af5f3aa92069d9bf257acfa9c16d2295be56b9e6
   specs:
-    auth_client (0.0.3)
+    auth_client (0.0.5)
       activesupport
       auth_redis_user_connector
       configliere
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/openteam-tusur/auth_redis_user_connector
-  revision: 08e22a9664d4f1be9209041176c39b3e0969ea5f
+  revision: a64ce48eb63b622b815746b9926087977297423f
   specs:
     auth_redis_user_connector (0.0.8)
       hiredis
@@ -175,7 +175,7 @@ GEM
       multi_json (>= 1.1)
     connection_pool (2.2.0)
     curb (0.8.8)
-    daemons (1.2.3)
+    daemons (1.2.4)
     diff-lcs (1.2.5)
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
@@ -210,7 +210,7 @@ GEM
     hashie (3.4.3)
     highline (1.7.8)
     hike (1.2.3)
-    hiredis (0.6.0)
+    hiredis (0.6.1)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -372,7 +372,7 @@ GEM
     recaptcha (1.0.2)
       json
     redcarpet (3.3.3)
-    redis (3.3.0)
+    redis (3.3.1)
     redis-session-store (0.8.0)
       actionpack (>= 3, < 5)
       redis
@@ -602,4 +602,4 @@ DEPENDENCIES
   yt
 
 BUNDLED WITH
-   1.13.1
+   1.13.6
