@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/openteam-tusur/auth_client
-  revision: 53da8e0d2a4ee70bb8272f8b1537e6c279247ae9
+  revision: d9fdeee0cf40656fe2b92342ed6a1fa7e99e5349
   specs:
     auth_client (0.0.5)
       activesupport
@@ -249,7 +249,7 @@ GEM
     mime-types (2.99.3)
     mimemagic (0.3.0)
     mini_portile2 (2.1.0)
-    minitest (5.9.1)
+    minitest (5.10.1)
     multi_json (1.12.1)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
@@ -372,7 +372,7 @@ GEM
     recaptcha (1.0.2)
       json
     redcarpet (3.3.3)
-    redis (3.3.1)
+    redis (3.3.2)
     redis-session-store (0.8.0)
       actionpack (>= 3, < 5)
       redis
@@ -466,7 +466,7 @@ GEM
       sunspot (= 2.2.5)
     temple (0.7.6)
     terminal-table (1.5.2)
-    thor (0.19.1)
+    thor (0.19.4)
     thread_safe (0.3.5)
     tilt (1.4.1)
     time_diff (0.3.0)
