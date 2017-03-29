@@ -16,9 +16,12 @@ angular.module('dashboard')
           $scope.activePersonForm = null
           $scope.l = localization.l
 
-          $scope.copyToPerson = (field) ->                                      #workaround for easier sending to rails
-            $scope.new_person[field] = $scope.science[field]['value']           #just copy data from $scope to $scope.new_person
-            $scope.new_person["#{field}_abbr"] = $scope.science[field]['abbr']
+          $scope.copyToPerson = (field, model) ->                                      #workaround for easier sending to rails
+            current_object = $scope.science_dictionaries["#{field}s"].find (obj) ->
+                                    obj.value == model
+
+            $scope.new_person[field] = current_object.value
+            $scope.new_person["#{field}_abbr"] = current_object.abbr
 
           $scope.cleanPerson = () ->
             $scope.science = {}

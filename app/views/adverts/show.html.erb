@@ -17,6 +17,13 @@
             <% end %>
 
             <p><span class='gray-text'>Соискатель учёной степени к.т.н.: </span><%= @advert.applicant.fullname if @advert.applicant.present? %></p>
+
+            <% if @advert.science_degree.present? %>
+              <p><span class='gray-text'>Претендует на степень:</span>
+                <%= @advert.science_degree %>
+              </p>
+            <% end %>
+
             <p><span class='gray-text'>Название диссертации: </span><%= @advert.title %></p>
 
             <% if @advert.council_speciality.present? %>
@@ -38,7 +45,7 @@
             <% end %>
 
             <p><span class='gray-text'>Дата размещения диссертации: </span><%= "#{@advert.placement_date}г." %></p>
-            <p><span class='gray-text'>Дата защиты: </span> Дата защиты(уточнить)</p>
+            <p><span class='gray-text'>Дата защиты: </span> <%= "#{@advert.publication_date}г." %></p>
 
             <!-- Advert Files -->
             <% if @advert.file_copies_data.present? %>

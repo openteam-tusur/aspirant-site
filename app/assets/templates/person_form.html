@@ -46,10 +46,10 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 group">
       <!-- Ученая степень -->
-      <select ng-model='science.science_degree'
-              ng-change='copyToPerson("science_degree")'
+      <select ng-model='new_person.science_degree'
+              ng-change='copyToPerson("science_degree", new_person.science_degree)'
               class='form-control'
-              ng-options='degree.value for degree in science_dictionaries.science_degrees track by degree.value'
+              ng-options='degree.value as degree.value for degree in science_dictionaries.science_degrees'
               name='science_degree'
               required
              ></select>
@@ -64,9 +64,9 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 group">
       <!-- Ученое звание -->
-      <select ng-model='science.science_title'
-              ng-options='title.value for title in science_dictionaries.science_titles track by title.value'
-              ng-change='copyToPerson("science_title")'
+      <select ng-model='new_person.science_title'
+              ng-options='title.value as title.value for title in science_dictionaries.science_titles'
+              ng-change='copyToPerson("science_title", new_person.science_title)'
               class='form-control form-control-small'
               name='science_title'
               required

@@ -81,6 +81,10 @@ angular
                     $scope.files.splice i, 1
                   else
                     $scope.file = null
+                    $scope.clearSingleUploaderField()
+
+          $scope.clearSingleUploaderField = () ->
+            angular.element("input.single-input-#{$scope.kind}").val(null)
 
           $scope.showUploadButton = () ->
             has_uploaded_file = $scope.file && $scope.file.constructor == Object && $scope.file.id

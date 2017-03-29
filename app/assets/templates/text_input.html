@@ -1,5 +1,5 @@
 <span ng-click="showInput = !showInput"
-      ng-hide='showInput'
+      ng-hide='showInput || hideTextInputLabel'
       class='gray-text small orange-line'
       ng-class="{'success-highlight': highlight }">
       {{ target.length ? target : "Указать должность в совете" }}

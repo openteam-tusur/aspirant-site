@@ -5,6 +5,7 @@ angular
     $scope.l = localization.l
     $scope.science = science
     $scope.blockName = null
+    $scope.hideLabel = true
 
     $scope.setDefaultValues = ->
       unless $scope.advert.place

@@ -32,7 +32,7 @@
                     <td class='theme'><%= link_to advert.title, advert_path(advert) if advert.title.present? %></td>
                     <td class='speciality'><%= advert.council_speciality.title if advert.council_speciality.present? %></td>
                     <td class='publication-date'><%= advert.placement_date %></td>
-                    <td class='protection-date'></td>
+                    <td class='protection-date'><%= "#{advert.publication_date}.г" %></td>
                   </tr>
                 <% end %>
               </tbody>

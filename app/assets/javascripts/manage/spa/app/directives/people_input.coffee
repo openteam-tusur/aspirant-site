@@ -1,6 +1,6 @@
 angular.module('dashboard')
-  .directive('peopleInput', ['$http', 'localization',
-    ($http, localization) ->
+  .directive('peopleInput', ['$http', 'localization', 'science',
+    ($http, localization, science) ->
       return {
         scope:
           context: '=context'
@@ -16,6 +16,7 @@ angular.module('dashboard')
         templateUrl: 'people_input.html'
         controller: ($scope, localization) ->
           $scope.l = localization.l
+          $scope.science_dictionaries = science
 
           $scope.isLoading = () ->
             return $http.pendingRequests.length > 0
@@ -30,17 +31,32 @@ angular.module('dashboard')
             else
               $scope.new_person = obj.originalObject
 
+          $scope.compareDictionariesValues = (normalize_string, dictionary_object) ->
+            current_object = dictionary_object.find (obj) ->
+                               obj.value == normalize_string
+            return current_object
+
+          $scope.normalizeDictionariesValue = (string, dictionary_objects) ->
+            normalize_result = string.charAt(0).toUpperCase() + string.slice(1) if string
+            return normalize_result
+
           $scope.fillPerson = (person) ->
             u = $scope.new_person
             for key in ['patronymic', 'surname', 'name']
               u[key] = person[key]
             u.url = "https://directory.tusur.ru/people/#{person.id}"
+
+            # Result object of scence degree
+            science_degree_object = $scope.compareDictionariesValues($scope.normalizeDictionariesValue(person.academic_degree),
+                                                                     $scope.science_dictionaries.science_degrees)
+            u.science_degree = science_degree_object.value
+            u.science_degree_abbr = science_degree_object.abbr
+
             if person.main_post
               u.work_post    = person.main_post.short_title || ''
               u.work_place   = person.main_post.subdivision.title + ' ТУСУР'
               u.post ||= {}
               u.post.title ||= {}
-            u.directory_id = person.id
 
             $scope.updateDirectorySearch()
 

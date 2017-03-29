@@ -14,6 +14,7 @@ angular.module('dashboard')
           restoreEditPerson: '=restoreEditPerson'
           changeActivePersonForm: '=changeActivePersonForm'
           hideSortIcons: '=hideSortIcons'
+          hideLabel: '=hideLabel'
 
         transclude: true
         restrict: 'E'

@@ -6,6 +6,7 @@ angular.module('dashboard')
           target: "=target"
           updateFunction: "=updateFunction"
           targetContext: "=targetContext"
+          hideTextInputLabel: '=hideTextInputLabel'
 
         transclude: true
         restrict: 'E'
