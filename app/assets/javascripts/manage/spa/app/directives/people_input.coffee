@@ -49,8 +49,17 @@ angular.module('dashboard')
             # Result object of scence degree
             science_degree_object = $scope.compareDictionariesValues($scope.normalizeDictionariesValue(person.academic_degree),
                                                                      $scope.science_dictionaries.science_degrees)
-            u.science_degree = science_degree_object.value
-            u.science_degree_abbr = science_degree_object.abbr
+            # Result object of scence title
+            science_title_object = $scope.compareDictionariesValues($scope.normalizeDictionariesValue(person.academic_rank),
+                                                                     $scope.science_dictionaries.science_titles)
+
+            if science_degree_object
+              u.science_degree = science_degree_object.value
+              u.science_degree_abbr = science_degree_object.abbr
+
+            if science_title_object
+              u.science_title = science_title_object.value
+              u.science_title_abbr = science_title_object.abbr
 
             if person.main_post
               u.work_post    = person.main_post.short_title || ''
