@@ -2,7 +2,7 @@ class Manage::DissertationCouncilsController < Manage::ApplicationController
   load_and_authorize_resource
 
   def index
-    @dissertation_councils = @dissertation_councils.includes(:clerks).all
+    @dissertation_councils = @dissertation_councils.includes(:clerks).ordered.all
     render partial: 'manage/angular/councils', locals: { councils: @dissertation_councils}
   end
 
