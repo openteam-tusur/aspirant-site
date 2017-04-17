@@ -4,6 +4,7 @@
 
 //= require bootstrap-datepicker
 //= require commons/bootstrap-datepicker-localization
+//= require commons/polyfill
 //= require angular
 //= require angular-bootstrap
 //= require angular-rails-templates
