@@ -7,6 +7,7 @@ angular.module('dashboard')
           people:  '=people'
           person:  '=person'
           askPost: '@askPost'
+          hideSpecialitySelector: '@hideSpecialitySelector'
           kind:    '@kind'
           specialities: '=specialities'
           blockNameValue: '=blockNameValue'

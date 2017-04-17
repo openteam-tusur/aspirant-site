@@ -97,7 +97,7 @@
   <!-- end of Post title -->
 
   <!-- speciality selector -->
-  <div class="row" ng-show='new_person.name && new_person.surname'>
+  <div class="row speciality-selector" ng-show='new_person.name && new_person.surname && !hideSpecialitySelector'>
     <div class="col-sm-12 col-md-8 col-lg-8 group">
       <speciality-selector new-person='new_person'
                            update-function='updatePost'

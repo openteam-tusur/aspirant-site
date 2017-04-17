@@ -28,6 +28,7 @@
                     person='advert.applicant'
                     ng-show="blockName == 'applicant' && !advert.applicant.id"
                     specialities='specialities'
+                    hide-speciality-selector='true'
                     block-name-value='blockName'
                     ></people-input>
 
@@ -187,6 +188,7 @@
                     ng-hide="blockName != 'mentor' || advert.mentor.id"
                     specialities='specialities'
                     ng-show="blockName == 'mentor'"
+                    hide-speciality-selector='true'
                     block-name-value='blockName'
                     ></people-input>
 
@@ -431,6 +433,7 @@
                     people='advert.opponents'
                     specialities='specialities'
                     block-name-value='blockName'
+                    hide-speciality-selector='true'
                     ng-show="blockName == 'opponents'"
                     >
       </people-input>
@@ -470,6 +473,7 @@
                     people='advert.reviewers'
                     specialities='specialities'
                     block-name-value='blockName'
+                    hide-speciality-selector='true'
                     ng-show="blockName == 'reviewers'"
                     >
       </people-input>
